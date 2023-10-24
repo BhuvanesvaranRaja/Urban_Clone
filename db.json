@@ -1,0 +1,161 @@
+{
+  "cities": [
+    {
+      "id": 1,
+      "city": "Chennai",
+      "services": [
+        {
+          "id": 1,
+          "service_name": "Salon",
+          "image": "https://example.com/metropolis_salon.jpg",
+          "sub_services": [
+            {
+              "id": 1,
+              "name": "Men's Salon",
+              "description": "Hair and grooming services for men.",
+              "image": "https://example.com/metropolis_mens_salon.jpg"
+            },
+            {
+              "id": 2,
+              "name": "Women's Salon",
+              "description": "Hair and beauty services for women.",
+              "image": "https://example.com/metropolis_womens_salon.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "service_name": "AC/Repair Services",
+          "image": "https://example.com/metropolis_ac_repair.jpg",
+          "sub_services": [
+            {
+              "id": 3,
+              "name": "AC Repair",
+              "description": "Repair and troubleshooting for air conditioners.",
+              "image": "https://example.com/metropolis_ac_repair_service.jpg"
+            },
+            {
+              "id": 4,
+              "name": "AC Maintenance",
+              "description": "Routine maintenance to keep your AC running smoothly.",
+              "image": "https://example.com/metropolis_ac_maintenance.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "city": "Coimbatore",
+      "services": [
+        {
+          "id": 3,
+          "service_name": "Salon",
+          "image": "https://example.com/gotham_salon.jpg",
+          "sub_services": [
+            {
+              "id": 5,
+              "name": "Men's Salon",
+              "description": "Hair and grooming services for men.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757629780-2b2187.png"
+            },
+            {
+              "id": 6,
+              "name": "Women's Salon",
+              "description": "Hair and beauty services for women.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/supply/customer-app-supply/1635331606894-7b633f.png"
+            },
+            {
+              "id": 15,
+              "name": "Kids's Salon",
+              "description": "Hair and beauty services for kids.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/supply/customer-app-supply/1635331606894-7b633f.png"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "service_name": "AC/Repair Services",
+          "image": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1655287480435-d29c6c.png",
+          "sub_services": [
+            {
+              "id": 7,
+              "name": "AC Repair",
+              "description": "Repair and troubleshooting for air conditioners.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1655287480991-344026.png"
+            },
+            {
+              "id": 8,
+              "name": "AC Maintenance",
+              "description": "Routine maintenance to keep your AC running smoothly.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1655287480991-344026.png"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "service_name": "Women Therapies",
+          "image": "https://example.com/gotham_ac_repair.jpg",
+          "sub_services": [
+            {
+              "id": 9,
+              "name": "Women Therapies 1",
+              "description": "Women Therapies 1",
+              "image": "https://example.com/gotham_ac_repair_service.jpg"
+            },
+            {
+              "id": 10,
+              "name": "Women Therapies 2",
+              "description": "Women Therapies 2",
+              "image": "https://example.com/gotham_ac_maintenance.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "city": "Delhi",
+      "services": [
+        {
+          "id": 5,
+          "service_name": "Salon",
+          "image": "https://example.com/starville_salon.jpg",
+          "sub_services": [
+            {
+              "id": 11,
+              "name": "Men's Salon",
+              "description": "Hair and grooming services for men.",
+              "image": "https://example.com/starville_mens_salon.jpg"
+            },
+            {
+              "id": 12,
+              "name": "Women's Salon",
+              "description": "Hair and beauty services for women.",
+              "image": "https://example.com/starville_womens_salon.jpg"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "service_name": "AC/Repair Services",
+          "image": "https://example.com/starville_ac_repair.jpg",
+          "sub_services": [
+            {
+              "id": 13,
+              "name": "AC Repair",
+              "description": "Repair and troubleshooting for air conditioners.",
+              "image": "https://example.com/starville_ac_repair_service.jpg"
+            },
+            {
+              "id": 14,
+              "name": "AC Maintenance",
+              "description": "Routine maintenance to keep your AC running smoothly.",
+              "image": "https://example.com/starville_ac_maintenance.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

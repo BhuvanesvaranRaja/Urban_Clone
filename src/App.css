@@ -1,0 +1,19 @@
+.Map {
+  height: 90vh;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+}
+
+.map-container {
+  height: 85%;
+  width: 80%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin-top: 7%;
+}
+.SocialIcon {
+  margin-right: 20px !important;
+}
+

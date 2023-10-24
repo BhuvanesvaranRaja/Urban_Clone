@@ -1,0 +1,1463 @@
+{
+  "cities": [
+    {
+      "id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+      "city": "Chennai",
+      "latitude": "13.067439",
+      "longitude": "80.237617",
+      "services": [
+        {
+          "id": "8e9d46bf-0b89-48ab-981e-104d0d053df9",
+          "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+          "service_name": "Salon",
+          "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+          "sub_services": [
+            {
+              "id": "0e9b1ec2-4b07-40f2-87e0-964993fa09c1",
+              "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+              "name": "Men's Salon",
+              "description": "Hair and grooming services for men.",
+              "image": "https://example.com/metropolis_mens_salon.jpg",
+              "additional_sub_services": [
+                {
+                  "id": "4e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+                  "name": "Beard Trim",
+                  "description": "Expert beard trimming service.",
+                  "image": "https://example.com/beard_trim.jpg"
+                },
+                {
+                  "id": "4a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+                  "name": "Facial",
+                  "description": "Rejuvenating facial treatments for men.",
+                  "image": "https://example.com/mens_facial.jpg"
+                }
+              ]
+            },
+            {
+              "id": "85d43982-cc35-43bb-9515-1ac465b431c0",
+              "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+              "name": "Women's Salon",
+              "description": "Hair and beauty services for women.",
+              "image": "https://example.com/metropolis_womens_salon.jpg"
+            }
+          ]
+        },
+        {
+          "id": "57a18b0a-af0e-4d5f-98bb-06d3e3b74170",
+          "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+          "service_name": "AC/Repair Services",
+          "image": "https://example.com/metropolis_ac_repair.jpg",
+          "sub_services": [
+            {
+              "id": "83fbbd6a-d3aa-47b3-99b7-2e7249941b0b",
+              "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+              "name": "AC Repair",
+              "description": "Repair and troubleshooting for air conditioners.",
+              "image": "https://example.com/metropolis_ac_repair_service.jpg",
+              "additional_sub_services": [
+                {
+                  "id": "7e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+                  "name": "Filter Replacement",
+                  "description": "Replacement of air filter in your AC unit.",
+                  "image": "https://example.com/filter_replacement.jpg"
+                },
+                {
+                  "id": "7a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+                  "name": "AC Installation",
+                  "description": "Professional AC installation services.",
+                  "image": "https://example.com/ac_installation.jpg"
+                }
+              ]
+            },
+            {
+              "id": "fbb58a19-081e-4cd5-956b-5f07d146f6c5",
+              "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+              "name": "AC Maintenance",
+              "description": "Routine maintenance to keep your AC running smoothly.",
+              "image": "https://example.com/metropolis_ac_maintenance.jpg",
+              "additional_sub_services": [
+                {
+                  "id": "fe6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+                  "name": "Coil Cleaning",
+                  "description": "Cleaning of AC coils for improved efficiency.",
+                  "image": "https://example.com/coil_cleaning.jpg"
+                },
+                {
+                  "id": "fa1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d99d535e-84d4-465c-96cb-e37ef1f7a140",
+                  "name": "Refrigerant Refill",
+                  "description": "Refilling of refrigerant gas in your AC system.",
+                  "image": "https://example.com/refrigerant_refill.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+      "city": "Coimbatore",
+      "latitude": "11.004556",
+      "longitude": "76.961632",
+      "services": [
+        {
+          "id": "75ce1c96-5d6b-4d76-9ae1-57dcb33d6dd4",
+          "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+          "service_name": "Salon",
+          "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+          "sub_services": [
+            {
+              "id": "8e9d46bf-0b89-48ab-981e-104d0d053df9",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Men's Salon",
+              "description": "Hair and grooming services for men.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757629780-2b2187.png",
+              "additional_sub_services": [
+                {
+                  "id": "8e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Haircut",
+                  "description": "Professional haircut services for men.",
+                  "image": "https://www.beyoung.in/blog/wp-content/uploads/2020/04/general-min-1-853x1024.jpg",
+                  "minor_services": [
+                    {
+                      "id": "81e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "name": "One Side Hair Cut ",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+                      "description": "One Side HairCut services for men."
+                    },
+                    {
+                      "id": "8e46cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "name": "Fauxhawk",
+                      "description": "One Side HairCut services for men.",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png"
+                    }
+                  ]
+                },
+
+                {
+                  "id": "8a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Shaving",
+                  "description": "Traditional shaving services for men.",
+                  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNOMHLWIZVFFo8yjfzdiX52cBo4aF1kqQ3_sjcqT7bA&s",
+                  "minor_services": [
+                    {
+                      "id": "81e6dcc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "name": "Clean Shaving",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+                      "description": "One Side HairCut services for men."
+                    },
+                    {
+                      "id": "8e46cc7wcf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "name": "Beard Color",
+                      "description": "One Side HairCut services for men.",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png"
+                    }
+                  ]
+                },
+                {
+                  "id": "8e6cc7cf-e642-4a83-80d9-d2ded06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Hair Die",
+                  "description": "Hair Dye services for for men.",
+                  "image": "https://www.beyoung.in/blog/wp-content/uploads/2020/04/general-min-1-853x1024.jpg",
+                  "minor_services": [
+                    {
+                      "id": "81e6ccw7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "name": "Lo'real Color Pack",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+                      "description": "One Side HairCut services for men."
+                    },
+                    {
+                      "id": "8e46cc7qcf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "name": "Normal Standard Color Pack",
+                      "description": "One Side HairCut services for men.",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png"
+                    }
+                  ]
+                },
+                {
+                  "id": "8e6cc7cf-e642-4a83-80d9-d2ded406a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Face Care",
+                  "description": "Face Care services for for men.",
+                  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_L3bjw2BuQDoi0Nf5aWBVznYW3OIrCZ8y7EDtuP9VBw&s",
+                  "minor_services": [
+                    {
+                      "id": "81e6cc7cf-e642-4a83-80d9-d2dd06aw8b9c5",
+                      "name": "Face and neck tan",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+                      "description": "One Side HairCut services for men."
+                    },
+                    {
+                      "id": "8e46cc7cf-e642-4a83-80d9-d2dd0w6a8b9c5",
+                      "name": "Clean up (O3+)",
+                      "description": "One Side HairCut services for men.",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png"
+                    }
+                  ]
+                },
+                {
+                  "id": "8e6cc7cf-e642-14a83-80d9-d2ded06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "All in one pack",
+                  "description": "All Grooming services for for men.",
+                  "image": "data:image/jpeg;base64,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",
+                  "minor_services": [
+                    {
+                      "id": "81e6cc7cf-e642-4a83-80wd9-d2dd06a8b9c5",
+                      "name": "Groom Pack",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png",
+                      "description": "One Side HairCut services for men."
+                    },
+                    {
+                      "id": "8e46cc7cf-e642-4a83-80d9-d2dd06qa8b9c5",
+                      "name": "Festival Combo Pack",
+                      "description": "One Side HairCut services for men.",
+                      "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/growth/home-screen/1609757635235-1a139e.png"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "57a18b0a-af0e-4d5f-98bb-06d3e3b74170",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Women's Salon",
+              "description": "Hair and beauty services for women.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/supply/customer-app-supply/1635331606894-7b633f.png",
+              "additional_sub_services": [
+                {
+                  "id": "5e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Hair Styling",
+                  "description": "Professional hair styling services for women.",
+                  "image": "https://example.com/hair_styling.jpg"
+                },
+                {
+                  "id": "5a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Manicure",
+                  "description": "Manicure services for women.",
+                  "image": "https://example.com/manicure.jpg"
+                }
+              ]
+            },
+            {
+              "id": "fbb58a19-081e-4cd5-956b-5f07d146f6c5",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Kids's Salon",
+              "description": "Hair and beauty services for kids.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/images/supply/customer-app-supply/1635331606894-7b633f.png"
+            }
+          ]
+        },
+        {
+          "id": "57a18b0a-af0e-4d5f-98bb-06d3e3b74170",
+          "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+          "service_name": "AC/Repair Services",
+          "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/categories/category_v2/category_72d18950.png",
+          "sub_services": [
+            {
+              "id": "83fbbd6a-d3aa-47b3-99b7-2e7249941b0b",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "AC Repair",
+              "description": "Repair and troubleshooting for air conditioners.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1655287480991-344026.png",
+              "additional_sub_services": [
+                {
+                  "id": "c7e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Gas Leak Repair",
+                  "description": "Gas leak repair for AC units.",
+                  "image": "https://example.com/gas_leak_repair.jpg"
+                },
+                {
+                  "id": "c3e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Compressor Replacement",
+                  "description": "Replacement of AC compressors.",
+                  "image": "https://example.com/compressor_replacement.jpg"
+                }
+              ]
+            },
+            {
+              "id": "83fbbd6a-d3aa-442b3-99b7-2e7249941b0b",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Water Filter Repair",
+              "description": "Repair and troubleshooting for air conditioners.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1655287480991-344026.png",
+              "additional_sub_services": [
+                {
+                  "id": "c7e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Full Clean",
+                  "description": "Gas leak repair for AC units.",
+                  "image": "https://example.com/gas_leak_repair.jpg"
+                },
+                {
+                  "id": "c3e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Filter",
+                  "description": "Replacement of AC compressors.",
+                  "image": "https://example.com/compressor_replacement.jpg"
+                }
+              ]
+            },
+            {
+              "id": "fbb58a19-081e-4cd5-956b-5f07d146f6c5",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "AC Maintenance",
+              "description": "Routine maintenance to keep your AC running smoothly.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/images/supply/customer-app-supply/1655287480991-344026.png",
+              "additional_sub_services": [
+                {
+                  "id": "d6e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Coil Cleaning",
+                  "description": "Cleaning of AC coils for improved efficiency.",
+                  "image": "https://example.com/coil_cleaning.jpg"
+                },
+                {
+                  "id": "d2a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Refrigerant Refill",
+                  "description": "Refilling of refrigerant gas in your AC system.",
+                  "image": "https://example.com/refrigerant_refill.jpg"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "75ce1c96-5d6b-4d76-9ae1-57dcb33d6dd9",
+          "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+          "service_name": "Cleaning & Pest",
+          "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_64/t_high_res_template/categories/category_v2/category_6b1f5250.png",
+          "sub_services": [
+            {
+              "id": "1f5c3ea6-96bd-4d67-9e1a-57dcb33d6dd4",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Full House Cleaning",
+              "description": "Cleaning services for homes.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_568/t_high_res_template/images/growth/luminosity/1657018868112-a22d49.jpeg",
+              "additional_sub_services": [
+                {
+                  "id": "8e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Deep Cleaning",
+                  "description": "Thorough deep cleaning for homes.",
+                  "image": "https://example.com/deep_cleaning.jpg"
+                },
+                {
+                  "id": "8a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Pest Control",
+                  "description": "Pest control services for homes.",
+                  "image": "https://example.com/pest_control.jpg"
+                }
+              ]
+            },
+            {
+              "id": "1f5c3ea6-96bd-467-9e1a-57dcb33d6dd4",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "House Floor Polishing",
+              "description": "Cleaning services for homes.",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_568/t_high_res_template/images/growth/luminosity/1657018868112-a22d49.jpeg",
+              "additional_sub_services": [
+                {
+                  "id": "8e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Deep Cleaning",
+                  "description": "Thorough deep cleaning for homes.",
+                  "image": "https://example.com/deep_cleaning.jpg"
+                },
+                {
+                  "id": "8a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Pest Control",
+                  "description": "Pest control services for homes.",
+                  "image": "https://example.com/pest_control.jpg"
+                }
+              ]
+            },
+            {
+              "id": "1f5c3ea6-96bd-4d67-9e1a-57dcb33d6dd4",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Bathroom & kitchen Cleaning",
+              "description": "Cleaning services for homes/offices etc",
+              "image": "https://res.cloudinary.com/urbanclap/image/upload/q_auto,f_auto,fl_progressive:steep,w_568/t_high_res_template/images/growth/luminosity/1657030364575-5e172d.jpeg",
+              "additional_sub_services": [
+                {
+                  "id": "8e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Bathroom Cleaning",
+                  "description": "Thorough deep cleaning for homes.",
+                  "image": "https://example.com/deep_cleaning.jpg"
+                },
+                {
+                  "id": "8a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Kitchen Control",
+                  "description": "Pest control services for homes.",
+                  "image": "https://example.com/pest_control.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+      "city": "Delhi",
+      "services": [
+        {
+          "id": "57a18b0a-af0e-4d5f-98bb-06d3e3b74170",
+          "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+          "service_name": "Salon",
+          "image": "https://example.com/starville_salon.jpg",
+          "sub_services": [
+            {
+              "id": "83fbbd6a-d3aa-47b3-99b7-2e7249941b0b",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "Men's Salon",
+              "description": "Hair and grooming services for men.",
+              "image": "https://example.com/starville_mens_salon.jpg",
+              "additional_sub_services": [
+                {
+                  "id": "c7e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Hair Coloring",
+                  "description": "Professional hair coloring services for men.",
+                  "image": "https://example.com/hair_coloring.jpg"
+                },
+                {
+                  "id": "c3e1ec3-8b07-48f2-97e0-964993fa09c1",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "Shave & Trim",
+                  "description": "Shave and trim services for men.",
+                  "image": "https://example.com/shave_trim.jpg"
+                }
+              ]
+            },
+            {
+              "id": "fbb58a19-081e-4cd5-956b-5f07d146f6c5",
+              "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+              "name": "AC/Repair Services",
+              "image": "https://example.com/starville_ac_repair.jpg",
+              "sub_services": [
+                {
+                  "id": "d6e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "AC Repair",
+                  "description": "Repair and troubleshooting for air conditioners.",
+                  "image": "https://example.com/starville_ac_repair_service.jpg",
+                  "additional_sub_services": [
+                    {
+                      "id": "8e6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                      "name": "Filter Replacement",
+                      "description": "Replacement of air filter in your AC unit.",
+                      "image": "https://example.com/filter_replacement.jpg"
+                    },
+                    {
+                      "id": "8a1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                      "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                      "name": "AC Installation",
+                      "description": "Professional AC installation services.",
+                      "image": "https://example.com/ac_installation.jpg"
+                    }
+                  ]
+                },
+                {
+                  "id": "fbb58a19-081e-4cd5-956b-5f07d146f6c5",
+                  "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                  "name": "AC Maintenance",
+                  "description": "Routine maintenance to keep your AC running smoothly.",
+                  "image": "https://example.com/starville_ac_maintenance.jpg",
+                  "additional_sub_services": [
+                    {
+                      "id": "fe6cc7cf-e642-4a83-80d9-d2dd06a8b9c5",
+                      "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                      "name": "Coil Cleaning",
+                      "description": "Cleaning of AC coils for improved efficiency.",
+                      "image": "https://example.com/coil_cleaning.jpg"
+                    },
+                    {
+                      "id": "fa1e1ec3-8b07-48f2-97e0-964993fa09c1",
+                      "city_id": "d208c4df-344f-4bc7-b31d-846bfc4bb063",
+                      "name": "Refrigerant Refill",
+                      "description": "Refilling of refrigerant gas in your AC system.",
+                      "image": "https://example.com/refrigerant_refill.jpg"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "service_centers": [
+    {
+      "city": "Coimbatore",
+      "service_categories": {
+        "Men's Salon": [
+          {
+            "name": "Sharp Gents Salon",
+            "address": "123, Men's Avenue, Coimbatore, Tamil Nadu",
+            "latitude": 11.0138,
+            "longitude": 76.9725,
+            "phone": "+91 98765 11111",
+            "description": "Men's grooming and styling salon.",
+            "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUWFRgVFhYYGBgZHBwcGhwZHBoaHBwYGBwhGRoaGRwcIS4lHh4rIRkaJjgmKy8xNTU1HCQ7QDs0Py40NTEBDAwMEA8QHxISHzQrJCs0NDQ0NDQ3NDQ0NDQ0NDY0NDQ0NDQ2NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIAMIBAwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAAECAwQGB//EAEMQAAIBAgQDBAcEBgoCAwAAAAECEQADBBIhMQVBURMiYXEGMlKBkaGxQnLB0RRikrLh8AcjJDRTgqLC0uIV8RYzc//EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EACwRAAICAgIBAwIEBwAAAAAAAAABAhEDIRIxQQQTURRhMnGBoSIjM0KR0fD/2gAMAwEAAhEDEQA/AOiuYhVRnuBZQAtnWQQYiAQeR0MHTkaCcQwrOtx7QVkUMdCAchBhlB1y7eVV+kWNXsnQMC0Qd9swBj+dKnb4wgwrplZXW0yGCIgpCtHiI+J15DzoYk0pV52b5ErOY4Ih7ZNxroRrsJkda698KlxCc2VugMlSOarzE9TXF8Eci4CNe6xjyE10a8SbMDk2EMB05iT79dxNb+oT5KnWjOM+If4QMkhzPUIYBIEyGPUHz2oi7htu6Zka6EgkQSdvfpXM4LignY5WJ+0JScx0HWF2mN9qM22kHUEjUEEHUnTNppr9K54Zs6lV2l0vBnNqW2bLbmSOc7HkSSIq224bbShovd2G1MArGx2PSdZAjy8aqs47mAQcyrqftEa+PJveBXqYfVpr4fwYShYaC1PLUMNcDz1ESPjB99W3HCrmJ0ruWaMo8vBi4tOispUctVPijsBHOrrd/wBoT741qPqoJ0w4MbLSC1bH8mlFbqaatENUQC1ILUlWpBadiIZaeKnlp8tKwIAVILUwtSC1LYyASny1blpopWFlRWoMtXMKrIppisrK1ArVxFQIqkwspK1w/wDSCIez91/qtd4RXD/0irrYPg/+ypyu4M1wv+JFnBOJOLCKsyqQoGXWDJJ5gcuutbX4ys97Ug/ZPkZViNtOXUda5zBInZIw7z5IYeyMzDSNSYHzrZjES2qgEsGUN6pjXeJMkCR8q8bK3J8bZ2JLujXicWWULbEieQzNA118N6z2LwW4hdiMxkwGB8Oes/jVmBdLQLsQGaCFWfEEtPm2g00qz/yKyWmYnuFQIkydecdNOu22Lyu+m6HWjp2sIdcyfPlp1pq5PGK7uXlxmAOgMbDbu0q6/rI/8jL2wbxu3IdSO8pGUzuCQIgb6a+4dDL4kIbWeTnRSI5FJjIR0IMz4igKmnzHqamOBpJX0bOV7C3ozhluYjXOqBWYlRmZe73Rp1MDlW/iCOgLJ3lIMERIAEHMAfOufS4ymVZgRsQSD8qmcZciC7kdMzR8JqsmDm7JdMJ8PuZlYAbs0RpBK+tO5gExtqRRXBXSpCgHWAikHvBjABII1BO/h4VyS3mGxI8qs/Tbm2dtP/f41i/Sy5WmSdyryIzdV3Gkkx74GU9PfWBnUFWVjEFiJkgmNZHkK5xOMXxMP6xkyFMmZnaq/wDyLwASDlEDTWDyJ3NXP07dOPfkEqO74NxGC7ljEaLMaDY+E6/GtuLxLMYZiRkgSYHck6ecj5V50nGLgM90+BBjl4+ArY3pLcMSiaCNAR7999Kz9vPGKSp/qDimdPi8UYLDaDAHMgwKI4S6+TMbLd2M0kiBHQjWd64fDekbIcxtqxiAcxECZ08fGia+nbn1reb/ADxpyGia+dQvTZG25dv7lRUa2d0uKQesGBAMjMNvh4fEVqa5aAkrdGgP2Ig7V5y/pkpibJBkmQ4nUkgeqNBPyFbE9OreXKbdyYA0KkQOUSNPCtsPvwfF9BKON+Due2s9bgjqB+BqXaWfaYean8K47/53hyGzJdlonuoduvfqb+nOGYvK3IaN1E6dYP512XkXky4wfhnYZ7P+J8UalNr/ABR+y35VzD+mOCbN32GbLuj8vIVNvS3BHN/W+sV+xc5f5afLL8oXHH8M6Ydn/ir8/wAqkqp/ip+1XNn0owTBovKCSIlXHTqo8aw4z0jQE5MRbY5WbQLlZgGyQNwZC6SAZqZZMi+BxxY5fJ1txX0yvZOuvf5fDfatBtaaMhPTMK87t+lT5kBe1BRix7oi4C+XWRAIVdNtRprRzB8XRys3bMd3N37c5/tQAdtPLXyqVmm/BTw4/udQcMeRT9oViu3ApIO46a1BGtNs6Hv8mXaNvKsxZQSJG55irWWV0xLBDvZp7ZfH4GmzCqVq0LV+80H08fuOWFcP/SOdLHm/+2u4yVxn9IlolLMAnvPsJ5ClLK5KmOOGMXaAfC8FdeyrqpZZIUKp9rvSRuN/hFFLz3rQAS0SWQAtlYyY1JB0UmaIei2JS1gka4wQBnHe01LkgAbk+FTuXL+J9QNZsn7ZjtHH6onug9fnyrm4VK09mjV9nP2LgcMzKRcQqp3OYifCQdNvD3VTcUpcWQdQGhtBtHmTp79KL+j2EVL2IUScjgCTqAc3PmdKzpwl2L3O4qoGiXBzZZkARofxqPZbboG0iYe5A7tw6LqDcOkCNm6UqZH0E3j19ZzodR9rpSrkpFHIx4j+fOpR5fEVbgcP2jhQABuTroB766PD4NUBjIABJZhsOpYtXdLKo68mE8ii+PbOYyn+SKRQ9DXRA27kgG28dBr7tZqrjAQIM667Jl3nptEeFCz26ohZW3VbAQB6GmKnpXVukggopB03/wCtU3MRbtwhCqfZGWR59PfSWdvpCjlcul+5zMUqMX7a3rkIIVR32WJJOukHKem/Wt6pbtrJAUbSwn56zVyzJVrfwU8tarfwcuaaulL2bmgKny0P50JxuEZG7pLKdtdfIinDKpOmqYRyW6apg800UYwPDSwzOSByUbnz6UQPDUj1D8Wn60nminQSzJOkmzl6UUZx3CioLJmIG6mTp4VXgOG50LEuDJA6aAeHjVe7GrD3o1YLymlkPQ0as8DMd8tP6o0+Y1qrFcGZQWSTHIjX3daFli3Vgs0W6BWQ9DUkssdhU/0d/ZPvEfWt+Bw5UEyO9GkjSJ8fGtDpw4+cq8A65ZKmDHxFQy+I/nyoniMJmacwHmG/AVQuAY6hl3I+1y/y0FzwSUqiteDJk8R8/wAqWUdflWteHt7S/wCr/jULmFymC6yemY/7aCHjnFW0ykKn6x9wH50iF5KZ8xHwy1rHD/1j+z/2pXMIFEksR4KP+VA3hyJW0zIr9AB8fzq9MU42dh5E1K3hswzKjEdcyiY30ilbw5IkIf8AMw+kCihLHN9JiPEL3+K/7bfnUL2KdwA7u4GwZiwHkCdKncQrugHjqfxiq+0bkB7lX8qKJcZRdPsss3HlQpMg90DkSfsjlJorcx2LQEteYRyLSfnpQ+1bu5kJDQGUnXkDrImiXEoyvG2v1oUToxYHJPkmqVoxWOI3kZ3W4FZ4LGFOYjaYU9TUv/K3JnOSTJMIupO/T6Vit4d2EqpI/nrTXLLL6ykfT40nEw4Tq6dGo4+eQ2A+yNAIH2egpVhpVnxj8CNno+4DkHcrp5gzHwn4UT42jm2AoJGcFgNdADGnQGKB8Nw5dwAcsazzAHTx2rp7t3IswzcoUZmJ8h/6rmyPjNNHHkbjkTXYG4Jh3z5oIUA6kRM6QP55UQ43HZGfaQDzn8pqz9NMT2Vzyhf+VBcfi3uOAwyKp0TnJ5t4043Od/AJOU+T8HSs0Sekn4Ca40Ge8dSdSTzJ1JNdjc2byP0Ncap0FX6daZXp+n+Z0PBFHZz1Y/KBVmM4cLjBmZhAgARA6nbc/hWTgV8QUO85h49fp86lxLB3CxdCxBiQGIiBGmu1ZtNZXujJ2srt0Ts8IVWDB2lTPL4VZxW2GRQfbQfE5T8iaG28LiCYl18S5AHzrM9x1aGZiVbYsSJU+JrRQcnd20Vw5O+VtHS3bcqQsAxAMTHjFB24EfbB81/jRW7LpKNBYSpHx/hQV7uJUwS8+U/AxrWeNS2rSIxXtXQWwWFyIFbKxHOOXKq+HWlyuIBh3AnXQGh1zE4lAGZmAO0qvLwjSiPBJNsk7l2J8zFEouKbb7DJFxi3d2wPi8S5dhmgBiAF0Ghjlv76L8JuZ0kgSCQTAE7GfnQLFeu/3m+po16Pj+rb75/dWtcsUsdmub+n/gC4tIdwNgzfWtfDrjEFSdFyxoNN+YEnbnWfH/8A2P8Aeb61fwr7f+X/AHVvDaR3ejb5xJ4nFOjQuWInVVJ+JE1PAsSkncs1ZeJaP7h9TWvhmtv/ADN9BVLs7Mbf1LTfyVvjyjEBVIGneBP0IinwaZibhGpJCgbADpPw91YsV67edFOFmbQ8CwPxzfRqF2Tik5Z6k9W/2Kbl64GOVJA6rM1rtPnWSmRpgrrB/WWeXhVV/GhDlKE+OcCfGMlRTian7B/bH/Cle7NvchHI3KT/AC8Gi1YyoANszx74P41QceqMQyZwP1ip90fjNasNdzoGiO+4iZgCBvQbG+u3nTe0TmyccKcHSbYbxNtGHdko6hlneGEifEVmweFyKCR3yJPgDqB8K0YXW1b+4Pqa1YxO95qpH7IH4U4+LN8cVPhN90wdh+I28wDo5UmMysAROk5SuvxoicIpudmdQWA15iedcrcOXfkRPuNdTxIkM7AwQJBHIgSCKE3bMfT5pzclJ+GU32KT3MxB1WY20IrDxTiFp1C21dSfXDFSBHJSIJ94oja4zaux24yPt2iCUblLpuD4iqeJ8PEkGMwEhl2I3GvMUk+X5/A5S96P8t062v8ARzualTxT1J5g2CvMjgpq2wG8zyo0/GChyvbIPgRHuoPwvGLbfMVzcvEeVH1x1lxBK+Tj89K5Mv4tq0c2RfxbVoqscaDMq5D3iBuDv4Vo4tYVkZo1QFgfu6keRpkxFhNmRfLLPyodxTiwdSiTB9Zjpp0Ub69amMbkmlRCg5STSpEm44xBGQagj1jzEdKEAUppTXXGKj0dMYqOkSViDIMEbEUTscacCGUN4zB+kUKBrecOv6N2kd/tskyfVyZojbfnRKMZdoUoxl+JGt+OdE+LfkKF4i+XYs0SeggaUTwWCRv0cspIdbzOJInJnyweXqjaq04cpJYEtbNu46NsQyIWyPGzAxI577GiOOMdpCjCMekZ8DxB7eg7y9D+B5USHHE5o48sp/GsmGwtqLRdsodHYy2UF1dlVS0HKCFGsU2PwqhM6IoAIDMl5bijNtmHrKSdidKUsUZO2hPFGTtoXEOKdouQJAkGSddOgG1T4ZxFETKwaZJ0AjX31dxXCWrTOAkhWKgjEWy28AlAhYeIqjh/DkuoXBZTbk3NM0pBYFIHrd0jKfPaaPajVeAeKNVWgdecFmbkST8TNE+EcQREKuTJYnQE6QBy8qFOwkwCBOgJkxykwJoy3AG/SOzEZO0yznt58maJiZzRyj3U5RUo8WNwTjxYJxjhndhsWJHkTUsFiMjSdiIMfIjyrTgMEj5jccomYIrCPXc6TP2QASfd1qr9BIS8XkPaKiPEsVafKKa0qLg3BprwEDiLTbsp8wfoRSt4u3qMwHe00I0yqNNNtDWl/R5c5QJiQJjtCq5APbJgd330Bw1ku0SAAJJ0gAeJjmQPeKOTOz6ydp0h8UwLsQZE1PAYnIxkSresBvpsR4/WrOIYDsoBcEnNoCJABgEwSRPQwfhRDFcDCIzKLz5QTnVEe20c5RyVU9TPiBQ2c3OXPku+yZuWmHroR0aFPwaPlVNzEWlBVQDO4UaHzNQTC4fszcz3oDqhGS3OZlLe3t3TUMNws3FVkYGDFzN3eziTnY+xlBObqCImJakzofrJtdK/mi7hVxRbyllBzsYLAaEDXWh2NYF2IMidx5VdiMKqoHRyyl3QSuUwiowaJMTn25RWvAcHz2hc/rmlnWLVntAuQKe8c6xOb5Gi9GMsspQUPC2aMA69kgzoCFgguoIgnkTNWYHHI69m7BHQkI7GEZJkKx+yRyJ0oVgcGt26LauQpzQxUBiFUtATNGYxAGbcjWruKcN7IKYvCSRF20bZ06HMwb4zSbejVepkkkvBsx2Ct+tcC+eYa+9TrWi/lIOZ0II7xDqdCPAzNC8fws28nfDScjwPUuCC1s66wGGukwelZ3wbC8bK95s5tjlLZ8g8pNVyZp9a7bUVb7DWLwtl9Q9t15QwQgcgVJDCsmLxyqIBDMBAjUCNBqNKpfh6HMtu9ndAxIKFVYICXyNJzQATqFkD3Un4Owa0A4K3TbGYA9xrqqwVh1hp8YPQxKk0SvVtKkknVXWwVSqUU1KzlMK1PNWixbRTqyuCNS3dymJgQSSdRtzHOnxxQwEQCIBIJO2xJk771k8iTAzhqlmqVmwSDGsaacifa6c960/oaic5KgZmIH2VEQQxHezEZRBMTMUe4hGQNTzU+GYYuwmIjNBYKCoYhgWOi6Kxk9KOcTweHsKk99ntuDH2XEBbg1GmbMIOuh2iKbypaHQABrTh8Y6AqCCpIJVlV1kbGGBAPjQ1LwkzJ8OUee9Qd33B0n+RV8kKgueIXM4fMJVSqwqhVVgQQqgQBDHlzpsNjnRXVGhXUqwIBBBETrsYJE+NNwq0jjM7EAHU7xziPHSrlwSuCyEwCRDxO3tAeNL3FYcSq3xB1yRlIRSoDKrDKzFyCGGupNPf4izKUCoikgsEQLmK7ZjuY6bUv0SPWBHvn4Gm/R08aXuIfEuvcXZ2LNbslmJJJQSSdzM71QnEHUIFbL2ZzLl07x3c9WO2vLTapGynj8f4UhYTqf591HMOJnxF7OzNlVcxmFEKJ6DkKuOOc3e30z5w+2mYNm26TU/0e31b4/wpdhb/AFvj/CjmHEdOLXVUIjsgBY9wlcxYyS0HU7AeApr/ABF3DhoJuKiu0HM2T1WJn1tBJ5xT9lb6N8f+tLsbf637X/WjmHEc8Sc3WukLmeQywcjKwgqRMx799aqwuJKFu6rKy5WVphlkHkQQQVBBBBkVclq0DqGI8x+Qq028P0cfz50c0HEzYvFNcbMwA0gASdPNiSfjWq3xUIc6WLaPBAdTc0zAqSEL5QYJ5R4Uhbw/63z/ADqSph+eb5ilzQ+JkXEkWzb0gur85lVZR7oc/ClhsUUDgAHOmQzyBZWkeMoK1vbw/LMPeTUezseP+r8qOaHQsPj1VOze0jqHZxmZ1ILKqn1GGkIKmvEUyBGw6ModmUZ7gy5woYAh5I7g3mqktodlY/tb/CiKcCdtkYaA+svP301K+kxcQWMQgfOLaZfYJcrBEHXNm8ZnQ1st8XVAqpZVVDq5Us75nQHJ6x0AzEwN+ZrSfR+57A/bH8aycV4Q9u09zKoyx9vNuwG0eNVv4YtfJG7xm66OjkOGg+qikODIcFQJPrDXkxqWK4oju1xbKpcL5w6u5yvmzyFJjesHBLPal8zIoUAyxyjUxW58HbUwXU/cDv7p0H4Um6GlYm4oveZLKI7hgXDOQA4IcohMKSCRziTEUsNxh0dHCqQqW0KGSri0AFJ6MCoII2ND79osTk0UaGQd/Ea8qVjIB3u946j8aOQUQuCST1M0qn2qez/qNPS5fYKBOGw5domB1gmDBIEDckiBUrqFXADAAkmQ0rHXu6jyifCaos3IIIJXxGpHWP8A3U7Np7jhUVndpMAFiT1+epNRWxBXBY3swVt3M0GQQMixAnukEgyRrvC1XibpYqAmpAMLzGhkjxyj4UPRSsyRIOiiCCYgmQY5eM10fowQxZoQnuKockqFRluXJ05hTt1qZLi7CrNnDOHdmLiXTllChYFSqEoI1jRiLpGnQjUmKAY+4zkse6QFIWfb75M9SWZtdYNEuPcRcgIRky9orhdFdRdY2yFj1V9UamQo2igSsTJkc9dBodPp8qSXkHoLpw1A9tLuXI6umdNe9AOcgkGVkE/lpQlMK0ZhqMqk+RbKIB1OsUQxGKDWUyjLlYqpIMsI1LH1TBcCd4A2rPd4gTmWSs5ZAPd7pn6yfh50ouVbK0zbwLh5fugwHdU56SwE/M1tW+rPcdBCs+ZRqAFZQQADsBS4JeKIHjd8vQgP3CRHMZpHkKfh2Edw9wugl2+1oYA1Xw6VV07YVekBeK32BEE86Hds3tGiXEEDAtqConzoSFNUt9AT7Vuppdq3tGohTyE0+VvZPwNOgH7VvaNLtW6mmhulPr0o2A/at7Rpdq3tGo5z0qDXD0p7Cy3tm9o0u1b2jULLZjEanarVwzdRQAwuP7Rp+0f2jVi4Y9R8amcMfD4n8qkaop7VvaNOLz+0ad7DDp86qVGJgETVDtGm3iXGzEV1/onxO5czq7lsoWJCiNwdQJPL4VyNjBPPeIjw1O9F7GMsWQwts4ciCTBG+kx08KcJK+yZK10dz2tC/SW4Dhro/V+jA/hXN3cVd7pXEq5YTAUgiNx3l+lZcZiMQUYNdzLBkZRqPOK1eVNGXBov9FrSO7q4BDJOv3ht0OtGcThkQwM2XI2mdyJERzrk8DccEFHKHLv4SNPpW7PdcENdJOkGBoOY03nT4VKlFKiqdkbmHMz8KzvZckwSRHLw/CtaK4nM+bp3QIpI0ODOmoPSCI8jrG9RLSbRSYF7vtN+yP8AlSqd5BmPmeUc6VKwKck7CNp8+fzrZhrhtMCvQjwYAn3HXz2qrE5iQSRrJ000JJ10H02ip3o1lgYXQT7U7fL41NiKbjScx1JJJ98VtwuKayXyMQWGw6Rl/H6VRZcvlVSBpoSAI23bTSSBJncdajirWR2RmDZXKkgRMetGbveAkUPehiDkydYjWJ221+W/hUJmemmh00MR9am75UCneSYOkTA1kcwAdPDyq7hFpXfvjuIGe5GncRcxH+aAo8WFJCIWbQyXDzGSJ6M3L9bb3ZqyZicxMknc670cwXDmNu4rAExYyesBnuOT2hPsqnaAxpOX3j7XDrjBiEMTEnu8vEiapAdBatZsM0CftdIyrmJ+XzorwzCKMNbA9ktpP2iW+UxQ3hdwLhiGgPlYKDE53Qouh3guD7qs4Vj4stYGbNbD97uwFLhRBJ1aXGgn4Vlmi2lRcHT2AcSO4/l+NY2s6TWu+e63iPxFZ1TMUX2io6b1pDSEyFvuwQBrI18I/Ol+kttpRjG8NyWDkzMc4ImOYCnQaHT6mqbXDFZUY9pJXMYAAG0xPmfhT5LsVMHHEkD1R8/zqvt2YxOnhRbEYa5C/ozK6jcowzkz9oEBugAH41swfEsXkZC7Bmns5KZyUEvbKmWGZZIJA1Ag607CzmCwphfQI6FJdiuV8xBQKSWGUaNmBA12jSoKtQMTToVk8Lo6/wA8jRa3YYiQpMbwJ+NCLejDzrY15jpPuqZMaVmx7Tc1bfpz5cqpuXWBiCD476+FUIda0459APD8hU+aLpJGHF3Wga1HAuc6/wA8qd10g9PnSwYGdfA1X9rJ8hvDtJ2+fQUsZbBt6IREjxWBI92hqeCOs5eXjzIHStWPtlUcyTmByiPqfImueGmWtgvhrAqTz0q/FjuP90/Ss3BEJDgCdvxo/wD/AB/EOjME7uUnNmSNR5100QzmMA2q+Rolb+17qwYOxlIJYQAfa16cq2i6uuu/nTa2JMdjUA8TEzBiI3I00IMjwpmcdfrSsXQrgk6azHlQ7oQMu2xJ/ClU7ySxP401KmVo9MPCrB1NtSfFZ+tTThtkTFpNeqKfhI0rYDSJquKIsoWwoXKFUDf1V+sTyHwFZzw22SSUBkAeGm3ugAe6tk1GafFCtgjH3sJbfLcCB4DaozEjYahT0+VYzxnBqe5aLETrkRR46sZ+VCPTB/7TtPcUc+Zbp50HKR8x/qooZ0OJ9L0ykJYRTyJ78fBVH1oFd4/iGmbhggjQKu/TKARQqmPSgDtPQa6WGILS3dTfU65+tRw7IBiQ4UnPCz1Zw0DxIQj30vQEdzEnwQfJ6ztiE7e5lUhZE6z30AVmPQFsx8JFZ5FZUXsGXnBU7Tkk/tnf3RUbeJysphZUgjQbio4l5nSItoPOWmfnWe5Eb8+nL40JaBhzFcSz22ENrHsdfACtNvFEW2VQRlSNQh0iPZnlXLYW6F0Oo6ePI0Sw/EBqDsRyn86OPgLJJbVtTJadTPzq1sWyFWnPGkOc3joTMa9KqFy2Ni4HMBtPnWXEskd1m8iPxp0IyJ0EVHJzO9Whh1qLsOoqhFIPeHn+NapFYwdffVhapki4ujbYiRVuN5dYrDaeDNX4hyTPQVKWx3opu7fz+FWYQAMvmKrLyPA0sM0Oo/WA+dU+iQnhcVBPd6D7PX7tGcVcVEzGI+pMgD51kw3D1LSQQBrA5kDas2Ps3bh9Rwo2GVj8YG9ZyUXXHXyOHJdkPRp++wPs/Q16xwnXAAfqv+81eV8LsMl3VGUFTqykSdDGo8DXoeD4h2XD3eJKl4Hvn8a1WxS7PMLgg0glPvqdzqaSGNOVWSP2YiqylaOVRNOkBRkpVbSpUKz03NT5qgGpE0JDHpiaaaYmqA4b0sb+0n7ifj+dB2ff3/WinpU39pbyT6D86DPsff8AU1LAyLtUqihq7EW8pK9I+gNAmdR6CswF/wBnKsnxExr5E0ExRGe599oOo+0eldF6DD+pvnxH7prl8W3ff77fU1Mh2VBzDa8gPcDpUGaompAjpSQypTVlt4qRcez86jnE7RTsVFueoM1IXB0pmvxyFMZGoEVYl2eQq0E/q0gMg3qR3qx7hBiBVbiTNAElM6nnUQ5p0kVEW6KAfNW3hZUtqJPLzGu58qxZausEqQfEGNpihoDorYbmg5nfc9Nq2WmM62zOmzRPhXPDiLzpEdP410nAvTG5hwwWyj5onNOgG0EHx5ispRlWmXF0X3gQqAoV753IO6MeVdPwLDJdwty24lSzAjwKrsaB4jjd3HBiMOEW0FdypEKCSoJmCSZO3Sjnok/9W4/W+q/wqsadb7FJ27PNbyZXZejMPgxqDrV/ERF5x+u/701Sa2ogVq59k78vGnNUXF+NSS5O+43oAlNKq+1pUwPTM1LNVOalmpAWl6iWqvPUS1MDifSdpxL/AOQf6FoWy90+X51s4vdL33MR38v7HcH7tQFuVjr/ANqkTBVtZYDrpRHjeEe2/fXLnGdZjVDoG8jBrBacK6sdlYE+QMmui9PsSHxrhfVtqiKfBUDfVmoGEvQof2e/97/Z/GuSxZ77/eb611vob/dr33/9grkr7S7eZ+tJgUxT1M1AipFZEmoxSYU4BqihCk1MR1pTSAaKakTTRRYEgtIUhpSNFgSHnTTTRSpATDeFSzeFVU6mmwNCNV1u7B/KsqmrA1IaD3DOOX0/qluMLb91kJlSD0BmNeYiu59FH7twfdP71eYYN++n3l+teiei76uPAfIn86cUJnGcZEYi599vwNZQa2cf/vNz78/6RWCtBDtVFzfSrXaKiiUgK5FKp9kKVLYHp2It2razcuGdsqLOv3mIBoMMezv2dm27tpJCkwDsQBy8TAqlfSm5GV7dp13CumYA9dedVPxPF4iQGFq2eSDs19yrq3vMVhGU3o6JxgujO+Ke3iVS5qxIBAYEKHMQchIkSNPCj5ahuC4clvUCW5s2p93Stk1vFNLZzur0cRiRN1//ANG/fNaYhZ6CfkxpsZbH6Q4HteepMn5k014/1Z+6P3TQJgZRT3LhYliSSdyd6dedVrQM7X0QP9mu/fP7i1yNxe8SOp+tdX6Jn+zP98/urXJl+8fM/WlIBZaiatLDlVbCoQkRmnFNlNMVNWUJoqBpyKUUAMBTqvWmFOTSAcgU0Ugo61LIORoAippZqkUpiKYDqanHlVQFTy0APNOGqMGnWaQF+GaHT7y/UV3/AKPXIdvu/QivPbbQw8CPrXacHu5X3iQR8xTQmBfSH+8P5j6UPzVs48833PlQ4tNWBJdTNHm4basIr4l2DsoZbFsDPlYSrXHaVtgjWIZoOwoGtalsG8xIzs8AmFZzoACTl1jxipkCLP0+zyw4jlL3CfeQRPwFKshwJ9tfg4/20qX6jN1j1l8x9a6WlSqcXTKy9oVKlSrUg5nFqDcxMiYWR4HMmoqrFeofuj92lSqQBHI+6oUqVJgdb6L/AN3f75+i1ya7nzpUqcgHO9TpUqlAKlSpUxjGq6VKkBClSpUhsVTt09KgCyqjT0qpiGp6VKpAmu1JKVKmPwSbceYrp8D6/wAfxpUqZLBHFv8A7D5LWFaelVICdeh/0PqP0i6Y1Fv/AHClSqcnTBdnr1KlSrlLP//Z",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Ramesh",
+                "stars": 4,
+                "text": "Great service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "fafsdfdsf",
+                "name": "Udhaya",
+                "stars": 1,
+                "text": "Worst service waste of money",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Janani",
+                "stars": 5,
+                "text": "Excellent staffs",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Adhik",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹400",
+                "description": "Professional haircuts and styling for men."
+              },
+              {
+                "service_name": "Beard Trimming",
+                "price": "₹250",
+                "description": "Expert beard grooming."
+              },
+              {
+                "service_name": "Facial Treatments",
+                "price": "₹350",
+                "description": "Relaxing facial treatments for men."
+              }
+            ]
+          },
+          {
+            "name": "Green Leaf",
+            "address": "123, Men's Avenue, Coimbatore, Tamil Nadu",
+            "latitude": 11.1034,
+            "longitude": 77.0272,
+            "phone": "+91 98765 11111",
+            "description": "Men's grooming and styling salon.",
+            "image": "data:image/jpeg;base64,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",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Jaya Madhi",
+                "stars": 4,
+                "text": "Good Team Work and customer support",
+                "avatar": "https://bit.ly/tioluwani-kolawole"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Tejas",
+                "stars": 5,
+                "text": "Excellent staffs and eco friendly",
+                "avatar": "https://bit.ly/ryan-florence'"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Dhanush",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹400",
+                "description": "Professional haircuts and styling for men."
+              },
+              {
+                "service_name": "Beard Trimming",
+                "price": "₹250",
+                "description": "Expert beard grooming."
+              },
+              {
+                "service_name": "Facial Treatments",
+                "price": "₹350",
+                "description": "Relaxing facial treatments for men."
+              }
+            ]
+          },
+          {
+            "name": "MENTO Gents Salon",
+            "address": "123, Men's Avenue, Coimbatore, Tamil Nadu",
+            "latitude": 11.1038,
+            "longitude": 76.9725,
+            "phone": "+91 98765 11111",
+            "description": "Men's grooming and styling salon.",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3kUztQ0pmGRfe7oEsQvZMG2BBNZv697Zfww&usqp=CAU",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Rohit",
+                "stars": 5,
+                "text": "Great service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Vijay Kumar",
+                "stars": 5,
+                "text": "Excellent staffs",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Priya",
+                "stars": 1,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹400",
+                "description": "Professional haircuts and styling for men."
+              },
+              {
+                "service_name": "Beard Trimming",
+                "price": "₹250",
+                "description": "Expert beard grooming."
+              },
+              {
+                "service_name": "Tan removal",
+                "price": "₹350",
+                "description": "Relaxing facial treatments for men."
+              }
+            ]
+          },
+          {
+            "name": "MG Gents Salon",
+            "address": "685, Men's Avenue, Coimbatore, Tamil Nadu",
+            "latitude": 10.9529,
+            "longitude": 76.9823,
+            "phone": "+91 98765 178111",
+            "description": "No 1 Men's grooming and styling salon.",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPBm_f9uYFL9VqkmBx15PvcBWRlecBzSaN8g&usqp=CAU",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Viki",
+                "stars": 1,
+                "text": "Poor service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Abi",
+                "stars": 1,
+                "text": "Not recommended",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Rakesh",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹400",
+                "description": "Professional haircuts and styling for men."
+              },
+              {
+                "service_name": "Beard Trimming",
+                "price": "₹250",
+                "description": "Expert beard grooming."
+              },
+              {
+                "service_name": "Facial Treatments",
+                "price": "₹350",
+                "description": "Relaxing facial treatments for men."
+              },
+              {
+                "service_name": "Groom Combo",
+                "price": "₹1350",
+                "description": "Relaxing facial treatments for men."
+              }
+            ]
+          },
+          {
+            "name": "ST Men's Groomings",
+            "address": "567, Main Street, Coimbatore, Tamil Nadu",
+            "latitude": 11.0192,
+            "longitude": 76.9744,
+            "phone": "+91 98765 31333",
+            "description": "Relaxation and grooming for men.",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1BJWbqAoaL8A6TOOXXA8j9B9x6eZXcmASKg&usqp=CAU ",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Ramesh",
+                "stars": 4,
+                "text": "Great service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Janani",
+                "stars": 5,
+                "text": "Excellent staffs",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Adhik",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Massage",
+                "price": "₹800",
+                "description": "Soothing massages for men."
+              },
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹450",
+                "description": "Modern haircuts for men."
+              },
+              {
+                "service_name": "Skin Care",
+                "price": "₹700",
+                "description": "Skin care treatments for men."
+              }
+            ]
+          },
+          {
+            "name": "Gentleman's Look",
+            "address": "789, Gents Boulevard, Coimbatore, Tamil Nadu",
+            "latitude": 11.0309,
+            "longitude": 77.0382,
+            "phone": "+91 98765 22222",
+            "description": "Exclusive grooming for men.",
+            "image": "data:image/jpeg;base64,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",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Ramesh",
+                "stars": 4,
+                "text": "Great service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Janani",
+                "stars": 5,
+                "text": "Excellent staffs",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Adhik",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹450",
+                "description": "Stylish haircuts for men."
+              },
+              {
+                "service_name": "Shaving",
+                "price": "₹200",
+                "description": "Traditional shaving experience."
+              },
+              {
+                "service_name": "Hair Coloring",
+                "price": "₹600",
+                "description": "Hair coloring services for men."
+              }
+            ]
+          },
+          {
+            "name": "Urban Men's Spa",
+            "address": "567, Main Street, Coimbatore, Tamil Nadu",
+            "latitude": 10.9966,
+            "longitude": 76.9669,
+            "phone": "+91 98765 33333",
+            "description": "Relaxation and grooming for men.",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1BJWbqAoaL8A6TOOXXA8j9B9x6eZXcmASKg&usqp=CAU ",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Ramesh",
+                "stars": 4,
+                "text": "Great service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Janani",
+                "stars": 5,
+                "text": "Excellent staffs",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Adhik",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "Massage",
+                "price": "₹800",
+                "description": "Soothing massages for men."
+              },
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹450",
+                "description": "Modern haircuts for men."
+              },
+              {
+                "service_name": "Skin Care",
+                "price": "₹700",
+                "description": "Skin care treatments for men."
+              }
+            ]
+          }
+        ],
+        "Women's Salon": [
+          {
+            "name": "Elegance Women's Salon",
+            "address": "456, Women's Lane, Coimbatore, Tamil Nadu",
+            "latitude": 11.0073,
+            "longitude": 76.9652,
+            "phone": "+91 98765 33333",
+            "description": "Luxurious beauty and spa for women.",
+            "image": "https://example.com/elegance_womens_salon.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹500",
+                "description": "Professional haircuts and styling for women."
+              },
+              {
+                "service_name": "Manicure & Pedicure",
+                "price": "₹350",
+                "description": "Nail care and grooming for women."
+              },
+              {
+                "service_name": "Facials",
+                "price": "₹600",
+                "description": "Relaxing facial treatments for women."
+              }
+            ]
+          },
+          {
+            "name": "Blossom Beauty Studio",
+            "address": "987, Women's Avenue, Coimbatore, Tamil Nadu",
+            "latitude": 11.0121,
+            "longitude": 76.9547,
+            "phone": "+91 98765 44444",
+            "description": "Your go-to destination for women's beauty.",
+            "image": "https://example.com/blossom_beauty_studio.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹550",
+                "description": "Elegant haircuts and styling for women."
+              },
+              {
+                "service_name": "Facials",
+                "price": "₹600",
+                "description": "Professional facial treatments for women."
+              },
+              {
+                "service_name": "Spa Services",
+                "price": "₹800",
+                "description": "Relaxing spa services for women."
+              }
+            ]
+          },
+          {
+            "name": "Graceful Beauty Haven",
+            "address": "123, Women's Street, Coimbatore, Tamil Nadu",
+            "latitude": 11.0196,
+            "longitude": 76.9413,
+            "phone": "+91 98765 55555",
+            "description": "A haven for women's beauty and wellness.",
+            "image": "https://example.com/graceful_beauty_haven.jpg",
+            "services": [
+              {
+                "service_name": "Hair Coloring",
+                "price": "₹600",
+                "description": "Hair coloring services for women."
+              },
+              {
+                "service_name": "Manicure & Pedicure",
+                "price": "₹400",
+                "description": "Nail care and grooming for women."
+              },
+              {
+                "service_name": "Makeup",
+                "price": "₹700",
+                "description": "Professional makeup services for women."
+              }
+            ]
+          }
+        ],
+        "AC Repair": [
+          {
+            "name": "Cool Breeze AC Services",
+            "address": "56, Ram Nagar, Coimbatore, Tamil Nadu",
+            "latitude": 11.0114,
+            "longitude": 76.9432,
+            "phone": "+91 98765 54321",
+            "description": "Expert AC installation and repair service.",
+            "image": "https://example.com/cool_breeze_ac_services.jpg",
+            "reviews": [
+              {
+                "id": "abcdefgh",
+                "name": "Ramesh",
+                "stars": 4,
+                "text": "Great service!",
+                "avatar": "https://bit.ly/dan-abramov"
+              },
+              {
+                "id": "gifgasog",
+                "name": "Janani",
+                "stars": 5,
+                "text": "Excellent staffs",
+                "avatar": "https://bit.ly/kent-c-dodds"
+              },
+              {
+                "id": "fadfdga",
+                "name": "Adhik",
+                "stars": 2,
+                "text": "Poor Customer Service",
+                "avatar": "https://bit.ly/code-beast"
+              }
+            ],
+            "services": [
+              {
+                "service_name": "AC Installation",
+                "price": "₹800",
+                "description": "Professional AC installation services."
+              },
+              {
+                "service_name": "AC Repair",
+                "price": "₹600",
+                "description": "Air conditioner troubleshooting and repair."
+              },
+              {
+                "service_name": "Maintenance",
+                "price": "₹400",
+                "description": "Regular maintenance services for AC units."
+              }
+            ]
+          },
+          {
+            "name": "ChillZone AC Repairs",
+            "address": "789, Cool Street, Coimbatore, Tamil Nadu",
+            "latitude": 11.789,
+            "longitude": 76.1234,
+            "phone": "+91 98765 66666",
+            "description": "Your trusted AC repair specialists.",
+            "image": "https://example.com/chillzone_ac_repairs.jpg",
+            "services": [
+              {
+                "service_name": "AC Installation",
+                "price": "₹900",
+                "description": "Professional AC installation services."
+              },
+              {
+                "service_name": "AC Repair",
+                "price": "₹700",
+                "description": "AC troubleshooting, repair, and servicing."
+              },
+              {
+                "service_name": "Duct Cleaning",
+                "price": "₹250",
+                "description": "Cleaning and maintenance of AC ducts."
+              }
+            ]
+          },
+          {
+            "name": "AC Mastermind",
+            "address": "456, Cool Avenue, Coimbatore, Tamil Nadu",
+            "latitude": 11.4567,
+            "longitude": 76.5678,
+            "phone": "+91 98765 77777",
+            "description": "AC experts for all your cooling needs.",
+            "image": "https://example.com/ac_mastermind.jpg",
+            "services": [
+              {
+                "service_name": "AC Installation",
+                "price": "₹850",
+                "description": "Installation of all types of AC units."
+              },
+              {
+                "service_name": "AC Repair",
+                "price": "₹650",
+                "description": "Fast and reliable AC repair services."
+              },
+              {
+                "service_name": "Emergency Repairs",
+                "price": "₹1000",
+                "description": "24/7 emergency AC repair services."
+              }
+            ]
+          }
+        ],
+        "Full House Cleaning": [
+          {
+            "name": "EcoClean House Cleaning",
+            "address": "78, Peelamedu, Coimbatore, Tamil Nadu",
+            "latitude": 11.0299,
+            "longitude": 77.0263,
+            "phone": "+91 98765 98765",
+            "description": "Your trusted home cleaning and pest control service.",
+            "image": "https://example.com/ecoclean_house_cleaning.jpg",
+            "services": [
+              {
+                "service_name": "Home Cleaning",
+                "price": "₹1000",
+                "description": "Comprehensive home cleaning services."
+              },
+              {
+                "service_name": "Pest Control",
+                "price": "₹600",
+                "description": "Pest extermination and prevention."
+              },
+              {
+                "service_name": "Deep Cleaning",
+                "price": "₹1200",
+                "description": "Thorough deep cleaning for your home."
+              }
+            ]
+          },
+          {
+            "name": "CleanPro Cleaning Services",
+            "address": "45, Pestway Lane, Coimbatore, Tamil Nadu",
+            "latitude": 11.789,
+            "longitude": 76.1234,
+            "phone": "+91 98765 88888",
+            "description": "Quality cleaning and pest control solutions.",
+            "image": "https://example.com/cleanpro_cleaning_services.jpg",
+            "services": [
+              {
+                "service_name": "Home Cleaning",
+                "price": "₹1100",
+                "description": "Professional home cleaning services."
+              },
+              {
+                "service_name": "Pest Control",
+                "price": "₹650",
+                "description": "Safe and effective pest control."
+              },
+              {
+                "service_name": "Carpet Cleaning",
+                "price": "₹400",
+                "description": "Carpet and upholstery cleaning services."
+              }
+            ]
+          },
+          {
+            "name": "Sparkle Clean Homes",
+            "address": "789, Shine Street, Coimbatore, Tamil Nadu",
+            "latitude": 11.4567,
+            "longitude": 76.5678,
+            "phone": "+91 98765 99999",
+            "description": "Where cleanliness meets excellence.",
+            "image": "https://example.com/sparkle_clean_homes.jpg",
+            "services": [
+              {
+                "service_name": "Home Cleaning",
+                "price": "₹950",
+                "description": "Detailed home cleaning services."
+              },
+              {
+                "service_name": "Pest Control",
+                "price": "₹700",
+                "description": "Pest extermination and prevention."
+              },
+              {
+                "service_name": "Window Cleaning",
+                "price": "₹350",
+                "description": "Efficient window and glass cleaning."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "city": "Chennai",
+      "service_categories": {
+        "Men's Salon": [
+          {
+            "name": "Radiance Men's Salon",
+            "address": "21, Gents Avenue, Chennai, Tamil Nadu",
+            "latitude": "13.0665",
+            "longitude": "80.2672",
+            "phone": "+91 98765 11111",
+            "description": "Elegant salon offering professional haircuts and styling for men.",
+            "image": "https://example.com/radiance_mens_salon.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹550",
+                "description": "Professional haircuts and styling for men."
+              },
+              {
+                "service_name": "Beard Grooming",
+                "price": "₹300",
+                "description": "Expert beard grooming services."
+              },
+              {
+                "service_name": "Hair Coloring",
+                "price": "₹600",
+                "description": "Trendy hair coloring for men."
+              }
+            ]
+          },
+          {
+            "name": "The Gentleman's Hub",
+            "address": "32, Men's Lane, Chennai, Tamil Nadu",
+            "latitude": "13.0477",
+            "longitude": "80.2405",
+            "phone": "+91 98765 22222",
+            "description": "Your destination for men's grooming and styling.",
+            "image": "https://example.com/gentlemans_hub.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹500",
+                "description": "Stylish haircuts for men."
+              },
+              {
+                "service_name": "Shaving",
+                "price": "₹250",
+                "description": "Traditional shaving experience."
+              },
+              {
+                "service_name": "Facial Treatments",
+                "price": "₹400",
+                "description": "Relaxing facial treatments for men."
+              }
+            ]
+          },
+          {
+            "name": "Urban Mania",
+            "address": "45, Grooming Street, Chennai, Tamil Nadu",
+            "latitude": "13.0372",
+            "longitude": "80.2388",
+            "phone": "+91 98765 33333",
+            "description": "Men's spa and grooming at its best.",
+            "image": "https://example.com/urban_mania.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹450",
+                "description": "Modern haircuts and styling for men."
+              },
+              {
+                "service_name": "Massage",
+                "price": "₹800",
+                "description": "Soothing massages for men."
+              },
+              {
+                "service_name": "Skin Care",
+                "price": "₹700",
+                "description": "Skin care treatments for men."
+              }
+            ]
+          }
+        ],
+        "Women's Salon": [
+          {
+            "name": "Radiance Women's Salon",
+            "address": "21, Women's Avenue, Chennai, Tamil Nadu",
+            "latitude": "13.0665",
+            "longitude": "80.2672",
+            "phone": "+91 98765 11111",
+            "description": "Elegant salon offering professional haircuts and styling for women.",
+            "image": "https://example.com/radiance_womens_salon.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹550",
+                "description": "Professional haircuts and styling for women."
+              },
+              {
+                "service_name": "Facials",
+                "price": "₹400",
+                "description": "Relaxing facial treatments for women."
+              },
+              {
+                "service_name": "Manicure & Pedicure",
+                "price": "₹450",
+                "description": "Nail care and grooming for women."
+              }
+            ]
+          },
+          {
+            "name": "The Blossom Beauty Studio",
+            "address": "32, Women's Lane, Chennai, Tamil Nadu",
+            "latitude": "13.0477",
+            "longitude": "80.2405",
+            "phone": "+91 98765 22222",
+            "description": "Your destination for women's beauty and grooming.",
+            "image": "https://example.com/blossom_beauty_studio.jpg",
+            "services": [
+              {
+                "service_name": "Haircut & Styling",
+                "price": "₹500",
+                "description": "Elegant haircuts and styling for women."
+              },
+              {
+                "service_name": "Facials",
+                "price": "₹600",
+                "description": "Professional facial treatments for women."
+              },
+              {
+                "service_name": "Spa Services",
+                "price": "₹800",
+                "description": "Relaxing spa services for women."
+              }
+            ]
+          },
+          {
+            "name": "Elegance Beauty Haven",
+            "address": "45, Women's Street, Chennai, Tamil Nadu",
+            "latitude": "13.0372",
+            "longitude": "80.2388",
+            "phone": "+91 98765 33333",
+            "description": "A haven for women's beauty and wellness.",
+            "image": "https://example.com/elegance_beauty_haven.jpg",
+            "services": [
+              {
+                "service_name": "Hair Coloring",
+                "price": "₹600",
+                "description": "Hair coloring services for women."
+              },
+              {
+                "service_name": "Manicure & Pedicure",
+                "price": "₹400",
+                "description": "Nail care and grooming for women."
+              },
+              {
+                "service_name": "Makeup",
+                "price": "₹700",
+                "description": "Professional makeup services for women."
+              }
+            ]
+          }
+        ],
+        "AC/Repair Service": [
+          {
+            "name": "Chennai Cool Tech",
+            "address": "45, AC Avenue, Chennai, Tamil Nadu",
+            "latitude": "13.0372",
+            "longitude": "80.2388",
+            "phone": "+91 98765 44444",
+            "description": "Your AC installation and repair experts in Chennai.",
+            "image": "https://example.com/chennai_cool_tech.jpg",
+            "services": [
+              {
+                "service_name": "AC Installation",
+                "price": "₹900",
+                "description": "Professional AC installation services."
+              },
+              {
+                "service_name": "AC Repair",
+                "price": "₹700",
+                "description": "AC troubleshooting, repair, and servicing."
+              },
+              {
+                "service_name": "Duct Cleaning",
+                "price": "₹250",
+                "description": "Cleaning and maintenance of AC ducts."
+              }
+            ]
+          },
+          {
+            "name": "AC Geniuses",
+            "address": "32, AC Lane, Chennai, Tamil Nadu",
+            "latitude": "13.0477",
+            "longitude": "80.2405",
+            "phone": "+91 98765 55555",
+            "description": "The experts for all your AC needs.",
+            "image": "https://example.com/ac_geniuses.jpg",
+            "services": [
+              {
+                "service_name": "AC Installation",
+                "price": "₹850",
+                "description": "Installation of all types of AC units."
+              },
+              {
+                "service_name": "AC Repair",
+                "price": "₹650",
+                "description": "Fast and reliable AC repair services."
+              },
+              {
+                "service_name": "Emergency Repairs",
+                "price": "₹1000",
+                "description": "24/7 emergency AC repair services."
+              }
+            ]
+          },
+          {
+            "name": "AC Masters",
+            "address": "123, Cool Street, Chennai, Tamil Nadu",
+            "latitude": "13.0665",
+            "longitude": "80.2672",
+            "phone": "+91 98765 66666",
+            "description": "AC experts for all your cooling needs.",
+            "image": "https://example.com/ac_masters.jpg",
+            "services": [
+              {
+                "service_name": "AC Installation",
+                "price": "₹800",
+                "description": "Professional AC installation services."
+              },
+              {
+                "service_name": "AC Repair",
+                "price": "₹600",
+                "description": "AC troubleshooting, repair, and servicing."
+              },
+              {
+                "service_name": "Emergency Repairs",
+                "price": "₹1000",
+                "description": "24/7 emergency AC repair services."
+              }
+            ]
+          }
+        ],
+        "Cleaning & Pest Control": [
+          {
+            "name": "CleanTech House Cleaning",
+            "address": "78, Sparkle Avenue, Chennai, Tamil Nadu",
+            "latitude": "13.0665",
+            "longitude": "80.2672",
+            "phone": "+91 98765 11111",
+            "description": "Your choice for quality cleaning and pest control services.",
+            "image": "https://example.com/cleantech_house_cleaning.jpg",
+            "services": [
+              {
+                "service_name": "Home Cleaning",
+                "price": "₹550",
+                "description": "Professional home cleaning services."
+              },
+              {
+                "service_name": "Pest Control",
+                "price": "₹350",
+                "description": "Pest extermination and prevention."
+              },
+              {
+                "service_name": "Carpet Cleaning",
+                "price": "₹400",
+                "description": "Carpet and upholstery cleaning services."
+              }
+            ]
+          },
+          {
+            "name": "EcoClean House Cleaning",
+            "address": "32, Clean Street, Chennai, Tamil Nadu",
+            "latitude": "13.0477",
+            "longitude": "80.2405",
+            "phone": "+91 98765 22222",
+            "description": "Your trusted home cleaning and pest control service.",
+            "image": "https://example.com/ecoclean_house_cleaning.jpg",
+            "services": [
+              {
+                "service_name": "Home Cleaning",
+                "price": "₹600",
+                "description": "Comprehensive home cleaning services."
+              },
+              {
+                "service_name": "Pest Control",
+                "price": "₹450",
+                "description": "Safe and effective pest control."
+              },
+              {
+                "service_name": "Deep Cleaning",
+                "price": "₹700",
+                "description": "Thorough deep cleaning for your home."
+              }
+            ]
+          },
+          {
+            "name": "ProClean Cleaning Services",
+            "address": "45, Pestway Lane, Chennai, Tamil Nadu",
+            "latitude": "13.0372",
+            "longitude": "80.2388",
+            "phone": "+91 98765 33333",
+            "description": "Experts in cleaning and pest control solutions.",
+            "image": "https://example.com/proclean_cleaning_services.jpg",
+            "services": [
+              {
+                "service_name": "Home Cleaning",
+                "price": "₹500",
+                "description": "Professional home cleaning services."
+              },
+              {
+                "service_name": "Pest Control",
+                "price": "₹400",
+                "description": "Effective pest control and prevention."
+              },
+              {
+                "service_name": "Window Cleaning",
+                "price": "₹350",
+                "description": "Efficient window and glass cleaning."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
