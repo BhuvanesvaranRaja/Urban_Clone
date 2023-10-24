@@ -2,21 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import Split from "../Components/Service_pages/Split";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, getAllServiceCenters } from "../Redux/Services/action";
-import {
-  Box,
-  Image,
-  Heading,
-  TagLabel,
-  Badge,
-  Container,
-  Button,
-} from "@chakra-ui/react";
+import { getAllProducts } from "../Redux/Services/action";
+import { Badge, Container, Button } from "@chakra-ui/react";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import ServiceCenterModal from "../Components/Modal/ServiceCenterModal";
 import Map from "./Map";
 import ListView from "./ListView.jsx";
 import LandingPage_Navbar from "../Components/LandingPg_Navbar";
@@ -44,10 +35,6 @@ const ServicePage = () => {
       });
     dispatch(getAllProducts(city, service));
   }, [dispatch, city, service]);
-
-  const subServices = allProduct.data[0]?.services
-    .map((service) => service.sub_services)
-    .flat();
 
   const handleCardClick = (service, index) => {
     setSelectedService(service);

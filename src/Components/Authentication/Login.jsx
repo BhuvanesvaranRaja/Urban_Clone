@@ -15,6 +15,8 @@ import {
   Divider,
   Flex,
 } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalBody } from "@chakra-ui/react";
+
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import {
@@ -23,7 +25,7 @@ import {
   loginFacebook,
 } from "../../Redux/Services/AuthSlice";
 import "../../App.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -44,7 +46,7 @@ const Login = ({ onClose }) => {
       const loggedUser = {
         name: user.name,
         email: user.email,
-        contactNumber: user.mobile,
+        contact: user.mobile,
       };
       dispatch(
         login({
@@ -79,8 +81,6 @@ const Login = ({ onClose }) => {
       })
     );
     onClose();
-    const det = localStorage.getItem("userDetails");
-    console.log("abcdef", det);
   };
 
   const handleGoogleLoginFailure = (response) => {
@@ -93,7 +93,7 @@ const Login = ({ onClose }) => {
     const loggedUser = {
       name: response.name,
       email: response.email,
-      contactNumber: "",
+      contact: "",
       profile: response.picture.data.url,
     };
     dispatch(

@@ -8,13 +8,13 @@ const authSlice = createSlice({
     user: {
       name: null,
       email: null,
-      contactNumber: null,
+      contact: null,
       profile: null,
     },
   },
   reducers: {
     login: (state, action) => {
-      const { token, loginMethod, user } = action.payload;  
+      const { token, loginMethod, user } = action.payload;
       state.token = token;
       localStorage.setItem("token", token);
       state.loginMethod = loginMethod;
@@ -48,9 +48,18 @@ const authSlice = createSlice({
       state.user = null;
       localStorage.removeItem("userDetails");
     },
+    updateContactNumber: (state, action) => {
+      state.user.contact = action.payload;
+    },
   },
 });
 
-export const { login, loginGoogle, loginFacebook, logout, Googlelogout } =
-  authSlice.actions;
+export const {
+  login,
+  loginGoogle,
+  loginFacebook,
+  logout,
+  Googlelogout,
+  updateContactNumber,
+} = authSlice.actions;
 export default authSlice.reducer;

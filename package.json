@@ -31,6 +31,7 @@
     "react-icons": "^4.4.0",
     "react-player": "^2.10.1",
     "react-redux": "^8.0.2",
+    "react-remove-scroll-bar": "^2.3.4",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-social-icons": "^6.4.0",
