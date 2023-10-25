@@ -32,6 +32,7 @@ const ListView = ({ centers, service }) => {
   const distancesAndDurations = useSelector(
     (state) => state.distancesDurations
   );
+  console.log("the distance", distancesAndDurations);
 
   const origin = "11.078128784112577,76.99973851549666";
   const apiKey = process.env.REACT_APP_DISTANCE_API_KEY;
@@ -86,7 +87,7 @@ const ListView = ({ centers, service }) => {
   };
 
   return (
-    <Box p={4}>
+    <Box p={3}>
       <List>
         {centers[0]?.service_categories[service]?.map((center, index) => (
           <ListItem

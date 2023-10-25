@@ -87,7 +87,7 @@ const PriceDetails = ({ center }) => {
           {overlay}
           <ModalContent>
             <ModalHeader>
-              Look's Like we dont have your contact number
+              Look's Like we don't have your contact number
             </ModalHeader>
             <ModalBody>
               <Input

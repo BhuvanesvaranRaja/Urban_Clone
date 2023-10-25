@@ -60,7 +60,7 @@ const ServicePage = () => {
                 AVAILABLE LOCATIONS
               </h3>
             </div>
-            <Tabs isFitted variant="enclosed">
+            <Tabs isFitted variant="enclosed" marginLeft={"50px"}>
               <TabList>
                 <Tab
                   onClick={toggleClick}

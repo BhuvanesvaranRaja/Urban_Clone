@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
 import { Link, useParams } from "react-router-dom";
 import { logout } from "../Redux/Services/AuthSlice";
+import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
 import LoginModal from "../Components/Service_pages/modal/LoginModal";
 import LogoutConfirmationDialog from "./Service_pages/modal/LogoutConfirmationDialog";
 
@@ -30,7 +31,7 @@ function LandingPage_Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
 
-  console.log("login by", loginMethod);
+  // console.log("login by", loginMethod);
   const Links = [
     { title: "Blog", link: "/blog" },
     {
@@ -79,16 +80,12 @@ function LandingPage_Navbar() {
   });
 
   const handleFacebookLogout = () => {
-    window.FB.getLoginStatus(function (response) {
-      console.log("status ", response);
-    });
-    window.FB.logout(function (response) {
-      console.log("the res", response);
-      console.log("User is logged out from Facebook.");
+    FacebookLoginClient.logout(() => {
+      console.log("logout completed!");
       dispatch(logout());
     });
   };
-
+  console.log("user is ", currentUser);
   return (
     <>
       <Box bg={"blackAlpha.800"} color={"whiteAlpha.900"} px={4} w={"100%"}>

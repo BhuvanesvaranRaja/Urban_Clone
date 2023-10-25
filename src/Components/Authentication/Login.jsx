@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
 // import { LoginSocialFacebook } from "reactjs-social-login";
-import FacebookLogin from "react-facebook-login";
+// import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "@greatsumini/react-facebook-login";
+import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
+import SocialLogin from "react-social-login";
 
 import {
   Box,
@@ -25,6 +28,8 @@ import {
   loginFacebook,
 } from "../../Redux/Services/AuthSlice";
 import "../../App.css";
+import { Icon } from "@chakra-ui/react";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 
 const validationSchema = Yup.object().shape({
@@ -32,9 +37,22 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
+const appId = "837933008028886";
+
 const Login = ({ onClose }) => {
   const dispatch = useDispatch();
   const [loginError, setLoginError] = useState(false);
+  const [fbToken, setFbToken] = useState("a");
+  const [app, setApp] = useState(0);
+
+  useEffect(() => {
+    loadFB();
+  }, [app]);
+  const loadFB = async () => {
+    FacebookLoginClient.clear();
+    await FacebookLoginClient.loadSdk("en_US");
+    FacebookLoginClient.init({ appId: appId, version: "v9.0" });
+  };
   const handleLogin = (values) => {
     const { email, password } = values;
     const userData = JSON.parse(localStorage.getItem("signUpData"));
@@ -88,27 +106,40 @@ const Login = ({ onClose }) => {
   };
   // FACEBOOK LOGIN
 
-  const handleFacebookLoginResponse = (response) => {
-    console.log("status", response.status);
-    const loggedUser = {
-      name: response.name,
-      email: response.email,
-      contact: "",
-      profile: response.picture.data.url,
-    };
-    dispatch(
-      loginFacebook({
-        token: response.accessToken,
-        loginMethod: "facebook",
-        user: loggedUser,
-      })
+  const onSuccess = () => {
+    FacebookLoginClient.login(
+      (response) => {
+        if (response.authResponse) {
+          setFbToken(response.authResponse.accessToken);
+          FacebookLoginClient.getProfile(
+            (profileData) => {
+              const loggedUser = {
+                name: profileData.name,
+                email: profileData.email,
+                contact: "",
+                profile: profileData.picture.data.url,
+              };
+              dispatch(
+                loginFacebook({
+                  token: fbToken,
+                  loginMethod: "facebook",
+                  user: loggedUser,
+                })
+              );
+            },
+            { fields: "name,email,picture" }
+          );
+        } else {
+          console.log("Facebook login failed or user denied access.");
+          // Handle the error case here, e.g., show an error message to the user.
+        }
+      },
+      {
+        scope: "public_profile,email",
+        fields: "name,email,picture",
+      }
     );
-    console.log("Facebook login :", response);
     onClose();
-  };
-
-  const handleFacebookLoginFailure = (error) => {
-    console.error("Facebook login error:", error);
   };
 
   return (
@@ -166,20 +197,37 @@ const Login = ({ onClose }) => {
             <Flex justifyContent={"space-evenly"}>
               <GoogleLogin
                 clientId="1095168063845-kehnkv6r9kg7nc94id7tpm69sv0lafjf.apps.googleusercontent.com"
-                buttonText="Login with Google"
                 onSuccess={handleGoogleLoginSuccess}
                 onFailure={handleGoogleLoginFailure}
                 cookiePolicy={"single_host_origin"}
                 autoLoad={false}
+                render={(renderProps) => (
+                  <Button
+                    onClick={renderProps.onClick}
+                    bg={"#dd4a31"}
+                    textColor={"whiteAlpha.800"}>
+                    <Icon as={FaGoogle} w={6} h={6} mx={2} />
+                    Login with Google
+                  </Button>
+                )}
               />
-              <FacebookLogin
+              {/* <FacebookLogin
                 appId="837933008028886"
                 autoLoad={false}
                 fields="name,email,picture"
                 callback={handleFacebookLoginResponse}
                 onFailure={handleFacebookLoginFailure}
                 textButton="Login with Facebook"
-              />
+              /> */}
+
+              <Button
+                type="button"
+                onClick={onSuccess}
+                bg={"#1b77f2"}
+                textColor={"whiteAlpha.800"}>
+                <Icon as={FaFacebook} w={6} h={6} mx={2} />
+                Login with Facebook
+              </Button>
             </Flex>
           </VStack>
         </Form>
