@@ -43,14 +43,17 @@ const ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
   }, [isOpen, selectedService, city]);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
+    <Modal isOpen={isOpen} onClose={onClose} size={"5xl"}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
           Sub-Services for {selectedService} in {city}
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody display={"flex"} gap={"10"}>
+        <ModalBody
+          display={"grid"}
+          gap={"10"}
+          gridTemplateColumns={"30% 30% 30%"}>
           {subServices.map((subService, index) => (
             <div key={index}>
               <Button

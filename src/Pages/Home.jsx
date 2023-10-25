@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   window.addEventListener("scroll", myScrollFunc);
-  
+
   useEffect(() => {
     if (query === "") {
       setSuggestions([]);
@@ -39,14 +39,13 @@ const Home = () => {
 
   return (
     <Box>
-      <LandingPage_Navbar />
       <HomeTopSection
         loading={loading}
         onChange={(val) => setQuery(val)}
         setLoading={setLoading}
         suggestions={suggestions}
       />
-      <HomePageService scrollNav={scrollNav}  />
+      <HomePageService scrollNav={scrollNav} />
       <LargeWithAppLinksAndSocial />
     </Box>
   );

@@ -45,7 +45,7 @@ const ServicePage = () => {
   };
   return (
     <>
-      <LandingPage_Navbar />
+      {/* <LandingPage_Navbar /> */}
       <>
         <Container className="m-2">
           <Row className="mt-3">
@@ -61,7 +61,7 @@ const ServicePage = () => {
               </h3>
             </div>
             <Tabs isFitted variant="enclosed" marginLeft={"50px"}>
-              <TabList>
+              <TabList on>
                 <Tab
                   onClick={toggleClick}
                   _selected={{ color: "white", bg: "blackAlpha.800" }}>

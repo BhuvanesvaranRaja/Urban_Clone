@@ -72,7 +72,7 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   return (
     <Box>
       <Box className={styles.homeTopBox}>
-        <Container color="whitesmoke" fontSize={"12px"}>
+        <Container color="whitesmoke" fontSize={"15px"} textAlign={"center"} >
           <Breadcrumb>
             <BreadcrumbItem>
               <BreadcrumbLink href="#">Home</BreadcrumbLink>
@@ -87,7 +87,8 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
           fontSize="48px"
           fontWeight="500"
           color="white"
-          lineHeight={"72px"}>
+          lineHeight={"72px"}
+          mb={10}>
           Home services, on demand.
         </Heading>
         <br />
@@ -133,7 +134,7 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
                 bg="whitesmoke"
                 fontSize={"30px"}
                 pb="5%">
-                <AiOutlineSearch />
+                <AiOutlineSearch className="mt-4" />
               </Button>
               <Input
                 value={inputText}
@@ -152,7 +153,7 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
             <Box
               className={styles.searchResultBox}
               len={suggestions.length}
-              limit={5}
+              limit={3}
               active={active}
               ref={scrollRef}>
               {suggestions.map((item, index) => {
@@ -173,21 +174,6 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
         </Container>
 
         <br />
-        <Container color="white" marginLeft="37%">
-          <Breadcrumb separator=",">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Women's Therapies</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Salon for Men</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">Men's Therapies</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </Container>
       </Box>
       {servicesData && <ServicesCategory data={servicesData} />}
     </Box>

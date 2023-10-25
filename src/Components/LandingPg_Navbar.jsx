@@ -13,7 +13,7 @@ import {
   MenuList,
   Menu,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
 import { Link, useParams } from "react-router-dom";
@@ -39,7 +39,7 @@ function LandingPage_Navbar() {
       link: `/${city}/near-me`,
     },
   ];
-
+  console.log(city);
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
   };
@@ -61,6 +61,7 @@ function LandingPage_Navbar() {
 
       default:
         dispatch(logout());
+
         break;
     }
     setIsLogoutAlertOpen(false);
@@ -100,12 +101,10 @@ function LandingPage_Navbar() {
             alignItems={"center"}
             justifyContent={"space-between"}>
             <Flex alignItems="center">
-              <Link to={`/${city}`}>
-                <Image
-                  src="https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1631097450980-d2de38.png"
-                  width={"30%"}
-                />
-              </Link>
+              <Image
+                src="https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1631097450980-d2de38.png"
+                width={"30%"}
+              />
             </Flex>
             <HStack as={"nav"} display={{ base: "none", md: "flex" }}>
               {Links.map((link, index) => (

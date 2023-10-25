@@ -22,7 +22,7 @@ const NearMe = () => {
   };
   return (
     <>
-      <LandingPage_Navbar />
+      {/* <LandingPage_Navbar /> */}
       <div
         style={{
           textAlign: "center",

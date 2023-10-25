@@ -94,30 +94,54 @@ const ListView = ({ centers, service }) => {
             key={index}
             borderWidth="1px"
             borderRadius="lg"
-            p={5}
+            p={10}
             mb={4}
-            w={"8xl"}>
-            <Flex justifyContent="space-between">
-              <Box padding={"8"}>
-                <Heading as="h2" size="md">
+            w={"6xl"}>
+            <Flex
+              justifyContent="space-between"
+              bg={"#222f3e"}
+              color="white"
+              p={6}
+              border="1px solid white"
+              borderRadius="md"
+              boxShadow="lg"
+              transition="transform 0.2s"
+              _hover={{ transform: "scale(1.02)" }}>
+              <Box flex="1">
+                <Heading as="h2" size="lg" color="" mb="5">
                   {center.name}
                 </Heading>
-                <Text>Address: {center.address}</Text>
-                <Text>Phone: {center.phone}</Text>
-                <Text>Distance: {distancesAndDurations[index]?.distance}</Text>
-                <Text>
-                  Estimated Duration to Reach:
+                <Text fontSize="lg" p="3">
+                  Address: {center.address}
+                </Text>
+                <Text fontSize="lg" p="3">
+                  Phone: {center.phone}
+                </Text>
+                <Text fontSize="lg" p="3">
+                  Distance: {distancesAndDurations[index]?.distance}
+                </Text>
+                <Text fontSize="lg" p="3">
+                  Estimated Duration to Reach:{" "}
                   {distancesAndDurations[index]?.duration}
                 </Text>
-
                 <Button
-                  className="mt-3"
-                  color={"red"}
+                  bg={"#c8d6e5"}
+                  textColor={"black"}
+                  mt={4}
                   onClick={() => handleOpenModal(center)}>
                   VIEW DETAILS
                 </Button>
               </Box>
-              <Image src={center.image} w="250px" h="180px" />
+              <Box>
+                <Image
+                  src={center.image}
+                  w="400px"
+                  h="300px"
+                  objectFit="cover"
+                  borderRadius="md"
+                  boxShadow="lg"
+                />
+              </Box>
             </Flex>
           </ListItem>
         ))}

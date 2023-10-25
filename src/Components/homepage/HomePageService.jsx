@@ -254,7 +254,7 @@ const HomePageService = ({ scrollNav }) => {
       </Heading> */}
       {/* <ServicesCategory data={cardData} /> */}
       <Divider className={styles.dividers} />
-      {scrollNav > 1000 ? <HomePageNav /> : ""}
+      {/* {scrollNav > 1000 ? <HomePageNav /> : ""} */}
       {/* CAROUSAL */}
       <HomePageCarousel data={sliderData} hideArrow={false} />
       <Divider className={styles.dividers} />
