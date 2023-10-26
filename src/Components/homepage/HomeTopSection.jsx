@@ -23,11 +23,12 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
 import { GrLocation } from "react-icons/gr";
 import axios from "axios";
-import ServicesCategory from "../ServicesCategory";
+import ServicesCategory from "../Service_Category/ServicesCategory";
 import styles from "../../StyleComponents/Home.module.css";
 import { useThrottle } from "use-throttle";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCityFromGeolocation } from "../../Utils/Location";
+import { getService } from "../../Api/getServices";
 
 const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   const { city } = useParams();
@@ -40,10 +41,11 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   const throttledText = useThrottle(inputText, 1000);
   const navigate = useNavigate();
   useEffect(() => {
-    axios
-      .get(`http://localhost:8088/cities?city=${city}`)
-      .then((response) => setServicesData(response.data));
-  }, []);
+    getService.get(`/cities?city=${city}`).then((response) => {
+      setServicesData(response.data);
+    });
+  }, [city]);
+
   useEffect(() => {
     onChange(throttledText);
   }, [throttledText, onChange]);
@@ -54,15 +56,14 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   };
 
   const searchResult = (item) => {
-    // navigate(`/:city/${item}/services`);
-    navigate(`/:city/services=${item}`);
+    navigate(`/${city}/services=${item}`);
   };
   //function
   async function main() {
     try {
       const city = await getCityFromGeolocation();
       setInitialLocation(city);
-      // navigate(`/city=${city}`);
+      navigate(`/${city}`);
       console.log("navigated");
     } catch (error) {
       console.error("Error:", error);
@@ -72,13 +73,13 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   return (
     <Box>
       <Box className={styles.homeTopBox}>
-        <Container color="whitesmoke" fontSize={"15px"} textAlign={"center"} >
+        <Container color="whitesmoke" fontSize={"15px"} textAlign={"center"}>
           <Breadcrumb>
             <BreadcrumbItem>
               <BreadcrumbLink href="#">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">{InitialLocation}</BreadcrumbLink>
+              <BreadcrumbLink href="#">{city}</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
         </Container>
@@ -111,7 +112,7 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
                 alt="flag"
                 m="5%"
               />
-              <Text>{InitialLocation}</Text>
+              <Text>{city}</Text>
               <Popover isLazy>
                 <PopoverTrigger>
                   <Button bg="whitesmoke">

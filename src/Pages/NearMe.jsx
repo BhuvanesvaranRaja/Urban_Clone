@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LandingPage_Navbar from "../Components/LandingPg_Navbar";
+import LandingPage_Navbar from "../Components/Navbar/LandingPg_Navbar";
 import { Heading, Box } from "@chakra-ui/react"; // Import Box component
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -8,7 +8,9 @@ const NearMe = () => {
   const [servicesNearMe, setServicesNearMe] = useState({});
   const { city } = useParams();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   useEffect(() => {
     axios
       .get(`http://localhost:8088/cities?city=${city}`)
@@ -56,7 +58,7 @@ const NearMe = () => {
                   onClick={() => navigateTo(a.name)}
                   borderWidth="1px"
                   borderRadius="lg"
-                  p="1rem"
+                  p="3rem"
                   m="1rem"
                   boxShadow="md"
                   _hover={{ boxShadow: "lg" }}>

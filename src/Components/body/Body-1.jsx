@@ -19,7 +19,6 @@ const Body_1 = () => {
   const [city, setCity] = useState("");
   const navigate = useNavigate();
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  const A = localStorage.getItem("locationA");
   const handleChange = (value) => {
     setCity(value);
     localStorage.setItem("location", value);
@@ -30,17 +29,18 @@ const Body_1 = () => {
     navigate(`/${city}`);
   };
 
-  useEffect(() => {
-    getCityFromGeolocation()
-      .then((result) => {
-        localStorage.setItem("location", result);
-        localStorage.setItem("locationA", result);
-        setIsButtonEnabled(true);
-      })
-      .catch((error) => {
-        console.error("Error getting city:", error);
-      });
-  }, []);
+  const getLocation = async () => {
+    console.log("in");
+    try {
+      const city = await getCityFromGeolocation();
+      localStorage.setItem("location", city);
+
+      setCity(city);
+      setIsButtonEnabled(true);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div>
@@ -77,11 +77,12 @@ const Body_1 = () => {
                   <FaMapMarkerAlt
                     size={25}
                     style={{ verticalAlign: "middle" }}
-                    onClick={() => {
-                      localStorage.setItem("location", A);
-                      const loc = localStorage.getItem("location");
-                      setCity(loc);
-                    }}
+                    // onClick={() => {
+                    //   localStorage.setItem("location", A);
+                    //   const loc = localStorage.getItem("location");
+                    //   setCity(loc);
+                    // }}
+                    onClick={getLocation}
                   />
                   <Select
                     cursor={"pointer"}

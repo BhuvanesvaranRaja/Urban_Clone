@@ -113,6 +113,7 @@ const Login = ({ onClose }) => {
           setFbToken(response.authResponse.accessToken);
           FacebookLoginClient.getProfile(
             (profileData) => {
+              console.log("straight from profile", profileData);
               const loggedUser = {
                 name: profileData.name,
                 email: profileData.email,
@@ -131,7 +132,6 @@ const Login = ({ onClose }) => {
           );
         } else {
           console.log("Facebook login failed or user denied access.");
-          // Handle the error case here, e.g., show an error message to the user.
         }
       },
       {

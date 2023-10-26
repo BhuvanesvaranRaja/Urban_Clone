@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import HomeTopSection from "../Components/homepage/HomeTopSection";
 import HomePageService from "../Components/homepage/HomePageService";
 import { searchServices } from "../Utils/SearchResults";
-import LandingPage_Navbar from "../Components/LandingPg_Navbar";
-import LargeWithAppLinksAndSocial from "../Components/Footer";
+import LandingPage_Navbar from "../Components/Navbar/LandingPg_Navbar";
+import LargeWithAppLinksAndSocial from "../Components/Footer/Footer";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -22,6 +22,10 @@ const Home = () => {
   };
 
   window.addEventListener("scroll", myScrollFunc);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     if (query === "") {
@@ -46,7 +50,7 @@ const Home = () => {
         suggestions={suggestions}
       />
       <HomePageService scrollNav={scrollNav} />
-      <LargeWithAppLinksAndSocial />
+      {/* <LargeWithAppLinksAndSocial /> */}
     </Box>
   );
 };

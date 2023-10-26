@@ -1,21 +1,18 @@
-import React from "react";
-
-import { ReactNode } from "react";
+import React, { useEffect, useState } from "react";
+import { Badge } from "react-bootstrap";
+import axios from "axios";
 import {
   Box,
   Container,
   Stack,
   SimpleGrid,
   Text,
-  Link,
   VisuallyHidden,
   chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
-
-// import AppStoreBadge from "@/components/AppStoreBadge";
-// import PlayStoreBadge from "@/components/PlayStoreBadge";
+import { Link, useParams } from "react-router-dom";
 
 const ListHeader = ({ children }) => {
   return (
@@ -41,8 +38,7 @@ const SocialButton = ({ children, label, href }) => {
       transition={"background 0.3s ease"}
       _hover={{
         bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-      }}
-    >
+      }}>
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
     </chakra.button>
@@ -50,54 +46,62 @@ const SocialButton = ({ children, label, href }) => {
 };
 
 export default function LargeWithAppLinksAndSocial() {
+  const city = localStorage.getItem("location");
+  // const [availableCity, setAvailableCity] = useState();
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:8088/service_centers`)
+  //     .then((response) => {
+  //       setAvailableCity(response.data);
+  //     })
+
+  //     .catch((error) => {
+  //       console.error("Axios Error:", error);
+  //     });
+  // }, []);
+
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-      color={"whiteAlpha.900"}
-      bg={"blackAlpha.900"}
-    >
+    <Box bg={useColorModeValue("black", "gray.900")}>
       <Container
         color={"whiteAlpha.900"}
         bg={"blackAlpha.900"}
         as={Stack}
         maxW={"6xl"}
-        py={10}
-      >
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+        py={10}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
           <Stack align={"flex-start"}>
             <ListHeader>Company</ListHeader>
-            <Link href={"#"}>About Us</Link>
-            <Link href={"#"}>Blog</Link>
-            <Link href={"#"}>Careers</Link>
-            <Link href={"#"}>Contact Us</Link>
+            <Link to={"/aboutus"}>About Us</Link>
+            <Link to={"/blog"}>Blog</Link>
+            <Link to={"/contactus"}>Contact Us</Link>
+            <Link to={"/tandc"}>Terms and conditions</Link>
           </Stack>
-
-          <Stack align={"flex-start"}>
-            <ListHeader>Support</ListHeader>
-            <Link href={"#"}>Help Center</Link>
-            <Link href={"#"}>Safety Center</Link>
-            <Link href={"#"}>Community Guidelines</Link>
-          </Stack>
-
           <Stack align={"flex-start"}>
             <ListHeader>Legal</ListHeader>
-            <Link href={"#"}>Cookies Policy</Link>
-            <Link href={"#"}>Privacy Policy</Link>
-            <Link href={"#"}>Terms of Service</Link>
-            <Link href={"#"}>Law Enforcement</Link>
+            <Link to={"/cookies"}>Cookies Policy</Link>
+            <Link to={"/privacy"}>Privacy Policy</Link>
+            <Link to={"/tandc"}>Terms of Service</Link>
+            <Link to={"/law"}>Law Enforcement</Link>
           </Stack>
-
+          {/* <div>
+            <ListHeader className="mb-5">Serving In </ListHeader>
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={3}>
+              {availableCity?.map((cityName, index) => {
+                return (
+                  <div key={index}>
+                    <Link to={`/${cityName.city}`}>
+                      <Badge bg="success" className="me-2">
+                        {cityName.city}
+                      </Badge>
+                    </Link>
+                  </div>
+                );
+              })}
+            </SimpleGrid>
+          </div> */}
           <Stack align={"flex-start"}>
-            <ListHeader>Install App</ListHeader>
-            {/* <AppStoreBadge /> */}
-            <a href="https://play.google.com/store/search?q=urban+company&c=apps&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-              <img
-                alt="Get it on Google Play"
-                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-              />
-            </a>
-            {/* <PlayStoreBadge /> */}
+            <ListHeader>For Partners</ListHeader>
+            <Link to={"/register"}>Register as Professional</Link>
           </Stack>
         </SimpleGrid>
       </Container>
@@ -105,17 +109,16 @@ export default function LargeWithAppLinksAndSocial() {
       <Box
         borderTopWidth={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.700")}
-      >
+        borderColor={useColorModeValue("gray.200", "gray.700")}>
         <Container
           as={Stack}
           maxW={"6xl"}
           py={4}
+          color={"white"}
           direction={{ base: "column", md: "row" }}
           spacing={4}
           justify={{ md: "space-between" }}
-          align={{ md: "center" }}
-        >
+          align={{ md: "center" }}>
           <Text>© 2022 Urban Company. All rights reserved</Text>
           <Stack direction={"row"} spacing={6}>
             <SocialButton label={"Twitter"} href={"#"}>

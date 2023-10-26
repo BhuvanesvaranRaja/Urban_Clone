@@ -23,11 +23,11 @@ import {
 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authentication } from "../Utils/Firebase-config";
+import { authentication } from "../../Utils/Firebase-config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 import Flag from "./Flag";
-import { verify } from "../Redux/AuthReducer/action";
+import { verify } from "../../Redux/AuthReducer/action";
 // import "../StyleComponents/phone.css";
 
 export function Login() {

@@ -1,7 +1,7 @@
 import { Box, Divider, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import HomePageCarousel from "./HomePageCarousel";
-import ServicesCategory from "../ServicesCategory";
+import ServicesCategory from "../Service_Category/ServicesCategory";
 import styles from "../../StyleComponents/Home.module.css";
 import HomePageNav from "./HomePageNav";
 const cardData = [

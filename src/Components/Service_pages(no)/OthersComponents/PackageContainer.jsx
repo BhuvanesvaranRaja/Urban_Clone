@@ -1,21 +1,18 @@
 import React from "react";
 import List from "./List";
-import { Heading,Button, useToast } from "@chakra-ui/react";
+import { Heading, Button, useToast } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { addProducts } from "../../Redux/Services/action";
+import { addProducts } from "../../../Redux/Services/action";
 export default function PackageContainer({ title, price, time, para }) {
   // console.log("para--",para)
-  const dispatch = useDispatch()
-const toast = useToast();
-  
-   
+  const dispatch = useDispatch();
+  const toast = useToast();
 
-
-  const handaleadd=(title,price,para,time)=>{
-const payload={title,price,time,para,id:"1",count:1}
-console.log(payload)
-dispatch(addProducts(payload))
-  }
+  const handaleadd = (title, price, para, time) => {
+    const payload = { title, price, time, para, id: "1", count: 1 };
+    console.log(payload);
+    dispatch(addProducts(payload));
+  };
   return (
     <div
       style={{
@@ -24,8 +21,7 @@ dispatch(addProducts(payload))
         marginBottom: "10px",
         borderRadius: "10px",
         padding: "30px",
-      }}
-    >
+      }}>
       <Heading as="h6" size="xs" color="rgb(6, 153, 163)">
         PACKAGE
       </Heading>
@@ -33,8 +29,7 @@ dispatch(addProducts(payload))
         style={{
           display: "grid",
           gridTemplateColumns: "70% 30%",
-        }}
-      >
+        }}>
         {" "}
         <div style={{ borderBottom: "1.5px solid rgb(15, 15, 15) " }}>
           {" "}
@@ -43,8 +38,7 @@ dispatch(addProducts(payload))
             fontFamily="os_bold"
             fontWeight="700"
             maxWidth="90%"
-            size="md"
-          >
+            size="md">
             {title}
           </Heading>
           <p>🌟 4.5(10M)</p>
@@ -64,7 +58,6 @@ dispatch(addProducts(payload))
           </Button> */}
           <Button
             onClick={() =>
-             
               toast({
                 title: "Product Added",
                 description: "We've added a package for you.",
@@ -72,8 +65,7 @@ dispatch(addProducts(payload))
                 duration: 2000,
                 isClosable: true,
               })
-            }
-          >
+            }>
             Add
           </Button>
         </div>

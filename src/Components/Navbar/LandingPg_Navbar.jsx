@@ -16,30 +16,31 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
-import { Link, useParams } from "react-router-dom";
-import { logout } from "../Redux/Services/AuthSlice";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { logout } from "../../Redux/Services/AuthSlice";
 import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
-import LoginModal from "../Components/Service_pages/modal/LoginModal";
-import LogoutConfirmationDialog from "./Service_pages/modal/LogoutConfirmationDialog";
+import LoginModal from "../Modal/LoginModal";
+import LogoutConfirmationDialog from "../Modal/LogoutConfirmationDialog";
+import { getCityFromGeolocation } from "../../Utils/Location";
 
 function LandingPage_Navbar() {
   const token = useSelector((state) => state.auth.token);
   const loginMethod = useSelector((state) => state.auth.loginMethod);
   const currentUser = JSON.parse(localStorage.getItem("userDetails"));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { city } = useParams();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
+  const [nearCity, setNearCity] = useState("");
 
   // console.log("login by", loginMethod);
   const Links = [
-    { title: "Blog", link: "/blog" },
     {
       title: "Services Near Me",
       link: `/${city}/near-me`,
     },
   ];
-  console.log(city);
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
   };
@@ -49,8 +50,6 @@ function LandingPage_Navbar() {
   };
 
   const confirmLogout = () => {
-    // loginMethod === "normal" ? dispatch(logout()) : signOut();
-    // setIsLogoutAlertOpen(false);
     switch (loginMethod) {
       case "google":
         signOut();
@@ -61,7 +60,6 @@ function LandingPage_Navbar() {
 
       default:
         dispatch(logout());
-
         break;
     }
     setIsLogoutAlertOpen(false);
@@ -86,6 +84,15 @@ function LandingPage_Navbar() {
       dispatch(logout());
     });
   };
+  const goToNearMe = async () => {
+    try {
+      const city = await getCityFromGeolocation();
+      setNearCity(city);
+      navigate(`/${city}/near-me`);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   console.log("user is ", currentUser);
   return (
     <>
@@ -101,27 +108,25 @@ function LandingPage_Navbar() {
             alignItems={"center"}
             justifyContent={"space-between"}>
             <Flex alignItems="center">
-              <Image
-                src="https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1631097450980-d2de38.png"
-                width={"30%"}
-              />
+              <Link to={`/`}>
+                <Image
+                  src="https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1631097450980-d2de38.png"
+                  width={"30%"}
+                />
+              </Link>
             </Flex>
             <HStack as={"nav"} display={{ base: "none", md: "flex" }}>
-              {Links.map((link, index) => (
-                <Link to={link.link} key={index} className="mx-3">
-                  {link.title}
-                </Link>
-              ))}
+              <Button
+                bg={"whiteAlpha.800"}
+                color={"black"}
+                mx={"2"}
+                onClick={goToNearMe}>
+                Services near me
+              </Button>
             </HStack>
           </HStack>
           {token ? (
             <>
-              {/* <Button
-                onClick={handleLogout}
-                bg={"whiteAlpha.800"}
-                color={"black"}>
-                Logout
-              </Button> */}
               <Menu>
                 <MenuButton
                   as={Avatar}

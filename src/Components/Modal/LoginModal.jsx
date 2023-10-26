@@ -14,8 +14,8 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
-import Login from "../../Authentication/Login";
-import Signup from "../../Authentication/SignUp";
+import Login from "../Authentication/Login";
+import Signup from "../Authentication/SignUp";
 
 const LoginModal = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState("login");

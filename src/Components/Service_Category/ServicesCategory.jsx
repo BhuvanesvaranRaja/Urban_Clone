@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import ServiceModal from "./Modal/ServiceModal";
+import ServiceModal from "../Modal/ServiceModal";
 
 const ServicesCategory = ({ data }) => {
   const navigate = useNavigate();

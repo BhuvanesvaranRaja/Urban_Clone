@@ -4,7 +4,7 @@ export const Cities = [
   { city: "Mysuru" },
   { city: "Ahmedabad" },
   { city: "Chennai" },
-  { city: "Delhi NCR" },
+  { city: "Delhi" },
   { city: "Chandigarh Tricity" },
   { city: "Hyderabad" },
   { city: "Pune" },
