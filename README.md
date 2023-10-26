@@ -15,10 +15,8 @@ The cloned version is responsive as well.
 ![App Screenshot](https://i.ibb.co/Mf7PwLp/uc.png)
 
 ## Features
-
-- Mobile OTP Login
+- Social Login (Facebook, Google) & normal login
 - Select your City
-- Bookings History
 
 ## Tech Stacks Used:
 
