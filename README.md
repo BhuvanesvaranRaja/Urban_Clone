@@ -6,6 +6,8 @@ The company has separate app for mobile users and our cloned version is
 for laptop and tablet users.
 The cloned version is responsive as well.
 
+ 1. It runs using JSON server
+
 ## Screenshots
 
 - Home Page
@@ -13,10 +15,8 @@ The cloned version is responsive as well.
 ![App Screenshot](https://i.ibb.co/Mf7PwLp/uc.png)
 
 ## Features
-
-- Mobile OTP Login
+- Social Login (Facebook, Google) & normal login
 - Select your City
-- Bookings History
 
 ## Tech Stacks Used:
 
