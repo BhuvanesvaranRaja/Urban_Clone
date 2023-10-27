@@ -55,20 +55,21 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
     setLoading(true);
   };
 
-  const searchResult = (item) => {
-    navigate(`/${city}/services=${item}`);
+  const searchResult = (value) => {
+    navigate(`/${city}/services=${value}`);
   };
-  //function
-  async function main() {
+  //function to fetch location
+
+  const fetchLocation = async () => {
     try {
       const city = await getCityFromGeolocation();
       setInitialLocation(city);
       navigate(`/${city}`);
       console.log("navigated");
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error fetching the location ", error);
     }
-  }
+  };
 
   return (
     <Box>
@@ -123,7 +124,9 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
                   <PopoverArrow ml="-8rem" />
                   <PopoverCloseButton />
                   <PopoverBody mt="3%" h="40%">
-                    <Button onClick={main}>Get Current Location</Button>
+                    <Button onClick={fetchLocation}>
+                      Get Current Location
+                    </Button>
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
@@ -158,13 +161,14 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
               active={active}
               ref={scrollRef}>
               {suggestions.map((item, index) => {
+                console.log("serarch", item);
                 return (
                   <Box
                     key={index}
                     _hover={{ bgColor: "purple.100" }}
                     className={styles.suggestions}
                     onClick={() => {
-                      searchResult(index);
+                      searchResult(item);
                     }}>
                     {item}
                   </Box>
@@ -182,3 +186,6 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
 };
 
 export default HomeTopSection;
+
+// http://localhost:3000/Chennai/services=Men's%20Salon
+// http://localhost:3000/Chennai/services=Men's%20salon

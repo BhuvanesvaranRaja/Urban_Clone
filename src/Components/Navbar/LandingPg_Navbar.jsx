@@ -12,6 +12,13 @@ import {
   MenuItem,
   MenuList,
   Menu,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +29,7 @@ import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
 import LoginModal from "../Modal/LoginModal";
 import LogoutConfirmationDialog from "../Modal/LogoutConfirmationDialog";
 import { getCityFromGeolocation } from "../../Utils/Location";
+import { GoTriangleDown, FaLocationPin, GoLocation } from "react-icons/go";
 
 function LandingPage_Navbar() {
   const token = useSelector((state) => state.auth.token);
@@ -33,14 +41,17 @@ function LandingPage_Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
   const [nearCity, setNearCity] = useState("");
+  const [currentCity, setCurrentCity] = useState(city);
+  const [selectLocation, setSelectLocation] = useState("");
+
+  useEffect(() => {
+    city === undefined
+      ? setCurrentCity("Select a Location")
+      : setCurrentCity(city);
+  }, [city]);
 
   // console.log("login by", loginMethod);
-  const Links = [
-    {
-      title: "Services Near Me",
-      link: `/${city}/near-me`,
-    },
-  ];
+
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
   };
@@ -93,6 +104,15 @@ function LandingPage_Navbar() {
       console.error("Error:", error);
     }
   };
+  const fetchLocation = async () => {
+    try {
+      const Currentcity = await getCityFromGeolocation();
+      setSelectLocation(Currentcity);
+      navigate(`/${Currentcity}`);
+    } catch (error) {
+      console.error("Error fetching the location ", error);
+    }
+  };
   console.log("user is ", currentUser);
   return (
     <>
@@ -115,7 +135,33 @@ function LandingPage_Navbar() {
                 />
               </Link>
             </Flex>
-            <HStack as={"nav"} display={{ base: "none", md: "flex" }}>
+            <HStack as={"nav"}>
+              <Popover isLazy>
+                <PopoverTrigger>
+                  <Button bg="black" p={"5"} mx="3">
+                    <span className="mx-2">{currentCity}</span>
+                    <GoLocation />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent
+                  modifiers={[
+                    { name: "offset", options: { offset: [0, 10] } },
+                    { name: "preventOverflow", options: { padding: 10 } },
+                    { name: "flip", options: { padding: 10 } },
+                  ]}>
+                  <PopoverArrow ml="0rem" />
+                  <PopoverCloseButton />
+                  <PopoverBody bg={"gray"}>
+                    <Button
+                      bg={"green"}
+                      color={"white"}
+                      onClick={fetchLocation}>
+                      Get Current Location
+                    </Button>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+
               <Button
                 bg={"whiteAlpha.800"}
                 color={"black"}
@@ -137,7 +183,7 @@ function LandingPage_Navbar() {
                     <MenuItem
                       style={{ color: "black" }}
                       _hover={{ color: "white" }}>
-                      My Account
+                      My Cart
                     </MenuItem>
                     <MenuItem
                       onClick={handleLogout}

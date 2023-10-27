@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Badge } from "react-bootstrap";
-import axios from "axios";
+import React from "react";
+
 import {
   Box,
   Container,
@@ -12,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ListHeader = ({ children }) => {
   return (

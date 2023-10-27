@@ -105,15 +105,14 @@ const Login = ({ onClose }) => {
     console.log("Google Login failed", response);
   };
   // FACEBOOK LOGIN
-
-  const onSuccess = () => {
+  const onFacebookLoginSuccess = () => {
     FacebookLoginClient.login(
       (response) => {
         if (response.authResponse) {
           setFbToken(response.authResponse.accessToken);
+          //To get profile data
           FacebookLoginClient.getProfile(
             (profileData) => {
-              console.log("straight from profile", profileData);
               const loggedUser = {
                 name: profileData.name,
                 email: profileData.email,
@@ -188,7 +187,7 @@ const Login = ({ onClose }) => {
             <Button
               type="submit"
               colorScheme={"whiteAlpha.800"}
-              bg={"black"}
+              bg={"blackAlpha.800"}
               width={"100%"}>
               Login
             </Button>
@@ -205,24 +204,17 @@ const Login = ({ onClose }) => {
                   <Button
                     onClick={renderProps.onClick}
                     bg={"#dd4a31"}
-                    textColor={"whiteAlpha.800"}>
+                    textColor={"whiteAlpha.800"}
+                    mx={2}>
                     <Icon as={FaGoogle} w={6} h={6} mx={2} />
                     Login with Google
                   </Button>
                 )}
               />
-              {/* <FacebookLogin
-                appId="837933008028886"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={handleFacebookLoginResponse}
-                onFailure={handleFacebookLoginFailure}
-                textButton="Login with Facebook"
-              /> */}
 
               <Button
                 type="button"
-                onClick={onSuccess}
+                onClick={onFacebookLoginSuccess}
                 bg={"#1b77f2"}
                 textColor={"whiteAlpha.800"}>
                 <Icon as={FaFacebook} w={6} h={6} mx={2} />

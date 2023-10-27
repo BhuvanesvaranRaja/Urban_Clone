@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Map from "./Map";
 import ListView from "../Components/Service_Page/ListView";
-import LandingPage_Navbar from "../Components/Navbar/LandingPg_Navbar";
 
 const ServicePage = () => {
   const { city, service } = useParams();
@@ -46,7 +45,6 @@ const ServicePage = () => {
   };
   return (
     <>
-      {/* <LandingPage_Navbar /> */}
       <>
         <Container className="m-2">
           <Row className="mt-3">
@@ -57,6 +55,7 @@ const ServicePage = () => {
                   marginBottom: "10px",
                   fontWeight: "bolder",
                   letterSpacing: "3px",
+                  marginLeft: "50px",
                 }}>
                 AVAILABLE LOCATIONS
               </h3>

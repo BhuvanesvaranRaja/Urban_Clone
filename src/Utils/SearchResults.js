@@ -1,5 +1,5 @@
 export const searchServices = [
-  { service: "Salon for men" },
+  { service: "Men's Salon" },
   { service: "Salon prime" },
   { service: "Salon for men royale" },
   { service: "Salon for women royale" },

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LandingPage_Navbar from "../Components/Navbar/LandingPg_Navbar";
-import { Heading, Box } from "@chakra-ui/react"; // Import Box component
+import { Heading, Box } from "@chakra-ui/react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -11,6 +10,7 @@ const NearMe = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
+
   useEffect(() => {
     axios
       .get(`http://localhost:8088/cities?city=${city}`)
@@ -18,13 +18,12 @@ const NearMe = () => {
       .catch((error) => {
         console.error("Axios Error:", error);
       });
-  }, []);
+  }, [city]);
   const navigateTo = (name) => {
     navigate(`/${city}/services=${name}`);
   };
   return (
     <>
-      {/* <LandingPage_Navbar /> */}
       <div
         style={{
           textAlign: "center",
@@ -36,7 +35,7 @@ const NearMe = () => {
         }}>
         <Heading>Services near me</Heading>
         <p style={{ fontSize: "1.25rem", marginTop: "1rem", padding: "1rem" }}>
-          Find all Urban Company Local Services near you. Choose from 25,000+
+          Find all Urban Company Local Services near you. Choose from 25,000 +
           trained professionals to take care of all your needs - Beauty
           Services, Home Services, Appliance Electronic Repairs and much more.
         </p>

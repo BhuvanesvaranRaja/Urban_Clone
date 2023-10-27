@@ -57,20 +57,20 @@ const TermsAndConditions = () => {
         <h4 className="mt-4 fw-bolder fs-4 mb-3 ">
           Hyperlinking to our Content
         </h4>
+        The following organizations may link to our website without prior
+        written approval:
+        <ul className="mx-5 mt-3 mb-3">
+          <li>Government agencies</li>
+          <li>Search engines</li>
+          <li>News organizations</li>
+          <li>Online directory distributors</li>
+          <li>
+            Systemwide Accredited Businesses, except soliciting non-profit
+            organizations, charity shopping malls, and charity fundraising
+            groups which may not hyperlink to our Web site.
+          </li>
+        </ul>
         <p>
-          The following organizations may link to our website without prior
-          written approval:
-          <ul className="mx-5 mt-3 mb-3">
-            <li>Government agencies</li>
-            <li>Search engines</li>
-            <li>News organizations</li>
-            <li>Online directory distributors</li>
-            <li>
-              Systemwide Accredited Businesses, except soliciting non-profit
-              organizations, charity shopping malls, and charity fundraising
-              groups which may not hyperlink to our Web site.
-            </li>
-          </ul>
           These organizations may link to our home page, to publications, or to
           other Website information so long as the link: (a) is not in any way
           deceptive; (b) does not falsely imply sponsorship, endorsement, or

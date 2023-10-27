@@ -23,7 +23,6 @@ import Register from "../Pages/FooterPages/Register";
 const MainRoutes = () => {
   return (
     <div>
-      {/* <LandingPage_Navbar /> */}
       <Routes>
         <Route element={<CommonRoute />}>
           <Route path="/" element={<LandingPage />} />

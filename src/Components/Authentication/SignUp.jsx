@@ -17,8 +17,7 @@ const validationSchema = Yup.object().shape({
   mobile: Yup.string().required("Mobile number is required"),
 });
 const SignUp = () => {
-    const handleSignUp = (values, { resetForm }) => {
-      
+  const handleSignUp = (values, { resetForm }) => {
     const existingData = JSON.parse(localStorage.getItem("signUpData")) || [];
     existingData.push(values);
     localStorage.setItem("signUpData", JSON.stringify(existingData));
@@ -96,7 +95,7 @@ const SignUp = () => {
             <Button
               type="submit"
               colorScheme={"whiteAlpha.800"}
-              bg={"black"}
+              bg={"blackAlpha.800"}
               width={"100%"}>
               Sign up
             </Button>

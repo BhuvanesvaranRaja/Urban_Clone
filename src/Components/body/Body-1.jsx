@@ -30,7 +30,6 @@ const Body_1 = () => {
   };
 
   const getLocation = async () => {
-    console.log("in");
     try {
       const city = await getCityFromGeolocation();
       localStorage.setItem("location", city);

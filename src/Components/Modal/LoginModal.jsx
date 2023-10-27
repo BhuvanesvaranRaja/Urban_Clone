@@ -48,7 +48,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 onClick={() => handleTabChange("login")}
                 _selected={{
                   color: "white",
-                  bg: "black",
+                  bg: "blackAlpha.800",
                 }}>
                 LOGIN
               </Tab>
@@ -57,7 +57,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 onClick={() => handleTabChange("signup")}
                 _selected={{
                   color: "white",
-                  bg: "black",
+                  bg: "blackAlpha.800",
                 }}>
                 SIGN-UP
               </Tab>
