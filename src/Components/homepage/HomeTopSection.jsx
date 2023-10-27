@@ -186,6 +186,3 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
 };
 
 export default HomeTopSection;
-
-// http://localhost:3000/Chennai/services=Men's%20Salon
-// http://localhost:3000/Chennai/services=Men's%20salon

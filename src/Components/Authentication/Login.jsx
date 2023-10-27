@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
-// import { LoginSocialFacebook } from "reactjs-social-login";
-// import FacebookLogin from "react-facebook-login";
-import FacebookLogin from "@greatsumini/react-facebook-login";
 import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
-import SocialLogin from "react-social-login";
-
 import {
   Box,
   Button,
@@ -18,7 +13,6 @@ import {
   Divider,
   Flex,
 } from "@chakra-ui/react";
-import { Modal, ModalOverlay, ModalContent, ModalBody } from "@chakra-ui/react";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
@@ -26,7 +20,7 @@ import {
   login,
   loginGoogle,
   loginFacebook,
-} from "../../Redux/Services/AuthSlice";
+} from "../../Redux/Services/authSlice";
 import "../../App.css";
 import { Icon } from "@chakra-ui/react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
@@ -42,7 +36,6 @@ const appId = "837933008028886";
 const Login = ({ onClose }) => {
   const dispatch = useDispatch();
   const [loginError, setLoginError] = useState(false);
-  const [fbToken, setFbToken] = useState("a");
   const [app, setApp] = useState(0);
 
   useEffect(() => {
@@ -109,7 +102,7 @@ const Login = ({ onClose }) => {
     FacebookLoginClient.login(
       (response) => {
         if (response.authResponse) {
-          setFbToken(response.authResponse.accessToken);
+          const token = response.authResponse.accessToken;
           //To get profile data
           FacebookLoginClient.getProfile(
             (profileData) => {
@@ -121,7 +114,7 @@ const Login = ({ onClose }) => {
               };
               dispatch(
                 loginFacebook({
-                  token: fbToken,
+                  token: token,
                   loginMethod: "facebook",
                   user: loggedUser,
                 })
@@ -204,6 +197,7 @@ const Login = ({ onClose }) => {
                   <Button
                     onClick={renderProps.onClick}
                     bg={"#dd4a31"}
+                    colorScheme={"#dd4a31"}
                     textColor={"whiteAlpha.800"}
                     mx={2}>
                     <Icon as={FaGoogle} w={6} h={6} mx={2} />
@@ -216,6 +210,7 @@ const Login = ({ onClose }) => {
                 type="button"
                 onClick={onFacebookLoginSuccess}
                 bg={"#1b77f2"}
+                colorScheme={"#1b77f2"}
                 textColor={"whiteAlpha.800"}>
                 <Icon as={FaFacebook} w={6} h={6} mx={2} />
                 Login with Facebook

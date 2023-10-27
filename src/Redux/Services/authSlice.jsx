@@ -5,7 +5,7 @@ const authSlice = createSlice({
   initialState: {
     token: localStorage.getItem("token") || null,
     loginMethod: localStorage.getItem("loginMethod") || null,
-    user: {
+    user: JSON.parse(localStorage.getItem("userDetails")) || {
       name: null,
       email: null,
       contact: null,

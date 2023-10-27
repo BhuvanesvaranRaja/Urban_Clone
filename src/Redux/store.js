@@ -8,7 +8,7 @@ import {
 import thunk from "redux-thunk";
 import { AllProductsReducer } from "./Services/reducer";
 // import { AuthReducer } from "./AuthReducer/reducer";
-import authReducer from "../Redux/Services/AuthSlice";
+import authReducer from "../Redux/Services/authSlice";
 import { AppReducer } from "./AppReducer/reducer";
 import { distancesDurationsReducer } from "./Services/distancesAndDurationsSlice";
 const rootReducer = combineReducers({

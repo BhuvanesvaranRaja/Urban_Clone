@@ -7,6 +7,7 @@ import {
   Button,
   Text,
   Avatar,
+  Select,
   MenuButton,
   MenuGroup,
   MenuItem,
@@ -24,12 +25,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { logout } from "../../Redux/Services/AuthSlice";
+import { logout } from "../../Redux/Services/authSlice";
 import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
 import LoginModal from "../Modal/LoginModal";
 import LogoutConfirmationDialog from "../Modal/LogoutConfirmationDialog";
 import { getCityFromGeolocation } from "../../Utils/Location";
-import { GoTriangleDown, FaLocationPin, GoLocation } from "react-icons/go";
+import { GoLocation } from "react-icons/go";
+import { Cities } from "..//../assets/Cities";
 
 function LandingPage_Navbar() {
   const token = useSelector((state) => state.auth.token);
@@ -54,6 +56,15 @@ function LandingPage_Navbar() {
 
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
+  };
+  const handleLocationChange = (event) => {
+    const newLocation = event.target.value;
+    setSelectLocation(newLocation);
+
+    // Navigate to the selected location
+    if (newLocation) {
+      navigate(`/${newLocation}`);
+    }
   };
 
   const handleLogout = () => {
@@ -104,11 +115,19 @@ function LandingPage_Navbar() {
       console.error("Error:", error);
     }
   };
+
   const fetchLocation = async () => {
     try {
-      const Currentcity = await getCityFromGeolocation();
-      setSelectLocation(Currentcity);
-      navigate(`/${Currentcity}`);
+      if (city) {
+        const Currentcity = await getCityFromGeolocation();
+        setSelectLocation(Currentcity);
+        const currentURL = window.location.href;
+        const newURL = currentURL.replace(`${city}`, `${Currentcity}`);
+        window.location.href = newURL;
+      } else {
+        const Currentcity = await getCityFromGeolocation();
+        navigate(`/${Currentcity}`);
+      }
     } catch (error) {
       console.error("Error fetching the location ", error);
     }
@@ -138,7 +157,7 @@ function LandingPage_Navbar() {
             <HStack as={"nav"}>
               <Popover isLazy>
                 <PopoverTrigger>
-                  <Button bg="black" p={"5"} mx="3">
+                  <Button colorScheme={"blackAlpha"} bg="black" p={"5"} mx="3">
                     <span className="mx-2">{currentCity}</span>
                     <GoLocation />
                   </Button>
@@ -151,13 +170,33 @@ function LandingPage_Navbar() {
                   ]}>
                   <PopoverArrow ml="0rem" />
                   <PopoverCloseButton />
-                  <PopoverBody bg={"gray"}>
+                  <PopoverBody bg={"white"}>
                     <Button
-                      bg={"green"}
+                      colorScheme={"blackAlpha"}
                       color={"white"}
+                      width={"100%"}
                       onClick={fetchLocation}>
                       Get Current Location
                     </Button>
+                    <Select
+                      bg={"blackAlpha.500"}
+                      color={"black"}
+                      mt={"4"}
+                      border={"none"}
+                      onChange={handleLocationChange}>
+                      {" "}
+                      <option value="">Choose your location</option>
+                      {Cities.map((item, index) => {
+                        if (item.city) {
+                          return (
+                            <option key={index} value={item.city}>
+                              {item.city}
+                            </option>
+                          );
+                        }
+                        return null;
+                      })}
+                    </Select>
                   </PopoverBody>
                 </PopoverContent>
               </Popover>

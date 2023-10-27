@@ -75,10 +75,8 @@ const ListView = ({ centers, service }) => {
   }, [centers, service]);
   const OverlayTwo = () => (
     <ModalOverlay
-      bg="none"
-      backdropFilter="auto"
-      backdropInvert="80%"
-      backdropBlur="2px"
+      bg="blackAlpha.600"
+      backdropFilter="blur(5px) hue-rotate(20deg)"
     />
   );
   const handleOpenModal = (center) => {

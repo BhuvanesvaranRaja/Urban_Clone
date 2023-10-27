@@ -1,12 +1,4 @@
-import {
-  Box,
-  HStack,
-  Image,
-  Select,
-  Text,
-  VStack,
-  Button,
-} from "@chakra-ui/react";
+import { Box, HStack, Image, Select, Text, VStack } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import "../../StyleComponents/body_1.css";
@@ -14,7 +6,7 @@ import woman from "../../assets/woman_uc.png";
 import { Cities } from "../../assets/Cities";
 import { Link, useNavigate } from "react-router-dom";
 import { getCityFromGeolocation } from "../../Utils/Location";
-
+import { Button } from "react-bootstrap";
 const Body_1 = () => {
   const [city, setCity] = useState("");
   const navigate = useNavigate();
@@ -71,7 +63,7 @@ const Body_1 = () => {
                 borderRadius={"8"}
                 padding={"5"}
                 color={"blackAlpha.900"}>
-                <Text>Where do you need a service?</Text>
+                <Text marginBottom="3">Where do you need a service?</Text>
                 <HStack spacing={2}>
                   <FaMapMarkerAlt
                     size={25}
@@ -107,9 +99,7 @@ const Body_1 = () => {
                 </HStack>
                 <Button
                   onClick={handleNavigation}
-                  marginTop={5}
-                  backgroundColor={"black"}
-                  color={"white"}
+                  className="mt-4 bg-black w-100 border-0"
                   disabled={!isButtonEnabled}>
                   GO
                 </Button>
