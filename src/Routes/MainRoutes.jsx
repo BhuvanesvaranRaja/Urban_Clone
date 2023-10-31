@@ -19,6 +19,7 @@ import PrivacyPolicy from "../Pages/FooterPages/PrivacyPolicies";
 import CookiesPolicy from "../Pages/FooterPages/CookiesPolicy";
 import Law from "../Pages/FooterPages/LawEnforcement";
 import Register from "../Pages/FooterPages/Register";
+import MyCart from "../Pages/MyCart";
 
 const MainRoutes = () => {
   return (
@@ -31,6 +32,7 @@ const MainRoutes = () => {
           <Route path="/:city/near-me" element={<NearMe />} />
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/:city/summary" element={<Summary />} />
+          <Route path="/mycart" element={<MyCart />} />
           <Route
             path="/:city/summary/checkout"
             element={

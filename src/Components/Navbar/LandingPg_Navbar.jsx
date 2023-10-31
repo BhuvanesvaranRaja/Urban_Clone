@@ -2,10 +2,10 @@ import {
   Box,
   Flex,
   HStack,
-  useDisclosure,
   Image,
   Button,
   Text,
+  Icon,
   Avatar,
   Select,
   MenuButton,
@@ -18,9 +18,10 @@ import {
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
-  PopoverHeader,
   PopoverTrigger,
 } from "@chakra-ui/react";
+import { FaBell, FaShoppingCart } from "react-icons/fa";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
@@ -35,6 +36,7 @@ import { Cities } from "..//../assets/Cities";
 
 function LandingPage_Navbar() {
   const token = useSelector((state) => state.auth.token);
+  const cartItems = useSelector((state) => state.cart);
   const loginMethod = useSelector((state) => state.auth.loginMethod);
   const currentUser = JSON.parse(localStorage.getItem("userDetails"));
   const dispatch = useDispatch();
@@ -42,9 +44,9 @@ function LandingPage_Navbar() {
   const { city } = useParams();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
-  const [nearCity, setNearCity] = useState("");
   const [currentCity, setCurrentCity] = useState(city);
-  const [selectLocation, setSelectLocation] = useState("");
+
+  const cartItemCount = cartItems.length;
 
   useEffect(() => {
     city === undefined
@@ -59,14 +61,11 @@ function LandingPage_Navbar() {
   };
   const handleLocationChange = (event) => {
     const newLocation = event.target.value;
-    setSelectLocation(newLocation);
-
     // Navigate to the selected location
     if (newLocation) {
       navigate(`/${newLocation}`);
     }
   };
-
   const handleLogout = () => {
     setIsLogoutAlertOpen(true);
   };
@@ -109,7 +108,6 @@ function LandingPage_Navbar() {
   const goToNearMe = async () => {
     try {
       const city = await getCityFromGeolocation();
-      setNearCity(city);
       navigate(`/${city}/near-me`);
     } catch (error) {
       console.error("Error:", error);
@@ -120,7 +118,6 @@ function LandingPage_Navbar() {
     try {
       if (city) {
         const Currentcity = await getCityFromGeolocation();
-        setSelectLocation(Currentcity);
         const currentURL = window.location.href;
         const newURL = currentURL.replace(`${city}`, `${Currentcity}`);
         window.location.href = newURL;
@@ -157,7 +154,7 @@ function LandingPage_Navbar() {
             <HStack as={"nav"}>
               <Popover isLazy>
                 <PopoverTrigger>
-                  <Button colorScheme={"blackAlpha"} bg="black" p={"5"} mx="3">
+                  <Button bg={"whiteAlpha.800"} color={"black"} p={"5"}>
                     <span className="mx-2">{currentCity}</span>
                     <GoLocation />
                   </Button>
@@ -200,14 +197,38 @@ function LandingPage_Navbar() {
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
-
               <Button
                 bg={"whiteAlpha.800"}
                 color={"black"}
-                mx={"2"}
+                // mx={"2"}
                 onClick={goToNearMe}>
                 Services near me
               </Button>
+              <Button bg={"whiteAlpha.800"} color={"black"}>
+                <FaBell />
+              </Button>{" "}
+              <Link to={"/mycart"}>
+                <Button bg={"whiteAlpha.800"} color={"black"}>
+                  <Icon as={FaShoppingCart} w={6} h={6} />
+                  {cartItemCount > 0 && (
+                    <Text
+                      bg="red.500"
+                      color="white"
+                      borderRadius="full"
+                      fontSize="sm"
+                      fontWeight="bold"
+                      position="absolute"
+                      top="-5px"
+                      right="-5px"
+                      w={6}
+                      h={6}
+                      textAlign="center"
+                      lineHeight="6">
+                      {cartItemCount}
+                    </Text>
+                  )}
+                </Button>
+              </Link>
             </HStack>
           </HStack>
           {token ? (
@@ -215,15 +236,17 @@ function LandingPage_Navbar() {
               <Menu>
                 <MenuButton
                   as={Avatar}
-                  colorScheme="orange"
+                  // colorScheme="orange"
                   src={currentUser.profile}></MenuButton>
                 <MenuList>
                   <MenuGroup>
-                    <MenuItem
-                      style={{ color: "black" }}
-                      _hover={{ color: "white" }}>
-                      My Cart
-                    </MenuItem>
+                    <Link to={"/mycart"}>
+                      <MenuItem
+                        style={{ color: "black" }}
+                        _hover={{ color: "white" }}>
+                        My Cart
+                      </MenuItem>
+                    </Link>
                     <MenuItem
                       onClick={handleLogout}
                       style={{ color: "black" }}

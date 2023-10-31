@@ -16,8 +16,6 @@ import PriceDetails from "./PriceDetails";
 import AccordianComp from "../Modal/Accordian";
 
 const CenterDetailModal = ({ isOpen, onClose, center, overlay }) => {
-  console.log("received center data", center.reviews);
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
       {overlay}

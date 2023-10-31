@@ -11,13 +11,15 @@ import { AllProductsReducer } from "./Services/reducer";
 import authReducer from "../Redux/Services/authSlice";
 import { AppReducer } from "./AppReducer/reducer";
 import { distancesDurationsReducer } from "./Services/distancesAndDurationsSlice";
+import cartReducer from "./Services/cartSlice";
 const rootReducer = combineReducers({
   allProduct: AllProductsReducer,
   distancesDurations: distancesDurationsReducer,
   auth: authReducer,
+  cart: cartReducer,
+
   AppReducer,
 });
-// AuthReducer,
 
 const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
 
