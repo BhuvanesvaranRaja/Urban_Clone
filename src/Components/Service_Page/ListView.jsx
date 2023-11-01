@@ -15,15 +15,13 @@ import {
 import { setDistancesAndDurations } from "../../Redux/Services/distancesAndDurationsSlice";
 import CenterDetailModal from "../Modal/CenterDetailModal";
 import OtherServices from "./OtherServices";
+import StarRating from "./StarRating";
 
 const ListView = ({ centers, service }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [otherServices, setOtherServices] = useState([]);
   const [overlay, setOverlay] = React.useState();
-  // console.log("the services", service);
-  // console.log("the centers", centers);
-  // console.log("the filtered centers/services", otherServices);
 
   const dispatch = useDispatch();
   const distancesAndDurations = useSelector(
@@ -33,37 +31,37 @@ const ListView = ({ centers, service }) => {
   const origin = "11.078128784112577,76.99973851549666";
   const apiKey = process.env.REACT_APP_DISTANCE_API_KEY;
 
-  useEffect(() => {
-    const calculateDistancesAndDurations = async () => {
-      try {
-        const destinations = centers[0]?.service_categories[service]?.map(
-          (center) => `${center.latitude},${center.longitude}`
-        );
-        const destinationString = destinations?.join("|");
-        // removed next to https://api
-        const response = await fetch(
-          `https:api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinationString}&key=${apiKey}`
-        );
+  // useEffect(() => {
+  //   const calculateDistancesAndDurations = async () => {
+  //     try {
+  //       const destinations = centers[0]?.service_categories[service]?.map(
+  //         (center) => `${center.latitude},${center.longitude}`
+  //       );
+  //       const destinationString = destinations?.join("|");
+  //         // removed next to https://api
+  //       const response = await fetch(
+  //         `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinationString}&key=${apiKey}`
+  //       );
 
-        if (response.ok) {
-          const data = await response.json();
-          const distancesAndDurations = data.rows[0].elements?.map(
-            (element) => ({
-              distance: element.distance?.text,
-              duration: element.duration?.text,
-            })
-          );
-          dispatch(setDistancesAndDurations(distancesAndDurations));
-        } else {
-          console.error("Error fetching distance and duration data");
-        }
-      } catch (error) {
-        console.error("Error fetching distance and duration data", error);
-      }
-    };
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         const distancesAndDurations = data.rows[0].elements?.map(
+  //           (element) => ({
+  //             distance: element.distance?.text,
+  //             duration: element.duration?.text,
+  //           })
+  //         );
+  //         dispatch(setDistancesAndDurations(distancesAndDurations));
+  //       } else {
+  //         console.error("Error fetching distance and duration data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching distance and duration data", error);
+  //     }
+  //   };
 
-    calculateDistancesAndDurations();
-  }, [centers, service, origin, apiKey, dispatch]);
+  //   // calculateDistancesAndDurations();
+  // }, [centers, service, origin, apiKey, dispatch]);
   useEffect(() => {
     if (centers && service) {
       const allServices = centers[0]?.service_categories;
@@ -88,7 +86,27 @@ const ListView = ({ centers, service }) => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+  //To calculte stars
+  const calculateAverageRatings = (center) => {
+    if (!center || !center.reviews || center.reviews.length === 0) {
+      return 0;
+    }
 
+    let totalStars = 0;
+    let totalReviews = 0;
+
+    center.reviews.forEach((review) => {
+      totalStars += review.stars;
+      totalReviews++;
+    });
+
+    if (totalReviews === 0) return 0;
+
+    const averageStars = totalStars / totalReviews;
+
+    return averageStars;
+  };
+  console.log("center", centers);
   return (
     <div className="d-flex">
       <Box p={3}>
@@ -106,26 +124,35 @@ const ListView = ({ centers, service }) => {
                   justifyContent="space-between"
                   bg={"#222f3e"}
                   color="white"
-                  p={6}
+                  p={5}
                   border="1px solid white"
                   borderRadius="md"
                   boxShadow="lg"
                   transition="transform 0.2s"
                   _hover={{ transform: "scale(1.02)" }}>
                   <Box flex="1">
-                    <Heading as="h2" size="lg" mb="5">
+                    <Heading as="h2" size="lg" mb="3">
                       {center.name}
-                    </Heading>
-                    <Text fontSize="lg" p="3" letterSpacing={"wider"}>
+                    </Heading>{" "}
+                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
+                      {center.description}
+                    </Text>
+                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                       Address:<span className="mx-3"> {center.address} </span>
                     </Text>
-                    <Text fontSize="lg" p="3" letterSpacing={"wider"}>
+                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                       Phone: {center.phone}
                     </Text>
-                    <Text fontSize="lg" p="3" letterSpacing={"wider"}>
+                    <Flex alignItems="center">
+                      <Text fontSize="lg" p="1" letterSpacing={"wider"}>
+                        Average Ratings:
+                      </Text>
+                      <StarRating rating={calculateAverageRatings(center)} />
+                    </Flex>
+                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                       Distance: {distancesAndDurations[index]?.distance}
-                    </Text>
-                    <Text fontSize="lg" p="3" letterSpacing={"wider"}>
+                    </Text>{" "}
+                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                       Estimated Duration to Reach:
                       {distancesAndDurations[index]?.duration}
                     </Text>
@@ -137,6 +164,7 @@ const ListView = ({ centers, service }) => {
                       VIEW DETAILS
                     </Button>
                   </Box>
+
                   <Box>
                     <Image
                       src={center.image}

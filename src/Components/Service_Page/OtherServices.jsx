@@ -20,7 +20,12 @@ const OtherServices = ({ centers, service, handleOpenModal }) => {
         <Col>
           {Object.keys(otherServices).map((category, categoryIndex) => (
             <Card
-              style={{ width: "35rem", margin: "auto", marginBottom: "20px" }}
+              style={{
+                width: "35rem",
+                margin: "auto",
+                marginBottom: "20px",
+                borderRadius: "10px",
+              }}
               key={categoryIndex}>
               <Card.Body>
                 <Card.Title className="text-center text-danger fw-bolder mb-3">
@@ -47,7 +52,10 @@ const OtherServices = ({ centers, service, handleOpenModal }) => {
                           <Card.Text>Address: {center.address}</Card.Text>
                           <Card.Text>Phone: {center.phone}</Card.Text>
                           <Button
-                            variant="primary"
+                            colorScheme="green"
+                            size={"xs"}
+                            mt="4"
+                            p="2"
                             onClick={() => handleOpenModal(center)}>
                             VIEW DETAILS
                           </Button>

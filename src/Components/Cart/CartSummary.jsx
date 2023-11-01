@@ -35,13 +35,19 @@ const CartSummary = ({ items }) => {
       </Text>
       <Divider my="4" />
       {items.length === 0 ? (
-        <Text m="5">Your cart is empty.</Text>
+        <Text m="5" fontSize={"xl"  }>
+          Your cart is empty.
+        </Text>
       ) : (
         <Table variant="simple">
           <Thead bg={"blackAlpha.600"}>
             <Tr>
-              <Th color={"black"}>Service Name</Th>
-              <Th color={"black"}>Service Provider</Th>
+              <Th color={"black"} textAlign={"center"}>
+                Service Name
+              </Th>
+              <Th color={"black"} textAlign={"center"}>
+                Service Provider
+              </Th>
               <Th color={"black"}>Price</Th>
               <Th color={"black"}>Quantity</Th>
               <Th color={"black"}>Subtotal</Th>
@@ -50,11 +56,13 @@ const CartSummary = ({ items }) => {
           <Tbody bg={"blackAlpha.200"}>
             {items.map((item, index) => (
               <Tr key={index}>
-                <Td>{item.service_name}</Td>
-                <Td>{item.centerData.centerName}</Td>
-                <Td>{item.price}</Td>
-                <Td>{item.quantity}</Td>
-                <Td>₹ {calculateTotal(item.price, item.quantity)}</Td>
+                <Td textAlign={"center"}>{item.service_name}</Td>
+                <Td textAlign={"center"}>{item.centerData.centerName}</Td>
+                <Td textAlign={"center"}>{item.price}</Td>
+                <Td textAlign={"center"}>{item.quantity}</Td>
+                <Td textAlign={"center"}>
+                  ₹ {calculateTotal(item.price, item.quantity)}
+                </Td>
               </Tr>
             ))}
           </Tbody>

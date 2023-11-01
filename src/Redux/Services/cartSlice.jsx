@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const saveCartToLocalStorage = (cart) => {
+  const saveCartToLocalStorage = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 

@@ -15,13 +15,13 @@ import {
   Menu,
   Popover,
   PopoverArrow,
+  PopoverHeader,
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
 } from "@chakra-ui/react";
 import { FaBell, FaShoppingCart } from "react-icons/fa";
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
@@ -129,10 +129,17 @@ function LandingPage_Navbar() {
       console.error("Error fetching the location ", error);
     }
   };
-  console.log("user is ", currentUser);
+
   return (
     <>
-      <Box bg={"blackAlpha.800"} color={"whiteAlpha.900"} px={4} w={"100%"}>
+      <Box
+        bg={"blackAlpha.800"}
+        color={"whiteAlpha.900"}
+        px={3}
+        w={"100%"}
+        position="fixed"
+        top={0}
+        zIndex={9999}>
         <Flex
           h={16}
           alignItems={"center"}
@@ -204,9 +211,59 @@ function LandingPage_Navbar() {
                 onClick={goToNearMe}>
                 Services near me
               </Button>
-              <Button bg={"whiteAlpha.800"} color={"black"}>
-                <FaBell />
-              </Button>{" "}
+
+              <Popover>
+                <PopoverTrigger>
+                  <Button bg={"whiteAlpha.800"} color={"black"}>
+                    <FaBell />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader bg="blackAlpha.700">
+                    Notification
+                  </PopoverHeader>
+                  <PopoverBody bg="orange.400">
+                    <ul style={{ listStyleType: "none", padding: 0 }}>
+                      <li>
+                        <Box p={2} borderBottom="1px solid #ccc">
+                          <Text fontWeight="bold">New Item Added</Text>
+                          <Text fontSize="sm">
+                            You have added a new item to your cart.
+                          </Text>{" "}
+                          <Text fontSize="sm" color="gray.500">
+                            2 minutes ago
+                          </Text>
+                        </Box>
+                      </li>
+                      <li>
+                        <Box p={2} borderBottom="1px solid #ccc">
+                          <Text fontWeight="bold">Discount Available</Text>
+
+                          <Text fontSize="sm">
+                            Don't miss out on our special discount offer.
+                          </Text>
+                          <Text fontSize="sm" color="gray.500">
+                            10 minutes ago
+                          </Text>
+                        </Box>
+                      </li>
+                      <li>
+                        <Box p={2}>
+                          <Text fontWeight="bold">Order Shipped</Text>
+                          <Text fontSize="sm">
+                            Your order has been shipped and will arrive soon.
+                          </Text>{" "}
+                          <Text fontSize="sm" color="gray.500">
+                            1 hour ago
+                          </Text>
+                        </Box>
+                      </li>
+                    </ul>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
               <Link to={"/mycart"}>
                 <Button bg={"whiteAlpha.800"} color={"black"}>
                   <Icon as={FaShoppingCart} w={6} h={6} />

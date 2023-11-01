@@ -66,6 +66,16 @@ function PriceDetails({ center }) {
       };
 
       dispatch(addToCart({ centerData, serviceData: service }));
+      toast({
+        title: "New Item Added",
+        status: "success",
+        position: "top-right",
+        duration: 3000,
+        containerStyle: {
+          marginRight: "50px",
+        },
+        isClosable: false,
+      });
     }
   };
 
