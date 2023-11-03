@@ -1,16 +1,23 @@
-// distancesDurationsActions.js
-export const setDistancesAndDurations = (data) => ({
-  type: "SET_DISTANCES_DURATIONS",
-  payload: data,
+// distancesAndDurationsSlice.js
+
+import { createSlice } from "@reduxjs/toolkit";
+
+const distancesAndDurationsSlice = createSlice({
+  name: "distancesAndDurations",
+  initialState: {
+    distance: [], // Initialize to an empty array
+  },
+  reducers: {
+    setDistancesAndDurations: (state, action) => {
+      state.distance = action.payload;
+      // Update local storage here (optional)
+      localStorage.setItem(
+        "distanceAndDuration",
+        JSON.stringify(action.payload)
+      );
+    },
+  },
 });
 
-// distancesDurationsReducer.js
-const initialState = [];
-export const distancesDurationsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "SET_DISTANCES_DURATIONS":
-      return action.payload;
-    default:
-      return state;
-  }
-};
+export const { setDistancesAndDurations } = distancesAndDurationsSlice.actions;
+export default distancesAndDurationsSlice.reducer;

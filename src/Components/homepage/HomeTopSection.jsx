@@ -27,8 +27,10 @@ import ServicesCategory from "../Service_Category/ServicesCategory";
 import styles from "../../StyleComponents/Home.module.css";
 import { useThrottle } from "use-throttle";
 import { useNavigate, useParams } from "react-router-dom";
-import { getCityFromGeolocation } from "../../Utils/Location";
+import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { getService } from "../../Api/getServices";
+import { useDispatch } from "react-redux";
+import { location } from "../../Redux/Services/locationSlice";
 
 const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   const { city } = useParams();
@@ -38,6 +40,8 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
 
   const [active, setActive] = useState(0);
   const scrollRef = useRef();
+  const dispatch = useDispatch();
+
   const throttledText = useThrottle(inputText, 1000);
   const navigate = useNavigate();
   useEffect(() => {
@@ -63,7 +67,10 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   const fetchLocation = async () => {
     try {
       const city = await getCityFromGeolocation();
+
+      dispatch(location({ city }));
       setInitialLocation(city);
+
       navigate(`/${city}`);
       console.log("navigated");
     } catch (error) {

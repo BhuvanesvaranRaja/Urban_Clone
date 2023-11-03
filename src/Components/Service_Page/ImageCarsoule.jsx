@@ -6,11 +6,11 @@ const ImageCarsoule = ({ images }) => {
   return (
     <Carousel
       autoPlay
-      //   showArrows={false}
+      showArrows={true}
       infiniteLoop={true}
       interval={"2000"}
       transitionTime="1000"
-      showStatus={true}
+      showStatus={false}
       showIndicators={true}
       showThumbs={false}>
       {images.map((image, index) => (

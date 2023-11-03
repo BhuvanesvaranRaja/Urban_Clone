@@ -70,7 +70,7 @@ function PriceDetails({ center }) {
         title: "New Item Added",
         status: "success",
         position: "top-right",
-        duration: 3000,
+        duration: 500,
         containerStyle: {
           marginRight: "50px",
         },

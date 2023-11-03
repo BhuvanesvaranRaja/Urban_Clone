@@ -35,7 +35,7 @@ const CartSummary = ({ items }) => {
       </Text>
       <Divider my="4" />
       {items.length === 0 ? (
-        <Text m="5" fontSize={"xl"  }>
+        <Text m="5" fontSize={"xl"}>
           Your cart is empty.
         </Text>
       ) : (

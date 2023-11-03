@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Image,
@@ -18,6 +18,7 @@ import {
   ExternalLinkIcon,
   StarIcon,
 } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 import {
   increaseQuantity,
   decreaseQuantity,
@@ -30,8 +31,19 @@ import { FaCartPlus, FaHeart } from "react-icons/fa";
 const MyCart = () => {
   const dispatch = useDispatch();
   const toast = useToast();
-
+  const navigate = useNavigate();
   const items = useSelector((state) => state.cart);
+  useEffect(() => {
+    if (items.length === 0) {
+      const timeoutId = setTimeout(() => {
+        navigate(-1);
+        console.log("No items in the cart. Navigating to another page...");
+      }, 2000);
+
+      // Cleanup the timeout if the component unmounts
+      return () => clearTimeout(timeoutId);
+    }
+  }, [items]);
 
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity({ id }));
@@ -44,12 +56,10 @@ const MyCart = () => {
     dispatch(deleteItem({ index }));
     toast({
       title: "Item Deleted",
-      // description: "You need to Log In to add items to your cart.",
       status: "error",
       position: "bottom",
       duration: 1000,
       containerStyle: {
-        // marginRight: "50px",
         marginBottom: "100px",
       },
       isClosable: false,
@@ -59,42 +69,45 @@ const MyCart = () => {
   console.log("items in ", items);
   return (
     <Flex
-      bg="blackAlpha.200"
       style={{
-        minHeight: "90vh",
+        // minHeight: "100vh",
+        height: "fit-content",
         marginTop: "60px",
+        marginBottom: "5%",
       }}>
       <Box flex={3}>
-        {items?.length ? (
+        {items?.length >= 1 ? (
           <Box>
             <Stack
               spacing={4}
               align="center"
-              m="10"
-              // height="90vh"
+              mt="10"
+              // height="fit-content"
               // overflow="scroll"
             >
               {items.map((item, index) => (
                 <Box
                   key={index}
-                  p={4}
+                  p="5"
                   bg="blackAlpha.300"
                   borderWidth="1px"
                   borderRadius="lg"
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
-                  width="90%">
+                  border="1px solid gray"
+                  width="95%">
                   <Image
                     src={item.image}
                     alt={item.service_name}
-                    width={"300px"}
-                    height={"250px"}
+                    maxWidth={"fit-content"}
+                    height="200px"
+                    m="5"
                   />
 
                   <Box
                     p={10}
-                    width="70%"
+                    width="80%"
                     display="flex"
                     flexDirection={"column"}>
                     <div>
@@ -135,7 +148,6 @@ const MyCart = () => {
                     <div>
                       <Box>
                         <Flex alignItems="center" mt={"3"}>
-                          {/* <Text fontSize="xl">qty </Text> */}
                           <Center>
                             <IconButton
                               icon={<MinusIcon />}
@@ -185,7 +197,7 @@ const MyCart = () => {
             alignItems={"center"}
             height={"80vh"}>
             <Text fontSize="3xl" textAlign="center">
-              No items in the cart
+              No items in the cart... Navigating back
             </Text>
             <FaCartPlus className="fs-3 mx-3" />
           </Box>
@@ -198,6 +210,8 @@ const MyCart = () => {
         mt="10"
         mr="10"
         borderRadius="12"
+        border="1px solid gray"
+        // height="fit-content"
         // height={"90vh"}
         // overflow={"scroll"}
       >

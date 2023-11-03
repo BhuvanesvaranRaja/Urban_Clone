@@ -5,32 +5,25 @@ import "../../StyleComponents/body_1.css";
 import woman from "../../assets/woman_uc.png";
 import { Cities } from "../../assets/Cities";
 import { Link, useNavigate } from "react-router-dom";
-import { getCityFromGeolocation } from "../../Utils/Location";
+import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { location } from "../../Redux/Services/locationSlice";
+
 const Body_1 = () => {
   const [city, setCity] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+
   const handleChange = (value) => {
     setCity(value);
-    localStorage.setItem("location", value);
     setIsButtonEnabled(true);
   };
 
   const handleNavigation = () => {
     navigate(`/${city}`);
-  };
-
-  const getLocation = async () => {
-    try {
-      const city = await getCityFromGeolocation();
-      localStorage.setItem("location", city);
-
-      setCity(city);
-      setIsButtonEnabled(true);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    dispatch(location({ city }));
   };
 
   return (
@@ -68,12 +61,6 @@ const Body_1 = () => {
                   <FaMapMarkerAlt
                     size={25}
                     style={{ verticalAlign: "middle" }}
-                    // onClick={() => {
-                    //   localStorage.setItem("location", A);
-                    //   const loc = localStorage.getItem("location");
-                    //   setCity(loc);
-                    // }}
-                    onClick={getLocation}
                   />
                   <Select
                     cursor={"pointer"}

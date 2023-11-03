@@ -5,24 +5,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../Redux/Services/action";
 import { Badge, Container, Button } from "@chakra-ui/react";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Map from "./Map";
+import Map from "../Components/Service_Page/Map";
 import ListView from "../Components/Service_Page/ListView";
-
+import AddressFetchModal from "../Components/Service_Page/AddressFetchModal";
 const ServicePage = () => {
   const { city, service } = useParams();
   const [serviceCenters, setServiceCenters] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [id, setId] = useState(null);
   const [displayNewComponent, setDisplayNewComponent] = useState(false);
-
   const dispatch = useDispatch();
-  const allProduct = useSelector((store) => store?.allProduct);
-  const distancesAndDurations = useSelector(
-    (state) => state.distancesDurations
-  );
+  // const currentAddress = useSelector((state) => state.location.address);
+  // useEffect(() => {
+  //   if (currentAddress === null) {
+  //     openModal();
+  //   } else {
+  //     return null;
+  //   }
+  // }, [currentAddress]);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:8088/service_centers?city=${city}`)
@@ -36,10 +48,6 @@ const ServicePage = () => {
     dispatch(getAllProducts(city, service));
   }, [dispatch, city, service]);
 
-  const handleCardClick = (service, index) => {
-    setSelectedService(service);
-    setId(index);
-  };
   const toggleClick = () => {
     setDisplayNewComponent(!displayNewComponent);
   };
@@ -47,7 +55,7 @@ const ServicePage = () => {
     <>
       <>
         <Container className="m-2">
-          <Row className="mt-3">
+          <Row>
             <div className="d-flex justify-content-between mb-3 align-items-center ">
               <h3
                 style={{
@@ -56,11 +64,17 @@ const ServicePage = () => {
                   fontWeight: "bolder",
                   letterSpacing: "3px",
                   marginLeft: "50px",
+                  marginTop: "0px",
                 }}>
                 AVAILABLE LOCATIONS
               </h3>
             </div>
-            <Tabs isFitted variant="enclosed" marginLeft={"50px"} size={"lg"}>
+            <Tabs
+              isFitted
+              variant="enclosed"
+              marginLeft={"50px"}
+              size={"lg"}
+              marginTop={"20px"}>
               <TabList>
                 <Tab
                   onClick={toggleClick}
@@ -79,56 +93,6 @@ const ServicePage = () => {
                 </TabPanel>
                 <TabPanel>
                   <>
-                    {/* <Col
-                      xs={12}
-                      sm={6}
-                      md={3}
-                      style={{
-                        overflowY: "auto",
-                        maxHeight: "80vh",
-                        width: "100%",
-                      }}>
-                      <ul
-                        style={{
-                          listStyleType: "none",
-                          paddingLeft: 0,
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}>
-                        {serviceCenters[0]?.service_categories[service]?.map(
-                          (item, index) => (
-                            <li key={index}>
-                              <Card
-                                style={{ width: "18rem" }}
-                                className="mb-4"
-                                onClick={() => handleCardClick(item, index)}>
-                                <Card.Img variant="top" src={item.image} />
-                                <Card.Body>
-                                  <Card.Title className="fs-4 mb-2">
-                                    {item.name}
-                                  </Card.Title>
-                                  <Card.Text>{item.description}</Card.Text>
-                                  <Card.Text>{item.address}</Card.Text>
-                                  <Badge color={"red"}>{item.phone}</Badge>
-                                  <br />
-                                  <Badge color={"blue"}>
-                                    Distance:{" "}
-                                    {distancesAndDurations[index]?.distance}
-                                  </Badge>
-                                  <br />
-                                  <Badge color={"blue"}>
-                                    Time Estimation :{" "}
-                                    {distancesAndDurations[index]?.duration}
-                                  </Badge>
-                                </Card.Body>
-                              </Card>
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </Col> */}
                     <Col xs={12} sm={6} md={12}>
                       <Map
                         centers={serviceCenters}
@@ -142,6 +106,7 @@ const ServicePage = () => {
               </TabPanels>
             </Tabs>
           </Row>
+          {/* <AddressFetchModal isOpen={isModalOpen} onClose={closeModal} /> */}
         </Container>
       </>
     </>

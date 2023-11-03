@@ -30,7 +30,7 @@ import { logout } from "../../Redux/Services/authSlice";
 import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
 import LoginModal from "../Modal/LoginModal";
 import LogoutConfirmationDialog from "../Modal/LogoutConfirmationDialog";
-import { getCityFromGeolocation } from "../../Utils/Location";
+import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { GoLocation } from "react-icons/go";
 import { Cities } from "..//../assets/Cities";
 
@@ -133,13 +133,13 @@ function LandingPage_Navbar() {
   return (
     <>
       <Box
-        bg={"blackAlpha.800"}
+        bg={"blackAlpha.900"}
         color={"whiteAlpha.900"}
         px={3}
         w={"100%"}
         position="fixed"
         top={0}
-        zIndex={9999}>
+        zIndex={1}>
         <Flex
           h={16}
           alignItems={"center"}
@@ -264,28 +264,63 @@ function LandingPage_Navbar() {
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
-              <Link to={"/mycart"}>
-                <Button bg={"whiteAlpha.800"} color={"black"}>
-                  <Icon as={FaShoppingCart} w={6} h={6} />
-                  {cartItemCount > 0 && (
-                    <Text
-                      bg="red.500"
-                      color="white"
-                      borderRadius="full"
-                      fontSize="sm"
-                      fontWeight="bold"
-                      position="absolute"
-                      top="-5px"
-                      right="-5px"
-                      w={6}
-                      h={6}
-                      textAlign="center"
-                      lineHeight="6">
-                      {cartItemCount}
-                    </Text>
-                  )}
-                </Button>
-              </Link>
+              {cartItemCount >= 1 ? (
+                <Link to={"/mycart"}>
+                  <Button bg={"whiteAlpha.800"} color={"black"}>
+                    <FaShoppingCart />
+                    {cartItemCount > 0 && (
+                      <Text
+                        bg="red.500"
+                        color="white"
+                        borderRadius="full"
+                        fontSize="sm"
+                        fontWeight="bold"
+                        position="absolute"
+                        top="-5px"
+                        right="-5px"
+                        w={6}
+                        h={6}
+                        textAlign="center"
+                        lineHeight="6">
+                        {cartItemCount}
+                      </Text>
+                    )}
+                  </Button>
+                </Link>
+              ) : (
+                <Popover trigger="click" placement="bottom-start">
+                  <PopoverTrigger>
+                    <Button bg={"whiteAlpha.800"} color={"black"}>
+                      <FaShoppingCart />
+                      {cartItemCount > 0 && (
+                        <Text
+                          bg="red.500"
+                          color="white"
+                          borderRadius="full"
+                          fontSize="sm"
+                          fontWeight="bold"
+                          position="absolute"
+                          top="-5px"
+                          right="-5px"
+                          w={6}
+                          h={6}
+                          textAlign="center"
+                          lineHeight="6">
+                          {cartItemCount}
+                        </Text>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent mt="2">
+                    <PopoverArrow />
+                    <PopoverBody color="black" p="4" bg="blackAlpha.300">
+                      <div>
+                        Your cart is currently empty. Add items to your cart.
+                      </div>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              )}
             </HStack>
           </HStack>
           {token ? (

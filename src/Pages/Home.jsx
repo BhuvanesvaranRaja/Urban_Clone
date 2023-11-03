@@ -3,29 +3,28 @@ import React, { useEffect, useState } from "react";
 import HomeTopSection from "../Components/homepage/HomeTopSection";
 import HomePageService from "../Components/homepage/HomePageService";
 import { searchServices } from "../Utils/SearchResults";
+import AddressFetchModal from "../Components/Service_Page/AddressFetchModal";
 import LandingPage_Navbar from "../Components/Navbar/LandingPg_Navbar";
 import LargeWithAppLinksAndSocial from "../Components/Footer/Footer";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [scrollNav, setScrollNav] = useState(0);
-
-  const myScrollFunc = function () {
-    const y = window.scrollY;
-    if (y >= 1000) {
-      setScrollNav(y);
-    } else {
-      setScrollNav(y);
-    }
-  };
-
-  window.addEventListener("scroll", myScrollFunc);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const currentAddress = useSelector((state) => state.location.address);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
+    if (currentAddress) {
+      setIsModalOpen(true);
+    }
+  }, [currentAddress]);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     if (query === "") {
@@ -51,6 +50,7 @@ const Home = () => {
       />
       <HomePageService scrollNav={scrollNav} />
       {/* <LargeWithAppLinksAndSocial /> */}
+      <AddressFetchModal isOpen={isModalOpen} onClose={closeModal} />
     </Box>
   );
 };

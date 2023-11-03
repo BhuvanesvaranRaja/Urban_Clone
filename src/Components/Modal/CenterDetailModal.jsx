@@ -23,15 +23,24 @@ const CenterDetailModal = ({ isOpen, onClose, center, overlay }) => {
     <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
       {overlay}
       <ModalOverlay />
-      <ModalContent p="5">
+      <ModalContent>
         {/* <Image src={center.image} height={"500px"} /> */}
-        <ImageCarsoule images={center.images} />
+        <ImageCarsoule images={center.images} margin />
         <ModalHeader className="fs-3 text-danger">{center.name}</ModalHeader>
-        {/* <ModalCloseButton /> */}
+        <ModalCloseButton
+          bg="red.700"
+          color="white"
+          padding={"10px"}
+          fontWeight="bold"
+          // borderRadius="10%"
+          size={"sm"}
+          _hover={{
+            bg: "red.600",
+            color: "white",
+          }}
+        />
         <ModalBody className="fs-5">
-          <Box>
-            
-          </Box>
+          <Box></Box>
           <p>Address: {center.address}</p>
           <p>Contact Number: {center.phone}</p>
           <Box mt={4}>

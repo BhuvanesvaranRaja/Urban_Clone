@@ -22,61 +22,66 @@ const ListView = ({ centers, service }) => {
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [otherServices, setOtherServices] = useState([]);
   const [overlay, setOverlay] = React.useState();
-
   const dispatch = useDispatch();
-  const distancesAndDurations = useSelector(
-    (state) => state.distancesDurations
-  );
-  // console.log("the distance", distancesAndDurations);
-  const origin = "11.078128784112577,76.99973851549666";
+
+  const UserLocation = useSelector((state) => state.location.address);
   const apiKey = process.env.REACT_APP_DISTANCE_API_KEY;
+  const data = localStorage.getItem("distanceAndDuration");
 
-  // useEffect(() => {
-  //   const calculateDistancesAndDurations = async () => {
-  //     try {
-  //       const destinations = centers[0]?.service_categories[service]?.map(
-  //         (center) => `${center.latitude},${center.longitude}`
-  //       );
-  //       const destinationString = destinations?.join("|");
-  //         // removed next to https://api
-  //       const response = await fetch(
-  //         `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destinationString}&key=${apiKey}`
-  //       );
+  useEffect(() => {
+    const calculateDistancesAndDurations = async () => {
+      if (UserLocation) {
+        const OriginString = `${UserLocation.lat},${UserLocation.lng}`;
 
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         const distancesAndDurations = data.rows[0].elements?.map(
-  //           (element) => ({
-  //             distance: element.distance?.text,
-  //             duration: element.duration?.text,
-  //           })
-  //         );
-  //         dispatch(setDistancesAndDurations(distancesAndDurations));
-  //       } else {
-  //         console.error("Error fetching distance and duration data");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching distance and duration data", error);
-  //     }
-  //   };
+        try {
+          const destinations = centers[0]?.service_categories[service]?.map(
+            (center) => `${center.latitude},${center.longitude}`
+          );
+          const destinationString = destinations?.join("|");
+          const response = await fetch(
+            `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${OriginString}&destinations=${destinationString}&key=${apiKey}`
+          );
 
-  //   // calculateDistancesAndDurations();
-  // }, [centers, service, origin, apiKey, dispatch]);
+          if (response.ok) {
+            const data = await response.json();
+            const distancesAndDurations = await data.rows[0].elements?.map(
+              (element) => {
+                return {
+                  distance: element.distance?.text,
+                  duration: element.duration?.text,
+                };
+              }
+            );
+            dispatch(setDistancesAndDurations(distancesAndDurations));
+          } else {
+            console.error("Error fetching distance and duration data");
+          }
+        } catch (error) {
+          console.error("Error fetching distance and duration data", error);
+        }
+      }
+    };
+
+    calculateDistancesAndDurations();
+  }, [UserLocation, centers, service, apiKey, dispatch]);
+
   useEffect(() => {
     if (centers && service) {
       const allServices = centers[0]?.service_categories;
       if (allServices) {
-        const { [service]: _, ...otherServices } = allServices;
-        setOtherServices(otherServices);
+        const { [service]: _, ...remainingServices } = allServices;
+        setOtherServices(remainingServices);
       }
     }
   }, [centers, service]);
+
   const OverlayTwo = () => (
     <ModalOverlay
       bg="blackAlpha.600"
       backdropFilter="blur(5px) hue-rotate(20deg)"
     />
   );
+
   const handleOpenModal = (center) => {
     setSelectedCenter(center);
     setIsModalOpen(true);
@@ -86,7 +91,7 @@ const ListView = ({ centers, service }) => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  //To calculte stars
+
   const calculateAverageRatings = (center) => {
     if (!center || !center.reviews || center.reviews.length === 0) {
       return 0;
@@ -94,7 +99,6 @@ const ListView = ({ centers, service }) => {
 
     let totalStars = 0;
     let totalReviews = 0;
-
     center.reviews.forEach((review) => {
       totalStars += review.stars;
       totalReviews++;
@@ -103,10 +107,9 @@ const ListView = ({ centers, service }) => {
     if (totalReviews === 0) return 0;
 
     const averageStars = totalStars / totalReviews;
-
     return averageStars;
   };
-  console.log("center", centers);
+
   return (
     <div className="d-flex">
       <Box p={3}>
@@ -133,12 +136,12 @@ const ListView = ({ centers, service }) => {
                   <Box flex="1">
                     <Heading as="h2" size="lg" mb="3">
                       {center.name}
-                    </Heading>{" "}
+                    </Heading>
                     <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                       {center.description}
                     </Text>
                     <Text fontSize="lg" p="1" letterSpacing={"wider"}>
-                      Address:<span className="mx-3"> {center.address} </span>
+                      Address: <span className="mx-3">{center.address}</span>
                     </Text>
                     <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                       Phone: {center.phone}
@@ -149,13 +152,6 @@ const ListView = ({ centers, service }) => {
                       </Text>
                       <StarRating rating={calculateAverageRatings(center)} />
                     </Flex>
-                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
-                      Distance: {distancesAndDurations[index]?.distance}
-                    </Text>{" "}
-                    <Text fontSize="lg" p="1" letterSpacing={"wider"}>
-                      Estimated Duration to Reach:
-                      {distancesAndDurations[index]?.duration}
-                    </Text>
                     <Button
                       bg={"#c8d6e5"}
                       textColor={"black"}

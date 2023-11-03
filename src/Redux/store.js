@@ -10,14 +10,15 @@ import { AllProductsReducer } from "./Services/reducer";
 // import { AuthReducer } from "./AuthReducer/reducer";
 import authReducer from "../Redux/Services/authSlice";
 import { AppReducer } from "./AppReducer/reducer";
-import { distancesDurationsReducer } from "./Services/distancesAndDurationsSlice";
+import setDistancesAndDurationsReducer from "./Services/distancesAndDurationsSlice";
 import cartReducer from "./Services/cartSlice";
+import locationReducer from "./Services/locationSlice";
 const rootReducer = combineReducers({
   allProduct: AllProductsReducer,
-  distancesDurations: distancesDurationsReducer,
+  distancesAndDurations: setDistancesAndDurationsReducer,
   auth: authReducer,
   cart: cartReducer,
-
+  location: locationReducer,
   AppReducer,
 });
 

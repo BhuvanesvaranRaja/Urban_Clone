@@ -6,7 +6,8 @@ import {
   useLoadScript,
 } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
-import "../App.css";
+import "..//..//App.css";
+import { useSelector } from "react-redux";
 
 const Map = ({ centers, service, selectedService, index }) => {
   const { isLoaded } = useLoadScript({
@@ -18,6 +19,8 @@ const Map = ({ centers, service, selectedService, index }) => {
   const [infoWindowData, setInfoWindowData] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const userLocation = useSelector((state) => state.location.address);
+  // console.log("address", userLocation.split(","));
 
   useEffect(() => {
     if (centers && centers.length) {
@@ -38,9 +41,16 @@ const Map = ({ centers, service, selectedService, index }) => {
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
+        console.log("the pos", position.coords);
         const { latitude, longitude } = position.coords;
-        const location = { lat: latitude, lng: longitude };
+        // const location = { lat: latitude, lng: longitude };
         // const location = { lat: 11.078128784112577, lng: 76.99973851549666 };
+        const locationBreakUp = userLocation?.split(",");
+        const location = {
+          lat: parseInt(locationBreakUp[0]),
+          lng: parseInt(locationBreakUp[1]),
+        };
+        console.log("the location", location);
         setCurrentLocation(location);
 
         // Center the map on the user's location
@@ -87,28 +97,29 @@ const Map = ({ centers, service, selectedService, index }) => {
             <Marker
               key={id}
               position={{ lat, lng }}
-              //   icon={{
-              //     url: imageUrl,
-              //     scaledSize: new window.google.maps.Size(60, 50),
-              //   }}
               icon={{
-                url: require("../assets/marker.png"),
+                url: require("..//../assets/marker.png"),
                 scaledSize: new window.google.maps.Size(40, 40),
               }}
               onClick={() => {
                 handleMarkerClick(id, lat, lng, address, imageUrl, name);
               }}>
               {isOpen && infoWindowData?.id === id && (
-                <InfoWindow
-                  onCloseClick={() => {
-                    setIsOpen(false);
-                  }}>
-                  <div>
+                <InfoWindow>
+                  <div style={{ padding: "10px" }}>
+                    {" "}
+                    <button
+                      className="custom-info-window-close-button"
+                      onClick={() => setIsOpen(false)}>
+                      X
+                    </button>
+                    {console.log("infor", infoWindowData)}
                     <h1
                       style={{
                         fontSize: "20px",
                         fontWeight: "bold",
                         marginBottom: "2px",
+                        fontFamily: "monospace",
                       }}>
                       {infoWindowData.name}
                     </h1>
@@ -117,6 +128,7 @@ const Map = ({ centers, service, selectedService, index }) => {
                       <img
                         src={infoWindowData.imageUrl}
                         alt={infoWindowData.address}
+                        width={"100%"}
                       />
                     )}
                   </div>
@@ -129,7 +141,7 @@ const Map = ({ centers, service, selectedService, index }) => {
             <Marker
               position={currentLocation}
               icon={{
-                url: require("../assets/map-marker-home.png"),
+                url: require("..//../assets/map-marker-home.png"),
                 scaledSize: new window.google.maps.Size(50, 50),
               }}
               onClick={() => {
