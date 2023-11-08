@@ -9,43 +9,36 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Map from "../Components/Service_Page/Map";
 import ListView from "../Components/Service_Page/ListView";
-import AddressFetchModal from "../Components/Service_Page/AddressFetchModal";
 const ServicePage = () => {
-  const { city, service } = useParams();
+  const { service } = useParams();
+  const city = useSelector((state) => state.location.location);
   const [serviceCenters, setServiceCenters] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [id, setId] = useState(null);
   const [displayNewComponent, setDisplayNewComponent] = useState(false);
   const dispatch = useDispatch();
-  // const currentAddress = useSelector((state) => state.location.address);
-  // useEffect(() => {
-  //   if (currentAddress === null) {
-  //     openModal();
-  //   } else {
-  //     return null;
-  //   }
-  // }, [currentAddress]);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   useEffect(() => {
-    axios
-      .get(`http://localhost:8088/service_centers?city=${city}`)
-      .then((response) => {
-        setServiceCenters(response.data);
-      })
-
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8088/service_centers?city=${city}`
+        );
+        if (response.data?.length > 0) {
+          setServiceCenters(response.data);
+          setSelectedService(response.data[0]);
+        } else {
+          // Data is not available
+          setServiceCenters("");
+          console.log(`No service centers found for city: ${city}`);
+        }
+        dispatch(getAllProducts(city, service));
+      } catch (error) {
         console.error("Axios Error:", error);
-      });
-    dispatch(getAllProducts(city, service));
+      }
+    };
+
+    fetchData();
   }, [dispatch, city, service]);
 
   const toggleClick = () => {
@@ -97,7 +90,7 @@ const ServicePage = () => {
                       <Map
                         centers={serviceCenters}
                         service={service}
-                        selectedService={selectedService}
+                        // selectedService={selectedService}
                         index={id}
                       />
                     </Col>
@@ -106,7 +99,6 @@ const ServicePage = () => {
               </TabPanels>
             </Tabs>
           </Row>
-          {/* <AddressFetchModal isOpen={isModalOpen} onClose={closeModal} /> */}
         </Container>
       </>
     </>

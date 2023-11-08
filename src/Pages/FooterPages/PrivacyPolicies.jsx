@@ -7,7 +7,9 @@ const PrivacyPolicy = () => {
   }, []);
   return (
     <>
-      <h1 className="mt-5 text-center fw-bolder fs-4 mb-4">Privacy Policy</h1>
+      <h1 className="mt-5 text-center fw-bolder fs-4 mb-4 p-4">
+        Privacy Policy
+      </h1>
       <hr />
       <div className="text-justify m-5 p-4 fs-5">
         <ul>

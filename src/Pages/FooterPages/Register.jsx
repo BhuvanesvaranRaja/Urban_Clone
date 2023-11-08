@@ -2,7 +2,7 @@ import React from "react";
 
 const Register = () => {
   return (
-    <div className="p-5 m-5">
+    <div className="p-5 m-5 mt-5">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, nemo.
       Rem, omnis odit dolores accusamus tenetur molestias aut? Debitis natus
       earum atque aliquam id ea cumque quidem alias, ex tempora placeat quae

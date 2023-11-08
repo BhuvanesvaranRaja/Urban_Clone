@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { location } from "../../Redux/Services/locationSlice";
+import { location, locationMethod } from "../../Redux/Services/locationSlice";
 
 const Body_1 = () => {
   const [city, setCity] = useState("");
@@ -22,15 +22,15 @@ const Body_1 = () => {
   };
 
   const handleNavigation = () => {
-    navigate(`/${city}`);
     dispatch(location({ city }));
+    dispatch(locationMethod("city"));
+    navigate(`/homepage`);
   };
 
   return (
     <div>
       <Box className="hero" pos={"relative"}>
         <Image w={"56%"} src={woman} />
-
         <Box
           width={"100%"}
           height={"100%"}

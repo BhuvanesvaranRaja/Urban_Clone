@@ -5,12 +5,9 @@ import styles from "../../StyleComponents/Home.module.css";
 import { useNavigate } from "react-router-dom";
 
 const HomePageCarousel = ({ data, hideArrow }) => {
-  // console.log( "the data", data);
   const navigate = useNavigate();
   const handleClick = (index, item) => {
-    const city = localStorage.getItem("location");
-    navigate(`/${city}/services=${item}`);
-    console.log("the service selected", item);
+    navigate(`/services=${item}`);
   };
   return (
     <Box w="80%" m="2% auto " p="22px 0" h="300px">

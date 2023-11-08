@@ -8,7 +8,6 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Input,
   useToast,
 } from "@chakra-ui/react";
 import {
@@ -18,10 +17,10 @@ import {
   Marker,
 } from "react-google-maps";
 
-import { useParams } from "react-router-dom";
 import { getCoordinatesFromCityName } from "../../Utils/Coordinates";
-import { useDispatch } from "react-redux";
-import { address } from "../../Redux/Services/locationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { address, location } from "../../Redux/Services/locationSlice";
+import { getCityName } from "../../Utils/getCityInfo";
 
 const MapComponent = withScriptjs(
   withGoogleMap(({ onMapClick, markerPosition }) => (
@@ -33,15 +32,13 @@ const MapComponent = withScriptjs(
     </GoogleMap>
   ))
 );
-
-const ServicePageModal = ({ isOpen, onClose }) => {
-  const [markerPosition, setMarkerPosition] = useState("");
+const ServicePageModal = ({ isOpen, onClose, closeDrawer }) => {
+  const [markerPosition, setMarkerPosition] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
-  const dispatch = useDispatch();
+  const [currentCityName, setCurrentCityName] = useState("");
   const toast = useToast();
-  const { city } = useParams();
-  console.log("The city:", city);
+  const dispatch = useDispatch();
+  const city = useSelector((state) => state.location.location);
 
   useEffect(() => {
     async function fetchCoordinates() {
@@ -51,9 +48,8 @@ const ServicePageModal = ({ isOpen, onClose }) => {
           lat: parseFloat(coordinates.lat),
           lng: parseFloat(coordinates.lng),
         };
-        setMarkerPosition(markerPosition);
 
-        console.log("marker", markerPosition);
+        setMarkerPosition(markerPosition);
       } catch (error) {
         console.error("Error fetching coordinates:", error);
       }
@@ -62,28 +58,30 @@ const ServicePageModal = ({ isOpen, onClose }) => {
     fetchCoordinates();
   }, [city]);
 
-  const handleMapClick = (event) => {
-    console.log("Latitude:", event.latLng.lat());
-    console.log("Longitude:", event.latLng.lng());
+  const handleMapClick = async (event) => {
+    const cityName = await getCityName(event.latLng.lat(), event.latLng.lng());
+    setCurrentCityName(cityName);
     setMarkerPosition({ lat: event.latLng.lat(), lng: event.latLng.lng() });
     setIsButtonDisabled(false);
-    console.log("the marker positions", markerPosition);
   };
 
   const handleGetLocation = () => {
-    console.log("in");
-    dispatch(address(markerPosition));
-    onClose();
-    toast({
-      title: "User Location/Address is set",
-      status: "success",
-      duration: 9000,
-      position: "top-right",
-      isClosable: false,
-      containerStyle: {
-        marginTop: "75px",
-      },
-    });
+    if (currentCityName) {
+      dispatch(address(markerPosition));
+      dispatch(location({ city: currentCityName }));
+      onClose();
+      closeDrawer();
+      toast({
+        title: "User Location/Address is set",
+        status: "success",
+        duration: 800,
+        position: "top-right",
+        isClosable: false,
+        containerStyle: {
+          marginTop: "75px",
+        },
+      });
+    }
   };
 
   return (
@@ -99,14 +97,16 @@ const ServicePageModal = ({ isOpen, onClose }) => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <MapComponent
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA0z8oDsJ-I4xR2TVF6QAB1vS9GHvgli4&v=3.exp&libraries=geometry,drawing,places"
-            loadingElement={<div style={{ height: "100%" }} />}
-            containerElement={<div style={{ height: "60vh" }} />}
-            mapElement={<div style={{ height: "100%" }} />}
-            onMapClick={handleMapClick}
-            markerPosition={markerPosition}
-          />
+          {markerPosition && (
+            <MapComponent
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA0z8oDsJ-I4xR2TVF6QAB1vS9GHvgli4&v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: "100%" }} />}
+              containerElement={<div style={{ height: "60vh" }} />}
+              mapElement={<div style={{ height: "100%" }} />}
+              onMapClick={handleMapClick}
+              markerPosition={markerPosition}
+            />
+          )}
         </ModalBody>
         <ModalFooter>
           <Button

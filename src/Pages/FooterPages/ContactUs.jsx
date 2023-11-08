@@ -70,7 +70,7 @@ const ContactUs = () => {
   }, []);
   return (
     <>
-      <h1 className="fs-1 text-center fw-bold mt-3 mb-3">Contact Us</h1>
+      <h1 className="fs-1 text-center fw-bold mt-5 mb-3 p-3">Contact Us</h1>
       <hr />
       <Container className="mt-4 p-5">
         <Row>

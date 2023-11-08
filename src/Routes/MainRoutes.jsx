@@ -27,9 +27,9 @@ const MainRoutes = () => {
       <Routes>
         <Route element={<CommonRoute />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/:city" element={<Home />} />
-          <Route path="/:city/services=:service" element={<ServicePage />} />
-          <Route path="/:city/near-me" element={<NearMe />} />
+          <Route path="/homepage" element={<Home />} />
+          <Route path="/services=:service" element={<ServicePage />} />
+          <Route path="/near-me" element={<NearMe />} />
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/:city/summary" element={<Summary />} />
           <Route path="/mycart" element={<MyCart />} />

@@ -24,12 +24,3 @@ export async function getCoordinatesFromCityName(cityName) {
     throw error;
   }
 }
-
-// Example usage:
-getCoordinatesFromCityName("New York")
-  .then((coordinates) => {
-    console.log(`Latitude: ${coordinates.lat}, Longitude: ${coordinates.lng}`);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });

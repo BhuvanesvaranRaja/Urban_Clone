@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const     ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
+const ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
   const [subServices, setSubServices] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -42,6 +42,9 @@ const     ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
     fetchSubServices();
   }, [isOpen, selectedService, city]);
 
+  function handleSubServiceClick(subService, city) {
+    navigate(`/services=${subService.name}`);
+  }
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={"5xl"}>
       <ModalOverlay />
@@ -80,13 +83,6 @@ const     ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
       </ModalContent>
     </Modal>
   );
-
-  function handleSubServiceClick(subService, city) {
-    navigate(`/${city}/services=${subService.name}`);
-    console.log("sub", subService.name);
-    console.log(city);
-    
-  }
 };
 
 export default ServiceModal;

@@ -8,7 +8,7 @@ const TermsAndConditions = () => {
   }, []);
   return (
     <>
-      <Heading className="fs-2 fw-bolder text-center p-5">
+      <Heading className="fs-2 fw-bolder text-center p-5 mt-4">
         Terms and Conditions
       </Heading>
 

@@ -13,6 +13,7 @@ import {
   MenuItem,
   MenuList,
   Menu,
+  useToast,
   Popover,
   PopoverArrow,
   PopoverHeader,
@@ -23,6 +24,7 @@ import {
 } from "@chakra-ui/react";
 import { FaBell, FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { address, locationMethod } from "../../Redux/Services/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -33,6 +35,11 @@ import LogoutConfirmationDialog from "../Modal/LogoutConfirmationDialog";
 import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { GoLocation } from "react-icons/go";
 import { Cities } from "..//../assets/Cities";
+import LocationDrawer from "../homepage/LocationDrawer";
+import AddressFetchModal from "../Service_Page/AddressFetchModal";
+import { useLocation } from "react-router-dom";
+import { location } from "../../Redux/Services/locationSlice";
+import { getCityName } from "../../Utils/getCityInfo";
 
 function LandingPage_Navbar() {
   const token = useSelector((state) => state.auth.token);
@@ -41,29 +48,46 @@ function LandingPage_Navbar() {
   const currentUser = JSON.parse(localStorage.getItem("userDetails"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { city } = useParams();
+  const city = useSelector((state) => state.location.location);
+  const { pathname } = useLocation();
+
+  const toast = useToast();
+  const locationPath = useLocation();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [isAddressFetchModalOpen, setIsAddressFetchModalOpen] = useState(false);
   const [currentCity, setCurrentCity] = useState(city);
-
   const cartItemCount = cartItems.length;
 
+  //NEEDED CHANGES
+  // useEffect(() => {
+  //   city === undefined
+  //     ? setCurrentCity("Select a Location")
+  //     : setCurrentCity(city);
+  // }, [city]);
   useEffect(() => {
-    city === undefined
-      ? setCurrentCity("Select a Location")
-      : setCurrentCity(city);
-  }, [city]);
+    if (locationPath.pathname === "/") {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [locationPath]);
 
-  // console.log("login by", loginMethod);
-
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+  };
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
   };
   const handleLocationChange = (event) => {
-    const newLocation = event.target.value;
+    const city = event.target.value;
     // Navigate to the selected location
-    if (newLocation) {
-      navigate(`/${newLocation}`);
+    if (city) {
+      dispatch(location({ city }));
+      dispatch(locationMethod("city"));
+      navigate(`homepage`);
     }
   };
   const handleLogout = () => {
@@ -108,7 +132,9 @@ function LandingPage_Navbar() {
   const goToNearMe = async () => {
     try {
       const city = await getCityFromGeolocation();
-      navigate(`/${city}/near-me`);
+      dispatch(location({ city }));
+      dispatch(locationMethod("current"));
+      navigate(`/near-me`);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -116,17 +142,76 @@ function LandingPage_Navbar() {
 
   const fetchLocation = async () => {
     try {
-      if (city) {
+      if (pathname === "/") {
+        const Currentcity = await getCityFromGeolocation();
+        console.log("curent", Currentcity);
+        dispatch(location({ city: Currentcity }));
+        dispatch(locationMethod("current"));
+        navigate("/homepage");
+      } else {
         const Currentcity = await getCityFromGeolocation();
         const currentURL = window.location.href;
         const newURL = currentURL.replace(`${city}`, `${Currentcity}`);
+        dispatch(location({ city: Currentcity }));
+        dispatch(loginMethod("current"));
         window.location.href = newURL;
-      } else {
-        const Currentcity = await getCityFromGeolocation();
-        navigate(`/${Currentcity}`);
       }
     } catch (error) {
       console.error("Error fetching the location ", error);
+    }
+  };
+  //Drawer setType
+  const handleSetType = async (type) => {
+    if (type === "map") {
+      setIsAddressFetchModalOpen(true);
+    } else if (type === "current") {
+      handleGetCurrentLocation();
+    } else {
+      console.log("error");
+    }
+  };
+  const openAddressFetchModal = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const closeAddressFetchModal = () => {
+    setIsAddressFetchModalOpen(false);
+  };
+  // current location
+  const handleGetCurrentLocation = async () => {
+    try {
+      if (navigator.geolocation) {
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+        const currentLat = position.coords.latitude;
+        const currentLng = position.coords.longitude;
+        const cityName = await getCityName(currentLat, currentLng);
+        dispatch(address({ lat: currentLat, lng: currentLng }));
+        console.log("from nav", cityName);
+        dispatch(location({ city: cityName }));
+        dispatch(locationMethod("current"));
+        setIsDrawerOpen(false);
+        toast({
+          title: "Your current Location is set as address",
+          status: "success",
+          duration: 800,
+          isClosable: true,
+          position: "top-right",
+          containerStyle: {
+            marginTop: "80px",
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error getting current location:", error);
+      toast({
+        title: "Geolocation is not supported by your browser",
+        status: "danger",
+        duration: 800,
+        isClosable: true,
+        position: "top-right",
+      });
     }
   };
 
@@ -162,7 +247,9 @@ function LandingPage_Navbar() {
               <Popover isLazy>
                 <PopoverTrigger>
                   <Button bg={"whiteAlpha.800"} color={"black"} p={"5"}>
-                    <span className="mx-2">{currentCity}</span>
+                    <span className="mx-2">
+                      {pathname === "/" ? "Select a location" : city}
+                    </span>
                     <GoLocation />
                   </Button>
                 </PopoverTrigger>
@@ -188,7 +275,6 @@ function LandingPage_Navbar() {
                       mt={"4"}
                       border={"none"}
                       onChange={handleLocationChange}>
-                      {" "}
                       <option value="">Choose your location</option>
                       {Cities.map((item, index) => {
                         if (item.city) {
@@ -211,7 +297,7 @@ function LandingPage_Navbar() {
                 onClick={goToNearMe}>
                 Services near me
               </Button>
-
+              {/* NOTIFICATION */}
               <Popover>
                 <PopoverTrigger>
                   <Button bg={"whiteAlpha.800"} color={"black"}>
@@ -326,19 +412,16 @@ function LandingPage_Navbar() {
           {token ? (
             <>
               <Menu>
-                <MenuButton
-                  as={Avatar}
-                  // colorScheme="orange"
-                  src={currentUser.profile}></MenuButton>
+                <MenuButton as={Avatar} src={currentUser.profile}></MenuButton>
                 <MenuList>
                   <MenuGroup>
-                    <Link to={"/mycart"}>
-                      <MenuItem
-                        style={{ color: "black" }}
-                        _hover={{ color: "white" }}>
-                        My Cart
-                      </MenuItem>
-                    </Link>
+                    <MenuItem
+                      onClick={openAddressFetchModal}
+                      isDisabled={disabled}
+                      style={{ color: "black" }}
+                      _hover={{ color: "white" }}>
+                      Edit Address
+                    </MenuItem>
                     <MenuItem
                       onClick={handleLogout}
                       style={{ color: "black" }}
@@ -369,7 +452,22 @@ function LandingPage_Navbar() {
         onClose={cancelLogout}
         onConfirm={confirmLogout}
         onCancel={cancelLogout}
-      />
+      />{" "}
+      {isDrawerOpen && (
+        <LocationDrawer
+          isOpen={isDrawerOpen}
+          onClose={() => setIsDrawerOpen(false)}
+          handleSetType={handleSetType}
+          openAddressFetchModal={openAddressFetchModal}
+        />
+      )}
+      {isAddressFetchModalOpen && (
+        <AddressFetchModal
+          isOpen={isAddressFetchModalOpen}
+          onClose={closeAddressFetchModal}
+          closeDrawer={handleDrawerClose}
+        />
+      )}
     </>
   );
 }

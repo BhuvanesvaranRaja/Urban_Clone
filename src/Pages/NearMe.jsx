@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Heading, Box } from "@chakra-ui/react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const NearMe = () => {
   const [servicesNearMe, setServicesNearMe] = useState({});
-  const { city } = useParams();
+  const city = useSelector((state) => state.location.location);
   const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
@@ -19,9 +21,11 @@ const NearMe = () => {
         console.error("Axios Error:", error);
       });
   }, [city]);
+
   const navigateTo = (name) => {
-    navigate(`/${city}/services=${name}`);
+    navigate(`/services=${name}`);
   };
+
   return (
     <>
       <div
@@ -43,29 +47,30 @@ const NearMe = () => {
         <ul
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            justifyContent: "center",
-            alignItems: "center",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "1rem",
             listStyle: "none",
             padding: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            maxWidth: "1200px",
           }}>
-          {servicesNearMe[0]?.services?.map((service) => (
-            <li key={service.id} style={{ padding: "0.5rem" }}>
-              {service.sub_services?.map((a, index) => (
+          {servicesNearMe[0]?.services?.map((service) =>
+            service.sub_services?.map((a, index) => (
+              <li key={index} style={{ padding: "1.5rem" }}>
                 <Box
-                  key={index}
                   onClick={() => navigateTo(a.name)}
                   borderWidth="1px"
                   borderRadius="lg"
-                  p="3rem"
+                  p="2rem"
                   m="1rem"
                   boxShadow="md"
                   _hover={{ boxShadow: "lg" }}>
                   {a.name} near me
                 </Box>
-              ))}
-            </li>
-          ))}
+              </li>
+            ))
+          )}
         </ul>
       </div>
     </>

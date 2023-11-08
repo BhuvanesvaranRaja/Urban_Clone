@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Button,
   Container,
@@ -5,21 +6,37 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import ServiceModal from "../Modal/ServiceModal";
+import { useSelector } from "react-redux";
 
 const ServicesCategory = ({ data }) => {
-  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedService, setSelectedService] = React.useState(null);
-  const { city } = useParams();
+  const city = useSelector((state) => state.location.location);
 
   const handleClick = (index, service) => {
-    console.log(`hello /${city}/${service}`);
     setSelectedService(service);
     onOpen();
   };
+
+  if (!data || !data[0]?.services || data[0].services.length === 0) {
+    return (
+      <Container
+        border="1px solid white"
+        borderRadius={"5px"}
+        boxShadow="rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px"
+        maxW="4xl"
+        h="150px"
+        mt="-5%"
+        bg="white"
+        display="flex"
+        justifyContent="center"
+        alignItems="center">
+        <Text>No services available</Text>
+      </Container>
+    );
+  }
+
   return (
     <Container
       border="1px solid white"
@@ -29,8 +46,7 @@ const ServicesCategory = ({ data }) => {
       h="150px"
       mt="-5%"
       bg="white"
-      display="flex"
-      zIndex={-1}>
+      display="flex">
       {data[0].services.map((item, index) => (
         <Button
           h="80%"

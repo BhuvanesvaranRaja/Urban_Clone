@@ -1,148 +1,190 @@
-/* global google */
+import React, { useState, useEffect } from "react";
 import {
   GoogleMap,
   InfoWindow,
   Marker,
   useLoadScript,
 } from "@react-google-maps/api";
-import { useState, useEffect } from "react";
-import "..//..//App.css";
 import { useSelector } from "react-redux";
+import { Button } from "@chakra-ui/react";
+import CenterDetailModal from "../Modal/CenterDetailModal";
+import { getCoordinatesFromCityName } from "../../Utils/Coordinates";
+import NoServiceCenterAvailableModal from "./NoServiceCenterAvailableModal";
 
-const Map = ({ centers, service, selectedService, index }) => {
-  const { isLoaded } = useLoadScript({
+const Map = ({ centers, service, index }) => {
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   });
-
   const [mapRef, setMapRef] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [infoWindowData, setInfoWindowData] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [selectedMarker, setSelectedMarker] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [centerData, setCenterData] = useState({});
+  const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false);
+  const [mapDataReceived, setMapDataReceived] = useState(false);
   const userLocation = useSelector((state) => state.location.address);
-  // console.log("address", userLocation.split(","));
+  const city = useSelector((state) => state.location.location);
+  const method = useSelector((state) => state.location.locationMethod);
 
+  // validating availability of service centers
   useEffect(() => {
-    if (centers && centers.length) {
-      const newMarkers = centers[0]?.service_categories[service]?.map(
-        (center, index) => ({
-          id: index,
-          lat: center.latitude,
-          lng: center.longitude,
-          address: center.address,
-          imageUrl: center.image,
-          name: center.name,
-        })
-      );
+    if (loadError) {
+      console.log("error occured", loadError);
+    } else if (isLoaded) {
+      const newMarkers =
+        centers && centers.length >= 1
+          ? centers[0]?.service_categories[service]?.map((center, index) => ({
+              id: index,
+              lat: center.latitude,
+              lng: center.longitude,
+              address: center.address,
+              imageUrl: center.image,
+              reviews: center.reviews,
+              services: center.services,
+              images: center.images,
+              name: center.name,
+            }))
+          : [];
+
       setMarkers(newMarkers);
+      setIsInfoWindowOpen(false);
+      setMapDataReceived(true);
     }
-  }, [centers, service]);
+  }, [isLoaded, centers, service, loadError]);
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log("the pos", position.coords);
-        const { latitude, longitude } = position.coords;
-        // const location = { lat: latitude, lng: longitude };
-        // const location = { lat: 11.078128784112577, lng: 76.99973851549666 };
-        const locationBreakUp = userLocation?.split(",");
-        const location = {
-          lat: parseInt(locationBreakUp[0]),
-          lng: parseInt(locationBreakUp[1]),
-        };
-        console.log("the location", location);
-        setCurrentLocation(location);
-
-        // Center the map on the user's location
-        if (mapRef) {
-          mapRef?.panTo(location);
+    if (mapDataReceived && mapRef) {
+      const fetchData = async () => {
+        let location;
+        if (method === "city") {
+          const cityCoordinates = await getCoordinatesFromCityName(city);
+          if (cityCoordinates) {
+            location = {
+              lat: parseFloat(cityCoordinates.lat),
+              lng: parseFloat(cityCoordinates.lng),
+            };
+          }
+        } else {
+          if (userLocation) {
+            location = {
+              lat: parseFloat(userLocation.lat),
+              lng: parseFloat(userLocation.lng),
+            };
+          }
         }
-      });
+
+        if (location) {
+          mapRef.panTo(location);
+          setCurrentLocation(location);
+        }
+      };
+
+      fetchData();
     }
-  }, [mapRef]);
+  }, [method, city, userLocation, mapDataReceived, mapRef]);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   const onMapLoad = (map) => {
     setMapRef(map);
   };
 
-  const handleMarkerClick = (id, lat, lng, address, imageUrl, name) => {
-    mapRef?.panTo({ lat, lng });
-    setInfoWindowData({ id, address, imageUrl, name });
-    setIsOpen(true);
+  const handleMarkerClick = (lat, lng) => {
+    const centerData = markers.find(
+      (marker) => marker.lat === lat && marker.lng === lng
+    );
+    setSelectedMarker({ lat, lng });
+    setCenterData(centerData);
+    setIsInfoWindowOpen(true);
   };
-  useEffect(() => {
-    if (selectedService !== null && typeof selectedService === "object") {
-      const id = index;
-      const lat = selectedService.latitude;
-      const lng = selectedService.longitude;
-      const address = selectedService.address;
-      const imageUrl = selectedService.image;
-      const name = selectedService.name;
-      handleMarkerClick(id, lat, lng, address, imageUrl, name);
-    }
-  }, [selectedService]);
+
+  const closeInfoWindow = () => {
+    setIsInfoWindowOpen(false);
+  };
 
   return (
     <div className="Map">
-      {!isLoaded ? (
+      {console.log("isLoaded:", isLoaded)}
+      {!isLoaded || !mapDataReceived ? (
         <h1>Loading...</h1>
       ) : (
         <GoogleMap
           mapContainerClassName="map-container"
           onLoad={onMapLoad}
           zoom={12}
-          center={currentLocation}
-          onClick={() => setIsOpen(false)}>
+          center={currentLocation}>
+          {" "}
           {markers.map(({ lat, lng, address, imageUrl, id, name }) => (
             <Marker
               key={id}
               position={{ lat, lng }}
               icon={{
-                url: require("..//../assets/marker.png"),
+                url: require("..//../assets/icons8-shop-50.png"),
                 scaledSize: new window.google.maps.Size(40, 40),
               }}
               onClick={() => {
-                handleMarkerClick(id, lat, lng, address, imageUrl, name);
-              }}>
-              {isOpen && infoWindowData?.id === id && (
-                <InfoWindow>
-                  <div style={{ padding: "10px" }}>
-                    {" "}
-                    <button
-                      className="custom-info-window-close-button"
-                      onClick={() => setIsOpen(false)}>
-                      X
-                    </button>
-                    {console.log("infor", infoWindowData)}
-                    <h1
-                      style={{
-                        fontSize: "20px",
-                        fontWeight: "bold",
-                        marginBottom: "2px",
-                        fontFamily: "monospace",
-                      }}>
-                      {infoWindowData.name}
-                    </h1>
-                    <h3>{infoWindowData.address}</h3>
-                    {infoWindowData.imageUrl && (
-                      <img
-                        src={infoWindowData.imageUrl}
-                        alt={infoWindowData.address}
-                        width={"100%"}
-                      />
-                    )}
-                  </div>
-                </InfoWindow>
-              )}
-            </Marker>
+                handleMarkerClick(lat, lng, address, imageUrl, name);
+              }}
+            />
           ))}
-
+          {selectedMarker && isInfoWindowOpen && (
+            <InfoWindow
+              position={selectedMarker}
+              onCloseClick={closeInfoWindow}>
+              <div>
+                <button
+                  className="custom-info-window-close-button"
+                  onClick={closeInfoWindow}>
+                  X
+                </button>
+                <h1
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    marginBottom: "5px",
+                    fontFamily: "monospace",
+                  }}>
+                  {centerData.name}
+                </h1>
+                <h3
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                    marginBottom: "2px",
+                    color: "red",
+                    letterSpacing: "1px",
+                    fontFamily: "monospace",
+                    marginBottom: "5px",
+                  }}>
+                  {centerData.address}
+                </h3>
+                {centerData.imageUrl && (
+                  <img
+                    src={centerData.imageUrl}
+                    alt={centerData.address}
+                    width={"100%"}
+                  />
+                )}
+                <Button
+                  w={"100%"}
+                  bg={"blackAlpha.500"}
+                  colorScheme="blackAlpha.500"
+                  mt={3}
+                  color={"white"}
+                  onClick={openModal}>
+                  VIEW DETAILS
+                </Button>
+              </div>
+            </InfoWindow>
+          )}
           {currentLocation && (
             <Marker
               position={currentLocation}
               icon={{
-                url: require("..//../assets/map-marker-home.png"),
-                scaledSize: new window.google.maps.Size(50, 50),
+                url: require("..//../assets/mylocation.png"),
+                scaledSize: new window.google.maps.Size(70, 70),
               }}
               onClick={() => {
                 console.log("my location");
@@ -151,6 +193,11 @@ const Map = ({ centers, service, selectedService, index }) => {
           )}
         </GoogleMap>
       )}
+      <CenterDetailModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        center={centerData}
+      />
     </div>
   );
 };

@@ -21,24 +21,20 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
-import { GrLocation } from "react-icons/gr";
-import axios from "axios";
 import ServicesCategory from "../Service_Category/ServicesCategory";
 import styles from "../../StyleComponents/Home.module.css";
 import { useThrottle } from "use-throttle";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { getService } from "../../Api/getServices";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { location } from "../../Redux/Services/locationSlice";
 
 const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
-  const { city } = useParams();
+  // const { city } = useParams();
+  const city = useSelector((state) => state.location.location);
   const [inputText, setInputText] = useState("");
-  const [InitialLocation, setInitialLocation] = useState(`${city}`);
   const [servicesData, setServicesData] = useState(null);
-
-  const [active, setActive] = useState(0);
   const scrollRef = useRef();
   const dispatch = useDispatch();
 
@@ -60,18 +56,14 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
   };
 
   const searchResult = (value) => {
-    navigate(`/${city}/services=${value}`);
+    navigate(`/services=${value}`);
   };
   //function to fetch location
-
   const fetchLocation = async () => {
     try {
       const city = await getCityFromGeolocation();
-
       dispatch(location({ city }));
-      setInitialLocation(city);
-
-      navigate(`/${city}`);
+      navigate(`/homepage`);
       console.log("navigated");
     } catch (error) {
       console.error("Error fetching the location ", error);
@@ -164,11 +156,13 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
             <Box
               className={styles.searchResultBox}
               len={suggestions.length}
-              limit={3}
-              active={active}
+              limit={10}
+              style={{
+                position: "absolute",
+                zIndex: 9999,
+              }}
               ref={scrollRef}>
               {suggestions.map((item, index) => {
-                console.log("serarch", item);
                 return (
                   <Box
                     key={index}

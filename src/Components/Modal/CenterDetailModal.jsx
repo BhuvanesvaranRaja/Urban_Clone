@@ -17,15 +17,13 @@ import PriceDetails from "./PriceDetails";
 import AccordianComp from "../Modal/Accordian";
 
 const CenterDetailModal = ({ isOpen, onClose, center, overlay }) => {
-  console.log("this is the center modal", center);
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
       {overlay}
       <ModalOverlay />
       <ModalContent>
         {/* <Image src={center.image} height={"500px"} /> */}
-        <ImageCarsoule images={center.images} margin />
+        <ImageCarsoule images={center.images} />
         <ModalHeader className="fs-3 text-danger">{center.name}</ModalHeader>
         <ModalCloseButton
           bg="red.700"

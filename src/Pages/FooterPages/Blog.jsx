@@ -33,8 +33,6 @@ const BlogPage = () => {
   }, []);
   return (
     <>
-      <h2 className="blog-title text-center fw-bolder fs-1 mb-5">Blogs</h2>
-      <hr />
       <Container className="blog-container mt-4">
         <Carousel
           className="blog-carousel"
