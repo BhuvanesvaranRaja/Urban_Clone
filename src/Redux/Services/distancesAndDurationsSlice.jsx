@@ -5,12 +5,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const distancesAndDurationsSlice = createSlice({
   name: "distancesAndDurations",
   initialState: {
-    distance: [], // Initialize to an empty array
+    distance: [],
   },
   reducers: {
     setDistancesAndDurations: (state, action) => {
       state.distance = action.payload;
-      // Update local storage here (optional)
       localStorage.setItem(
         "distanceAndDuration",
         JSON.stringify(action.payload)

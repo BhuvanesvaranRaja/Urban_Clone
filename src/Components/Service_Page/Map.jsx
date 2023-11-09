@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import { Button } from "@chakra-ui/react";
 import CenterDetailModal from "../Modal/CenterDetailModal";
 import { getCoordinatesFromCityName } from "../../Utils/Coordinates";
-import NoServiceCenterAvailableModal from "./NoServiceCenterAvailableModal";
 
 const Map = ({ centers, service, index }) => {
   const { isLoaded, loadError } = useLoadScript({
@@ -28,6 +27,7 @@ const Map = ({ centers, service, index }) => {
   const method = useSelector((state) => state.location.locationMethod);
 
   // validating availability of service centers
+
   useEffect(() => {
     if (loadError) {
       console.log("error occured", loadError);
