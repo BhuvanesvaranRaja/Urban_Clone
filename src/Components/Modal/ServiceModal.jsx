@@ -13,6 +13,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { getService } from "../../Api/getServices";
 
 const ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
   const [subServices, setSubServices] = useState([]);
@@ -21,7 +22,7 @@ const ServiceModal = ({ isOpen, onClose, selectedService, city }) => {
     async function fetchSubServices() {
       if (isOpen) {
         try {
-          const response = await axios.get(
+          const response = await getService.get(
             `http://localhost:8088/cities?city=${city}`
           );
           const selectedCity = response.data.find((item) => item.city === city);

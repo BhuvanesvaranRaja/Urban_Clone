@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const appId = "837933008028886";
+const appId = process.env.REACT_APP_FACEBOOK_APPID;
 
 const Login = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -188,7 +188,7 @@ const Login = ({ onClose }) => {
             <Text>Or login with </Text>
             <Flex justifyContent={"space-evenly"}>
               <GoogleLogin
-                clientId="1095168063845-kehnkv6r9kg7nc94id7tpm69sv0lafjf.apps.googleusercontent.com"
+                clientId={process.env.REACT_APP_GOOGLE_LOGIN_CLIENTID}
                 onSuccess={handleGoogleLoginSuccess}
                 onFailure={handleGoogleLoginFailure}
                 cookiePolicy={"single_host_origin"}

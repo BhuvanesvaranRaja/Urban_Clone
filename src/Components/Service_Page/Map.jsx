@@ -51,7 +51,7 @@ const Map = ({ centers, service, index }) => {
       setIsInfoWindowOpen(false);
       setMapDataReceived(true);
     }
-  }, [isLoaded, centers, service, loadError]);
+  }, [isLoaded, centers, service, userLocation, loadError]);
 
   useEffect(() => {
     if (mapDataReceived && mapRef) {

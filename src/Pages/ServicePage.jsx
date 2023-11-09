@@ -6,9 +6,9 @@ import { getAllProducts } from "../Redux/Services/action";
 import { Badge, Container, Button } from "@chakra-ui/react";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Map from "../Components/Service_Page/Map";
 import ListView from "../Components/Service_Page/ListView";
+import { getService } from "../Api/getServices";
 const ServicePage = () => {
   const { service } = useParams();
   const city = useSelector((state) => state.location.location);
@@ -21,9 +21,7 @@ const ServicePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8088/service_centers?city=${city}`
-        );
+        const response = await getService.get(`/service_centers?city=${city}`);
         if (response.data?.length > 0) {
           setServiceCenters(response.data);
           setSelectedService(response.data[0]);

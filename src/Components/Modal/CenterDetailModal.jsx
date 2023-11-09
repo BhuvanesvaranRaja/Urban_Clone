@@ -22,7 +22,6 @@ const CenterDetailModal = ({ isOpen, onClose, center, overlay }) => {
       {overlay}
       <ModalOverlay />
       <ModalContent>
-        {/* <Image src={center.image} height={"500px"} /> */}
         <ImageCarsoule images={center.images} />
         <ModalHeader className="fs-3 text-danger">{center.name}</ModalHeader>
         <ModalCloseButton
@@ -30,7 +29,6 @@ const CenterDetailModal = ({ isOpen, onClose, center, overlay }) => {
           color="white"
           padding={"10px"}
           fontWeight="bold"
-          // borderRadius="10%"
           size={"sm"}
           _hover={{
             bg: "red.600",

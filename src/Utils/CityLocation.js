@@ -34,7 +34,7 @@ async function getCity(coordinates) {
 
   try {
     const response = await axios.get(
-      `https://us1.locationiq.com/v1/reverse.php?key=pk.41795673e6c8216eb3aac4201a4801f1&lat=${lat}&lon=${lng}&format=json`
+      `https://us1.locationiq.com/v1/reverse.php?key=${process.env.REACT_APP_LAT_TO_CITY}&lat=${lat}&lon=${lng}&format=json`
     );
     const city = response.data.address.county;
     const parts = city.split(" ");

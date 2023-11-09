@@ -1,16 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import ReqAuth from "../Components/Service_pages(no)/ReqAuth";
 import Blog from "../Pages//FooterPages/Blog";
-import Bookings from "../Pages/Bookings";
-import Checkout from "../Pages/Checkout";
 import Home from "../Pages/Home";
 import LandingPage from "../Pages/LandingPage";
 import ServicePage from "../Pages/ServicePage";
-import Summary from "../Pages/Summary";
 import NearMe from "../Pages/NearMe";
-import LandingPage_Navbar from "../Components/Navbar/LandingPg_Navbar";
 import CommonRoute from "./CommonRoute";
 import AboutUs from "../Pages/FooterPages/AboutUs";
 import ContactUs from "../Pages/FooterPages/ContactUs";
@@ -27,21 +22,11 @@ const MainRoutes = () => {
       <Routes>
         <Route element={<CommonRoute />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/homepage" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/services=:service" element={<ServicePage />} />
           <Route path="/near-me" element={<NearMe />} />
-          <Route path="/bookings" element={<Bookings />} />
-          <Route path="/:city/summary" element={<Summary />} />
-          <Route path="/mycart" element={<MyCart />} />
-          <Route
-            path="/:city/summary/checkout"
-            element={
-              <ReqAuth>
-                <Checkout />
-              </ReqAuth>
-            }
-          />
           <Route path="/aboutus" element={<AboutUs />}></Route>
+          <Route path="/mycart" element={<MyCart />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/tandc" element={<TermsAndConditions />} />

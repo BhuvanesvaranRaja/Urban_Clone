@@ -245,13 +245,7 @@ const HomePageService = ({ scrollNav }) => {
   return (
     <Box textAlign={"center"}>
       {/* HOME SERVICES CARDS */}
-      {/* <Heading
-        fontSize="32px"
-        fontWeight="700"
-        lineHeight="48px"
-        m="4% 0 10% 0">
-        Home Services
-      </Heading> */}
+
       {/* <ServicesCategory data={cardData} /> */}
       <Divider className={styles.dividers} />
       {/* {scrollNav > 1000 ? <HomePageNav /> : ""} */}

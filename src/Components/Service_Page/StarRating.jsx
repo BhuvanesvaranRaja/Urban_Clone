@@ -3,12 +3,11 @@ import { Box, Icon } from "@chakra-ui/react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
 const StarRating = ({ rating }) => {
-  const maxRating = 5; // Define the maximum rating
+  const maxRating = 5;
 
   const renderStars = () => {
     const stars = [];
 
-    // Calculate the number of full stars and half stars
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
 

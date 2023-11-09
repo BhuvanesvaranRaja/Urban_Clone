@@ -5,7 +5,6 @@ import "../../StyleComponents/body_1.css";
 import woman from "../../assets/woman_uc.png";
 import { Cities } from "../../assets/Cities";
 import { Link, useNavigate } from "react-router-dom";
-import { getCityFromGeolocation } from "../../Utils/CityLocation";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { location, locationMethod } from "../../Redux/Services/locationSlice";
@@ -24,7 +23,7 @@ const Body_1 = () => {
   const handleNavigation = () => {
     dispatch(location({ city }));
     dispatch(locationMethod("city"));
-    navigate(`/homepage`);
+    navigate(`/home`);
   };
 
   return (

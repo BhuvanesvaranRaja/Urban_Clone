@@ -83,7 +83,7 @@ const ServicePageModal = ({ isOpen, onClose, closeDrawer }) => {
       });
     }
   };
-
+  const mapURL = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={"3xl"} isCentered>
       <ModalOverlay />
@@ -99,7 +99,7 @@ const ServicePageModal = ({ isOpen, onClose, closeDrawer }) => {
         <ModalBody>
           {markerPosition && (
             <MapComponent
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA0z8oDsJ-I4xR2TVF6QAB1vS9GHvgli4&v=3.exp&libraries=geometry,drawing,places"
+              googleMapURL={mapURL}
               loadingElement={<div style={{ height: "100%" }} />}
               containerElement={<div style={{ height: "60vh" }} />}
               mapElement={<div style={{ height: "100%" }} />}

@@ -1,4 +1,3 @@
-// GetContactModal.js
 import React, { useState } from "react";
 import {
   Modal,
@@ -18,16 +17,15 @@ const GetContactModal = ({ isOpen, onClose, overlay }) => {
   const [validationError, setValidationError] = useState(null);
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.auth.user);
-  console.log("from redux", userDetails);
+
   const handleProceed = () => {
-    if (
-      !contactNumber ||
-      contactNumber.trim() === "" ||
-      contactNumber.length < 10
-    ) {
-      setValidationError("Please enter valid contact number");
+    const validContactNumber = /^\d{10}$/;
+
+    if (!contactNumber || !validContactNumber.test(contactNumber)) {
+      setValidationError("Please enter a valid 10-digit contact number");
       return;
     }
+
     dispatch(updateContactNumber(contactNumber));
     localStorage.setItem(
       "userDetails",
@@ -35,6 +33,12 @@ const GetContactModal = ({ isOpen, onClose, overlay }) => {
     );
 
     onClose();
+  };
+
+  const handleInputKeyUp = (e) => {
+    if (e.key === "Enter") {
+      handleProceed();
+    }
   };
 
   return (
@@ -48,6 +52,7 @@ const GetContactModal = ({ isOpen, onClose, overlay }) => {
             placeholder="Please enter your contact number"
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
+            onKeyUp={handleInputKeyUp}
           />
           {validationError && <p style={{ color: "red" }}>{validationError}</p>}
         </ModalBody>

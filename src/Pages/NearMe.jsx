@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Heading, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useSelector } from "react-redux";
+import { getService } from "../Api/getServices";
 
 const NearMe = () => {
   const [servicesNearMe, setServicesNearMe] = useState({});
@@ -14,8 +14,8 @@ const NearMe = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8088/cities?city=${city}`)
+    getService
+      .get(`/cities?city=${city}`)
       .then((response) => setServicesNearMe(response.data))
       .catch((error) => {
         console.error("Axios Error:", error);

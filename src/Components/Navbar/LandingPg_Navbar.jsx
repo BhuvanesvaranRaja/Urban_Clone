@@ -5,7 +5,6 @@ import {
   Image,
   Button,
   Text,
-  Icon,
   Avatar,
   Select,
   MenuButton,
@@ -27,7 +26,7 @@ import { useEffect, useState } from "react";
 import { address, locationMethod } from "../../Redux/Services/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogout } from "react-google-login";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../Redux/Services/authSlice";
 import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
 import LoginModal from "../Modal/LoginModal";
@@ -46,11 +45,10 @@ function LandingPage_Navbar() {
   const cartItems = useSelector((state) => state.cart);
   const loginMethod = useSelector((state) => state.auth.loginMethod);
   const currentUser = JSON.parse(localStorage.getItem("userDetails"));
+  const city = useSelector((state) => state.location.location);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const city = useSelector((state) => state.location.location);
   const { pathname } = useLocation();
-
   const toast = useToast();
   const locationPath = useLocation();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -58,15 +56,8 @@ function LandingPage_Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [isAddressFetchModalOpen, setIsAddressFetchModalOpen] = useState(false);
-  const [currentCity, setCurrentCity] = useState(city);
   const cartItemCount = cartItems.length;
 
-  //NEEDED CHANGES
-  // useEffect(() => {
-  //   city === undefined
-  //     ? setCurrentCity("Select a Location")
-  //     : setCurrentCity(city);
-  // }, [city]);
   useEffect(() => {
     if (locationPath.pathname === "/") {
       setDisabled(true);
@@ -87,7 +78,7 @@ function LandingPage_Navbar() {
     if (city) {
       dispatch(location({ city }));
       dispatch(locationMethod("city"));
-      navigate(`homepage`);
+      navigate(`home`);
     }
   };
   const handleLogout = () => {
@@ -115,8 +106,8 @@ function LandingPage_Navbar() {
   };
 
   const { signOut } = useGoogleLogout({
-    clientId:
-      "1095168063845-kehnkv6r9kg7nc94id7tpm69sv0lafjf.apps.googleusercontent.com",
+    clientId: process.env.REACT_APP_GOOGLE_LOGIN_CLIENTID,
+    // "1095168063845-kehnkv6r9kg7nc94id7tpm69sv0lafjf.apps.googleusercontent.com",
     onLogoutSuccess: () => {
       console.log("Logged out from Google");
       dispatch(logout());
@@ -147,7 +138,7 @@ function LandingPage_Navbar() {
         console.log("curent", Currentcity);
         dispatch(location({ city: Currentcity }));
         dispatch(locationMethod("current"));
-        navigate("/homepage");
+        navigate("/home");
       } else {
         const Currentcity = await getCityFromGeolocation();
         const currentURL = window.location.href;
@@ -188,7 +179,6 @@ function LandingPage_Navbar() {
         const currentLng = position.coords.longitude;
         const cityName = await getCityName(currentLat, currentLng);
         dispatch(address({ lat: currentLat, lng: currentLng }));
-        console.log("from nav", cityName);
         dispatch(location({ city: cityName }));
         dispatch(locationMethod("current"));
         setIsDrawerOpen(false);
