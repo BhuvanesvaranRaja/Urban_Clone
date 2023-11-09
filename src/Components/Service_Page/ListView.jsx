@@ -113,10 +113,8 @@ const ListView = ({ centers, service }) => {
 
   return (
     <div className="d-flex">
-      {centers?.length === 0 ? (
-        <>
-          <NoServiceCenterAvailable />
-        </>
+      {centers?.length === 0 || !centers[0]?.service_categories[service] ? (
+        <NoServiceCenterAvailable />
       ) : (
         <>
           <Box p={3}>

@@ -25,7 +25,7 @@ const Map = ({ centers, service, index }) => {
   const userLocation = useSelector((state) => state.location.address);
   const city = useSelector((state) => state.location.location);
   const method = useSelector((state) => state.location.locationMethod);
-
+  console.log("center recieved in map", centers, service);
   // validating availability of service centers
 
   useEffect(() => {
@@ -33,8 +33,10 @@ const Map = ({ centers, service, index }) => {
       console.log("error occured", loadError);
     } else if (isLoaded) {
       const newMarkers =
-        centers && centers.length >= 1
-          ? centers[0]?.service_categories[service]?.map((center, index) => ({
+        centers &&
+        centers.length >= 1 &&
+        centers[0]?.service_categories[service]
+          ? centers[0].service_categories[service].map((center, index) => ({
               id: index,
               lat: center.latitude,
               lng: center.longitude,

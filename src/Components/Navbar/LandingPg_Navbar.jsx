@@ -52,7 +52,6 @@ function LandingPage_Navbar() {
   const { pathname } = useLocation();
   const toast = useToast();
   const locationPath = useLocation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
@@ -437,6 +436,7 @@ function LandingPage_Navbar() {
             <Button
               onClick={handleLoginClick}
               cursor={"pointer"}
+              mx={"2"}
               bg={"whiteAlpha.800"}
               color={"black"}>
               Login | Signup

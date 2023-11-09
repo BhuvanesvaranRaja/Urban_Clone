@@ -99,7 +99,7 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
           h="300px"
           mt="20%"
           position="absolute">
-          <Flex h="60px" justifyContent={"space-between"}>
+          <Flex h="45px" justifyContent={"space-between"}>
             <Flex
               alignItems={"center"}
               bgColor={"whitesmoke"}
@@ -111,18 +111,25 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
                 alt="flag"
                 m="5%"
               />
-              <Text>{city}</Text>
+              <Text mx={"2"}>{city}</Text>
               <Popover isLazy>
                 <PopoverTrigger>
-                  <Button bg="whitesmoke">
+                  <Button
+                    bg="whitesmoke"
+                    colorScheme="white"
+                    color={"black"}
+                    size={"sm"}>
                     <GoTriangleDown />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent mt="3%" w="40vh" h="75px">
-                  <PopoverArrow ml="-8rem" />
+                <PopoverContent mt="3%" w="40vh" h="65px">
+                  <PopoverArrow ml="-3rem" />
                   <PopoverCloseButton />
-                  <PopoverBody mt="3%" h="40%">
-                    <Button onClick={fetchLocation}>
+                  <PopoverBody mt="3%" h="40%" mx="35">
+                    <Button
+                      onClick={fetchLocation}
+                      size={"sm"}
+                      colorScheme="blackAlpha">
                       Get Current Location
                     </Button>
                   </PopoverBody>

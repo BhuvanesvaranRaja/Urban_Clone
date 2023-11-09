@@ -13,8 +13,6 @@ const ServicePage = () => {
   const { service } = useParams();
   const city = useSelector((state) => state.location.location);
   const [serviceCenters, setServiceCenters] = useState([]);
-  const [selectedService, setSelectedService] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [id, setId] = useState(null);
   const [displayNewComponent, setDisplayNewComponent] = useState(false);
   const dispatch = useDispatch();
@@ -22,9 +20,9 @@ const ServicePage = () => {
     const fetchData = async () => {
       try {
         const response = await getService.get(`/service_centers?city=${city}`);
+        console.log("response", response);
         if (response.data?.length > 0) {
           setServiceCenters(response.data);
-          setSelectedService(response.data[0]);
         } else {
           // Data is not available
           setServiceCenters("");

@@ -42,11 +42,11 @@
   height: 36rem;
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
     url("https://res.cloudinary.com/urbanclap/image/upload/images/growth/home-screen/1615375782838-f890f8.jpeg");
-  background-size: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 }
 
 .popOverButton {
@@ -83,14 +83,14 @@
   overflow: auto;
   margin-left: 30%;
   margin-top: 1%;
-  border-radius:5px;
+  border-radius: 5px;
   border-top: none;
   background-color: whitesmoke;
   text-align: left;
-  padding:3% ;
+  padding: 3%;
   /* display: none; */
 }
-.suggestions{
+.suggestions {
   padding: 2%;
   border-radius: 5px;
   margin-bottom: 2%;
