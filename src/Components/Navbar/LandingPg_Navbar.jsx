@@ -14,6 +14,7 @@ import {
   Menu,
   useToast,
   Popover,
+  useDisclosure,
   PopoverArrow,
   PopoverHeader,
   PopoverBody,
@@ -51,11 +52,15 @@ function LandingPage_Navbar() {
   const { pathname } = useLocation();
   const toast = useToast();
   const locationPath = useLocation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogoutAlertOpen, setIsLogoutAlertOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [isAddressFetchModalOpen, setIsAddressFetchModalOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
   const cartItemCount = cartItems.length;
 
   useEffect(() => {
@@ -79,6 +84,7 @@ function LandingPage_Navbar() {
       dispatch(location({ city }));
       dispatch(locationMethod("city"));
       navigate(`home`);
+      setIsPopoverOpen(false);
     }
   };
   const handleLogout = () => {
@@ -107,7 +113,6 @@ function LandingPage_Navbar() {
 
   const { signOut } = useGoogleLogout({
     clientId: process.env.REACT_APP_GOOGLE_LOGIN_CLIENTID,
-    // "1095168063845-kehnkv6r9kg7nc94id7tpm69sv0lafjf.apps.googleusercontent.com",
     onLogoutSuccess: () => {
       console.log("Logged out from Google");
       dispatch(logout());
@@ -144,7 +149,7 @@ function LandingPage_Navbar() {
         const currentURL = window.location.href;
         const newURL = currentURL.replace(`${city}`, `${Currentcity}`);
         dispatch(location({ city: Currentcity }));
-        dispatch(loginMethod("current"));
+        dispatch(locationMethod("current"));
         window.location.href = newURL;
       }
     } catch (error) {
@@ -234,9 +239,15 @@ function LandingPage_Navbar() {
               </Link>
             </Flex>
             <HStack as={"nav"}>
-              <Popover isLazy>
+              <Popover
+                isOpen={isPopoverOpen}
+                onClose={() => setIsPopoverOpen(false)}>
                 <PopoverTrigger>
-                  <Button bg={"whiteAlpha.800"} color={"black"} p={"5"}>
+                  <Button
+                    bg={"whiteAlpha.800"}
+                    color={"black"}
+                    p={"5"}
+                    onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
                     <span className="mx-2">
                       {pathname === "/" ? "Select a location" : city}
                     </span>
