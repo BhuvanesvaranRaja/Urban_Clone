@@ -84,6 +84,7 @@ function LandingPage_Navbar() {
       dispatch(locationMethod("city"));
       navigate(`home`);
       setIsPopoverOpen(false);
+      event.target.value = "";
     }
   };
   const handleLogout = () => {
@@ -264,7 +265,7 @@ function LandingPage_Navbar() {
                   <PopoverBody bg={"white"}>
                     <Button
                       colorScheme={"blackAlpha"}
-                      color={"white"}
+                      color={"black"}
                       width={"100%"}
                       onClick={fetchLocation}>
                       Get Current Location

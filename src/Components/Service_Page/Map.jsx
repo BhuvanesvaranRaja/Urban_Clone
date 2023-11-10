@@ -25,13 +25,15 @@ const Map = ({ centers, service, index }) => {
   const userLocation = useSelector((state) => state.location.address);
   const city = useSelector((state) => state.location.location);
   const method = useSelector((state) => state.location.locationMethod);
-  console.log("center recieved in map", centers, service);
-  // validating availability of service centers
+  console.log("center received in map", centers, service);
 
   useEffect(() => {
     if (loadError) {
-      console.log("error occured", loadError);
+      console.log("Error loading Google Maps script:", loadError);
     } else if (isLoaded) {
+      // Clear existing markers before updating
+      setMarkers([]);
+
       const newMarkers =
         centers &&
         centers.length >= 1 &&
@@ -77,7 +79,10 @@ const Map = ({ centers, service, index }) => {
         }
 
         if (location) {
-          mapRef.panTo(location);
+          // Check if mapRef is not null before using panTo
+          if (mapRef) {
+            mapRef.panTo(location);
+          }
           setCurrentLocation(location);
         }
       };
@@ -108,7 +113,6 @@ const Map = ({ centers, service, index }) => {
 
   return (
     <div className="Map">
-      {console.log("isLoaded:", isLoaded)}
       {!isLoaded || !mapDataReceived ? (
         <h1>Loading...</h1>
       ) : (
@@ -117,7 +121,6 @@ const Map = ({ centers, service, index }) => {
           onLoad={onMapLoad}
           zoom={12}
           center={currentLocation}>
-          {" "}
           {markers.map(({ lat, lng, address, imageUrl, id, name }) => (
             <Marker
               key={id}
@@ -158,7 +161,6 @@ const Map = ({ centers, service, index }) => {
                     color: "red",
                     letterSpacing: "1px",
                     fontFamily: "monospace",
-                    marginBottom: "5px",
                   }}>
                   {centerData.address}
                 </h3>

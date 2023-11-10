@@ -82,16 +82,20 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
             </BreadcrumbItem>
           </Breadcrumb>
         </Container>
-        <Heading
-          as={"h1"}
-          fontSize="48px"
-          fontWeight="500"
-          color="white"
-          lineHeight={"72px"}
-          mb={10}>
-          Home services, on demand.
-        </Heading>
-        <br />
+        <div display={"flex"}>
+          <Heading
+            as={"h1"}
+            fontSize="48px"
+            fontWeight="500"
+            color="white"
+            lineHeight={"72px"}
+            mb={10}>
+            Home services, on demand.
+          </Heading>
+          <br />
+          <br />{" "}
+        </div>
+
         <br />
         <Container
           maxW="3xl"
@@ -184,8 +188,6 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
             </Box>
           )}
         </Container>
-
-        <br />
       </Box>
       {servicesData && <ServicesCategory data={servicesData} />}
     </Box>
