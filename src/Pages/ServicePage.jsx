@@ -20,7 +20,6 @@ const ServicePage = () => {
     const fetchData = async () => {
       try {
         const response = await getService.get(`/service_centers?city=${city}`);
-        console.log("response", response);
         if (response.data?.length > 0) {
           setServiceCenters(response.data);
         } else {

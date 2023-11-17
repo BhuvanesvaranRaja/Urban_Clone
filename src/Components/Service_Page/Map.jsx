@@ -25,20 +25,23 @@ const Map = ({ centers, service, index }) => {
   const userLocation = useSelector((state) => state.location.address);
   const city = useSelector((state) => state.location.location);
   const method = useSelector((state) => state.location.locationMethod);
-  console.log("center received in map", centers, service);
-
+  const mapKey = JSON.stringify({ currentLocation, markers });
   useEffect(() => {
+    console.log("THE SEPERATE MARKERS ", markers);
+  }, [markers]);
+  useEffect(() => {
+    let isMounted = true;
+
     if (loadError) {
       console.log("Error loading Google Maps script:", loadError);
     } else if (isLoaded) {
-      // Clear existing markers before updating
-      setMarkers([]);
+      // setMarkers([]);
 
       const newMarkers =
         centers &&
         centers.length >= 1 &&
         centers[0]?.service_categories[service]
-          ? centers[0].service_categories[service].map((center, index) => ({
+          ? centers[0].service_categories[service]?.map((center, index) => ({
               id: index,
               lat: center.latitude,
               lng: center.longitude,
@@ -51,16 +54,25 @@ const Map = ({ centers, service, index }) => {
             }))
           : [];
 
-      setMarkers(newMarkers);
-      setIsInfoWindowOpen(false);
-      setMapDataReceived(true);
+      if (isMounted) {
+        setMarkers(newMarkers);
+        console.log("THE MARKERS", newMarkers);
+        setIsInfoWindowOpen(false);
+        setMapDataReceived(true);
+      }
     }
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+    };
   }, [isLoaded, centers, service, userLocation, loadError]);
 
   useEffect(() => {
-    if (mapDataReceived && mapRef) {
+    if (mapDataReceived && mapRef && userLocation) {
       const fetchData = async () => {
         let location;
+
         if (method === "city") {
           const cityCoordinates = await getCoordinatesFromCityName(city);
           if (cityCoordinates) {
@@ -70,16 +82,13 @@ const Map = ({ centers, service, index }) => {
             };
           }
         } else {
-          if (userLocation) {
-            location = {
-              lat: parseFloat(userLocation.lat),
-              lng: parseFloat(userLocation.lng),
-            };
-          }
+          location = {
+            lat: parseFloat(userLocation.lat),
+            lng: parseFloat(userLocation.lng),
+          };
         }
 
         if (location) {
-          // Check if mapRef is not null before using panTo
           if (mapRef) {
             mapRef.panTo(location);
           }
@@ -90,14 +99,18 @@ const Map = ({ centers, service, index }) => {
       fetchData();
     }
   }, [method, city, userLocation, mapDataReceived, mapRef]);
+
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const onMapLoad = (map) => {
-    setMapRef(map);
+    if (!mapRef) {
+      setMapRef(map);
+    }
   };
 
+  //Markers click event handler
   const handleMarkerClick = (lat, lng) => {
     const centerData = markers.find(
       (marker) => marker.lat === lat && marker.lng === lng
@@ -120,8 +133,10 @@ const Map = ({ centers, service, index }) => {
           mapContainerClassName="map-container"
           onLoad={onMapLoad}
           zoom={12}
+          // ref={mapRef}
+          // key={mapKey}
           center={currentLocation}>
-          {markers.map(({ lat, lng, address, imageUrl, id, name }) => (
+          {markers?.map(({ lat, lng, address, imageUrl, id, name }) => (
             <Marker
               key={id}
               position={{ lat, lng }}

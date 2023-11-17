@@ -25,6 +25,7 @@ import "../../App.css";
 import { Icon } from "@chakra-ui/react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import ToastMessage from "./ToastMessage";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -36,6 +37,7 @@ const appId = process.env.REACT_APP_FACEBOOK_APPID;
 const Login = ({ onClose }) => {
   const dispatch = useDispatch();
   const [loginError, setLoginError] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [app, setApp] = useState(0);
 
   useEffect(() => {
@@ -67,6 +69,7 @@ const Login = ({ onClose }) => {
         })
       );
       setLoginError(false);
+      setIsLoggedIn(true);
       onClose();
     } else {
       console.log("Login failed");
@@ -92,6 +95,8 @@ const Login = ({ onClose }) => {
       })
     );
     onClose();
+    setIsLoggedIn(true);
+    console.log("checnk facebook", isLoggedIn);
   };
 
   const handleGoogleLoginFailure = (response) => {
@@ -112,6 +117,7 @@ const Login = ({ onClose }) => {
                 contact: "",
                 profile: profileData.picture.data.url,
               };
+
               dispatch(
                 loginFacebook({
                   token: token,
@@ -131,11 +137,16 @@ const Login = ({ onClose }) => {
         fields: "name,email,picture",
       }
     );
+    console.log("FACEBOOK", isLoggedIn);
     onClose();
+    setIsLoggedIn(true);
   };
 
   return (
     <Box p={5} borderWidth={1} borderRadius="md">
+      {" "}
+      {console.log("isLoggedIn:", isLoggedIn)}
+      {isLoggedIn && <ToastMessage />}
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={validationSchema}

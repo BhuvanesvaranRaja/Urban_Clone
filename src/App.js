@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
 import MainRoutes from "./Routes/MainRoutes";
-import LandingPage_Navbar from "./Components/Navbar/LandingPg_Navbar";
 import { gapi } from "gapi-script";
 function App() {
   useEffect(() => {
@@ -20,7 +19,6 @@ function App() {
   return (
     <div className="App">
       {/* <LandingPage_Navbar /> */}
-
       <MainRoutes />
     </div>
   );

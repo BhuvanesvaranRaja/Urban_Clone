@@ -2,21 +2,21 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const distancesAndDurationsSlice = createSlice({
+const distancesAndDurations = createSlice({
   name: "distancesAndDurations",
   initialState: {
-    distance: [],
+    distance: localStorage.getItem("distanceAndDuration") || [],
   },
   reducers: {
-    setDistancesAndDurations: (state, action) => {
+    distanceAndDuration: (state, action) => {
       state.distance = action.payload;
       localStorage.setItem(
         "distanceAndDuration",
-        JSON.stringify(action.payload)
+        JSON.stringify(state.distance)
       );
     },
   },
 });
 
-export const { setDistancesAndDurations } = distancesAndDurationsSlice.actions;
-export default distancesAndDurationsSlice.reducer;
+export const { distanceAndDuration } = distancesAndDurations.actions;
+export default distancesAndDurations.reducer;

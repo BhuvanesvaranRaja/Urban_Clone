@@ -16,6 +16,7 @@ const locationSlice = createSlice({
     address: (state, action) => {
       const { lat, lng } = action.payload;
       state.address = { lat, lng };
+      console.log("from redux", lat, lng);
       localStorage.setItem("address", JSON.stringify({ lat, lng }));
     },
     locationMethod: (state, action) => {

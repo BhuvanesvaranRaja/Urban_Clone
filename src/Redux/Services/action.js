@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getService } from "../../Api/getServices";
 
 export const GET_ALLPRODUCT_DATA_REQUEST = "GET_ALLPRODUCT_DATA_REQUEST";
 export const GET_ALLPRODUCT_DATA_SUCCESS = "GET_ALLPRODUCT_DATA_SUCCESS";
@@ -23,8 +24,8 @@ export const getAllProductsDataFailure = () => ({
 
 export const getAllProducts = (city) => (dispatch) => {
   dispatch(getAllProductsDataRequest());
-  axios
-    .get(`http://localhost:8088/cities?city=${city}`)
+  getService
+    .get(`/cities?city=${city}`)
     .then((res) => {
       dispatch(getAllProductsDataSuccess(res.data));
     })
@@ -57,8 +58,8 @@ export const getAllServiceCentersFailure = () => ({
 
 export const getAllServiceCenters = (city) => (dispatch) => {
   dispatch(getAllServiceCentersRequest());
-  axios
-    .get(`http://localhost:8088/service_centers?city=${city}`)
+  getService
+    .get(`/service_centers?city=${city}`)
     .then((res) => {
       dispatch(getAllServiceCentersSuccess(res.data));
     })
@@ -79,14 +80,14 @@ export const addFailure = () => ({
   type: ADD_FAILURE,
 });
 
-export const addProducts = (payload) => (dispatch) => {
-  dispatch(addRequest());
-  axios
-    .post("http://localhost:8080/cart", payload)
-    .then((res) => {
-      dispatch(addSuccess(res.data));
-    })
-    .catch((err) => {
-      dispatch(addFailure());
-    });
-};
+// export const addProducts = (payload) => (dispatch) => {
+//   dispatch(addRequest());
+//   axios
+//     .post("http://localhost:8080/cart", payload)
+//     .then((res) => {
+//       dispatch(addSuccess(res.data));
+//     })
+//     .catch((err) => {
+//       dispatch(addFailure());
+//     });
+// };

@@ -19,7 +19,11 @@ import {
 
 import { getCoordinatesFromCityName } from "../../Utils/Coordinates";
 import { useDispatch, useSelector } from "react-redux";
-import { address, location } from "../../Redux/Services/locationSlice";
+import {
+  address,
+  location,
+  locationMethod,
+} from "../../Redux/Services/locationSlice";
 import { getCityName } from "../../Utils/getCityInfo";
 
 const MapComponent = withScriptjs(
@@ -69,6 +73,7 @@ const ServicePageModal = ({ isOpen, onClose, closeDrawer }) => {
     if (currentCityName) {
       dispatch(address(markerPosition));
       dispatch(location({ city: currentCityName }));
+      dispatch(locationMethod("city"));
       onClose();
       closeDrawer();
       toast({

@@ -40,6 +40,7 @@ import AddressFetchModal from "../Service_Page/AddressFetchModal";
 import { useLocation } from "react-router-dom";
 import { location } from "../../Redux/Services/locationSlice";
 import { getCityName } from "../../Utils/getCityInfo";
+import { getCoordinatesFromCityName } from "../../Utils/Coordinates";
 
 function LandingPage_Navbar() {
   const token = useSelector((state) => state.auth.token);
@@ -76,12 +77,16 @@ function LandingPage_Navbar() {
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
   };
-  const handleLocationChange = (event) => {
+  const handleLocationChange = async (event) => {
     const city = event.target.value;
     // Navigate to the selected location
     if (city) {
+      const cityName = await getCoordinatesFromCityName(city);
       dispatch(location({ city }));
       dispatch(locationMethod("city"));
+      dispatch(
+        address({ lat: Number(cityName.lat), lng: Number(cityName.lng) })
+      );
       navigate(`home`);
       setIsPopoverOpen(false);
       event.target.value = "";
@@ -138,19 +143,27 @@ function LandingPage_Navbar() {
 
   const fetchLocation = async () => {
     try {
+      const Currentcity = await getCityFromGeolocation();
+      const cityName = await getCoordinatesFromCityName(Currentcity);
+      console.log("vityname", cityName.lat);
       if (pathname === "/") {
-        const Currentcity = await getCityFromGeolocation();
-        console.log("curent", Currentcity);
         dispatch(location({ city: Currentcity }));
         dispatch(locationMethod("current"));
+        dispatch(
+          address({ lat: Number(cityName.lat), lng: Number(cityName.lng) })
+        );
+
         navigate("/home");
       } else {
-        const Currentcity = await getCityFromGeolocation();
-        const currentURL = window.location.href;
-        const newURL = currentURL.replace(`${city}`, `${Currentcity}`);
+        // const Currentcity = await getCitymFromGeolocation();
+        // const currentURL = window.location.href;
+        // const newURL = currentURL.replace(`${city}`, `${Currentcity}`);
         dispatch(location({ city: Currentcity }));
         dispatch(locationMethod("current"));
-        window.location.href = newURL;
+        // window.location.href = newURL;
+        dispatch(
+          address({ lat: Number(cityName.lat), lng: Number(cityName.lng) })
+        );
       }
     } catch (error) {
       console.error("Error fetching the location ", error);

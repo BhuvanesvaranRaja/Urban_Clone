@@ -63,6 +63,7 @@ const HomeTopSection = ({ loading, setLoading, onChange, suggestions }) => {
     try {
       const city = await getCityFromGeolocation();
       dispatch(location({ city }));
+
       navigate(`/home`);
     } catch (error) {
       console.error("Error fetching the location ", error);

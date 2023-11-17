@@ -22,6 +22,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    console.log("im in");
   };
 
   return (
@@ -67,7 +68,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 <Login onClose={onClose} />
               </TabPanel>
               <TabPanel>
-                <Signup />
+                <Signup onSuccess={() => handleTabChange("login")} />
               </TabPanel>
             </TabPanels>
           </Tabs>

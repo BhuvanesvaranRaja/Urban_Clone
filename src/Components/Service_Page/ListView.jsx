@@ -12,59 +12,67 @@ import {
   ModalOverlay,
   Container,
 } from "@chakra-ui/react";
-import { setDistancesAndDurations } from "../../Redux/Services/distancesAndDurationsSlice";
+
 import CenterDetailModal from "../Modal/CenterDetailModal";
 import OtherServices from "./OtherServices";
 import StarRating from "./StarRating";
 import NoServiceCenterAvailable from "./NoServiceCenterAvailable";
+import { distanceAndDuration } from "../../Redux/Services/distancesAndDurationsSlice";
 
 const ListView = ({ centers, service }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [otherServices, setOtherServices] = useState([]);
+  const [centerDistances, setCenterDistances] = useState([]);
   const [overlay, setOverlay] = React.useState();
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   const UserLocation = useSelector((state) => state.location.address);
-  // const distance = useSelector((state) => state.setDistancesAndDurations);
   const apiKey = process.env.REACT_APP_DISTANCE_API_KEY;
-  // const data = localStorage.getItem("distanceAndDuration");
-  // useEffect(() => {
-  //   const calculateDistancesAndDurations = async () => {
-  //     if (UserLocation) {
-  //       const OriginString = `${UserLocation.lat},${UserLocation.lng}`;
 
-  //       try {
-  //         const destinations = centers[0]?.service_categories[service]?.map(
-  //           (center) => `${center.latitude},${center.longitude}`
-  //         );
-  //         const destinationString = destinations?.join("|");
-  //         const response = await fetch(
-  //           `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${OriginString}&destinations=${destinationString}&key=${apiKey}`
-  //         );
+  useEffect(() => {
+    setCenterDistances([]);
+    const calculateDistancesAndDurations = async () => {
+      setLoading(true);
+      // console.log("UserLocation (before fetch):", UserLocation);
 
-  //         if (response.ok) {
-  //           const data = await response.json();
-  //           const distancesAndDurations = await data.rows[0].elements?.map(
-  //             (element) => {
-  //               return {
-  //                 distance: element.distance?.text,
-  //                 duration: element.duration?.text,
-  //               };
-  //             }
-  //           );
-  //           dispatch(setDistancesAndDurations(distancesAndDurations));
-  //         } else {
-  //           console.error("Error fetching distance and duration data");
-  //         }
-  //       } catch (error) {
-  //         console.error("Error fetching distance and duration data", error);
-  //       }
-  //     }
-  //   };
+      if (UserLocation) {
+        const OriginString = `${UserLocation.lat},${UserLocation.lng}`;
+        try {
+          const destinations = centers[0]?.service_categories[service]?.map(
+            (center) => `${center.latitude},${center.longitude}`
+          );
+          const destinationString = destinations?.join("|");
+          const response = await fetch(
+            `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${OriginString}&destinations=${destinationString}&key=${apiKey}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            const distancesAndDurations = await data.rows[0].elements?.map(
+              (element) => {
+                return {
+                  distance: element.distance?.text,
+                  duration: element.duration?.text,
+                };
+              }
+            );
 
-  //   calculateDistancesAndDurations();
-  // }, [UserLocation, centers, service, apiKey, dispatch]);
+            setCenterDistances(distancesAndDurations);
+            dispatch(distanceAndDuration(distancesAndDurations));
+          } else {
+            console.error("Error fetching distance and duration data");
+          }
+        } catch (error) {
+          console.error("Error fetching distance and duration data", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    calculateDistancesAndDurations();
+  }, [centers, service, dispatch, apiKey, UserLocation]);
 
   useEffect(() => {
     if (centers && service) {
@@ -113,7 +121,9 @@ const ListView = ({ centers, service }) => {
 
   return (
     <div className="d-flex">
-      {centers?.length === 0 || !centers[0]?.service_categories[service] ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : centers?.length === 0 || !centers[0]?.service_categories[service] ? (
         <NoServiceCenterAvailable />
       ) : (
         <>
@@ -152,6 +162,13 @@ const ListView = ({ centers, service }) => {
                           </Text>
                           <Text fontSize="lg" p="1" letterSpacing={"wider"}>
                             Phone: {center.phone}
+                          </Text>
+                          <Text fontSize="lg" p="1" letterSpacing={"wider"}>
+                            Distance: {centerDistances[index]?.distance}
+                          </Text>{" "}
+                          <Text fontSize="lg" p="1" letterSpacing={"wider"}>
+                            Distance: {centerDistances[index]?.duration}{" "}
+                            (approx.)
                           </Text>
                           <Flex alignItems="center">
                             <Text fontSize="lg" p="1" letterSpacing={"wider"}>
